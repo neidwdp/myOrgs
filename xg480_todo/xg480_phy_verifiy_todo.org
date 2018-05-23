@@ -1,7 +1,13 @@
 * xg480_phy 25g/10g verification todo [0%]
-** TODO Line side rate_meter_rx trigger mac_tx send out the pause.
+** WAITING sync TC TB ENV form xg480_phy_25g to xg480_phy_10g [1/3]
+   - [X] tb_env
+   - [ ] top.sv
+   - [ ] TCs [0/2]
+     - [ ] tc_302
+     - [ ] tc_500b
+** WAITING Line side rate_meter_rx trigger mac_tx send out the pause.
 rate_meter_multiple has bug, the interval of ON type pause is so closed. it's 200us, the expect value is 2ms.
-** TODO Line side mac_tx port shaper function test based on rate_meter_multiple
+** WAITING Line side mac_tx port shaper function test based on rate_meter_multiple
 mac_tx has not implement it
 ** TODO device level vlan_det_lookup module test. [66%]
    - [X] tb_env support
@@ -16,12 +22,6 @@ the spec has been ready, RTL has not been ready.
 *** TODO testcase [0/2]
     - [ ] ingress
     - [ ] egress
-** TODO sync TC TB ENV form xg480_phy_25g to xg480_phy_10g [1/3]
-   - [X] tb_env
-   - [ ] top.sv
-   - [ ] TCs [0/2]
-     - [ ] tc_302
-     - [ ] tc_500b
 ** TODO 100g PTP
 ** TODO 100g CGMII interface
    - [-] CGMII RX [1/3]
@@ -86,6 +86,9 @@ add it to dyinggasp generation testcase. keep internal register trigger as 0, ch
 ** TODO PTP full bandwidth. [0%]
    - [ ] All port input PTP and non-PTP packet with full bandwidth.
    - [ ] All port input PTP packet with full bandwidth.
+** TODO Normal traffic full bandwidth with RX input some fcs errors. [0%]
+   - [ ] with transceiver core. input packet size is 1500
+   - [ ] bypass transceiver core. input packet size is 1500
 ** TODO full flows loopback test.[0%]
    - [ ] 64 flows do fac loop, term loop, y1564 co-exist on the same port
    - [ ] 64 flows on different ports.
