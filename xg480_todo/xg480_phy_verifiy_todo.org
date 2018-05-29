@@ -1,4 +1,4 @@
-* xg480_phy 25g/10g verification todo [5%]
+* xg480_phy 25g/10g verification todo [11%]
 ** WAITING sync TC TB ENV form xg480_phy_25g to xg480_phy_10g [1/3]
    - [X] tb_env
    - [ ] top.sv
@@ -83,8 +83,9 @@ Config clock sel, enable and divider factor by register, then check/monitor the 
    input    logic                dyingGaspIn                ,
 add it to dyinggasp generation testcase. keep internal register trigger as 0, change it value form 0 to 1 (on top.sv) 5 times, the expected result is 5 times dying gasp frame generated.
 ** TODO update tc_500b for egress, add TC RT.
-** STARTED PTP full bandwidth. [25%]
+** STARTED PTP full bandwidth. [40%]
    - [X] tc_500b, all egress port have PTP packet input.
+   - [X] tc_503, all egress port have PTP packet input.
    - [ ] tc_500a, all ingress port have PTP packet input.
    - [ ] All port input PTP and non-PTP packet with full bandwidth.
    - [ ] All port input PTP packet with full bandwidth.
@@ -96,3 +97,19 @@ add it to dyinggasp generation testcase. keep internal register trigger as 0, ch
 ** TODO full flows loopback test.[0%]
    - [ ] 64 flows do fac loop, term loop, y1564 co-exist on the same port
    - [ ] 64 flows on different ports.
+** DONE more details RMON test for mac_rx/tx
+   CLOSED: [2018-05-28 Mon 19:09]
+   - State "DONE"       from "STARTED"    [2018-05-28 Mon 19:09]
+#+BEGIN: clocktable :maxlevel 2 :scope subtree
+#+CAPTION: Clock summary at [2018-05-28 Mon 19:08]
+| Headline                                  | Time   |      |
+|-------------------------------------------+--------+------|
+| *Total time*                              | *0:25* |      |
+|-------------------------------------------+--------+------|
+| \_  STARTED more details RMON test for... |        | 0:25 |
+#+END:
+
+   :LOGBOOK:
+   CLOCK: [2018-05-28 Mon 18:41]--[2018-05-28 Mon 19:06] =>  0:25
+   :END:
+
