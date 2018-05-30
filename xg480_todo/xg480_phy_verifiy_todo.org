@@ -1,13 +1,17 @@
-* xg480_phy 25g/10g verification todo [11%]
-** WAITING sync TC TB ENV form xg480_phy_25g to xg480_phy_10g [1/3]
+* xg480_phy 25g/10g verification todo [8%]
+** TODO sync TC TB ENV form xg480_phy_25g to xg480_phy_10g [1/3]
+   - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
    - [X] tb_env
    - [ ] top.sv
    - [ ] TCs [0/2]
      - [ ] tc_302
      - [ ] tc_500b
-** WAITING Line side rate_meter_rx trigger mac_tx send out the pause.
+** TODO The rate_meter_multiple issues
+*** TODO Line side rate_meter_rx trigger mac_tx send out the pause.
+    - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
 rate_meter_multiple has bug, the interval of ON type pause is so closed. it's 200us, the expect value is 2ms.
-** WAITING Line side mac_tx port shaper function test based on rate_meter_multiple
+*** TODO Line side mac_tx port shaper function test based on rate_meter_multiple
+    - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
 mac_tx has not implement it
 ** TODO device level vlan_det_lookup module test. [66%]
    - [X] tb_env support
@@ -23,7 +27,7 @@ the spec has been ready, RTL has not been ready.
     - [ ] ingress
     - [ ] egress
 ** TODO 100g PTP
-** TODO 100g CGMII interface
+** TODO 100g CGMII interface [%]
    - [-] CGMII RX [1/3]
      - [X] SPEC: the SPEC has been ready, Leo committed it. but RTL need re-write.
      - [ ] RTL: Leo said, it need re-write.
@@ -35,18 +39,19 @@ the spec has been ready, RTL has not been ready.
 ** TODO y1564 feature test.
 *** TODO monitor, Lance is working on it.
 *** TODO generator, Lance is working on it.
-** TODO update tc_1000, to test reserve pin for DUT top.[0/5]
-*** TODO sgmii east/west backpressure out/in pin.
+** TODO Reserved Pin on DUT's top test [%]
+*** TODO update tc_1000[0/5]
+**** TODO sgmii east/west backpressure out/in pin.
 sgmiiEastRxBackpressureOut,
 sgmiiEastTxBackpressureIn,
 sgmiiWestRxBackpressureOut,
 sgmiiWestTxBackpressureIn
 In top.sv connect the output to input, then write the internal register with 1/0, read the input indication register.
-*** TODO gasicParityInOut, gasicParityErrOut
+**** TODO gasicParityInOut, gasicParityErrOut
 input         gasicParityInOut  ,
 input  logic  gasicParityErrOut , // change to input for pin test
 Set those two signal 1/0, read the related indication register on device reg.
-*** TODO SFP reserve pin
+**** TODO SFP reserve pin
    input    logic [7:0]          sfpPresentIn_n             ,
    input    logic [7:0]          sfpLosIn                   ,
    input    logic [7:0]          sfpTxFaultIn               ,
@@ -55,61 +60,57 @@ Set those two signal 1/0, read the related indication register on device reg.
    output   logic [7:0]          sfpLowPowerModeOut         ,
 For input signal, set them to 1/0, read related indication register on device reg.
 For output signal, write the related regiset on device reg, check/monitor the signal on top.sv/TB.
-*** TODO cpldInOut
+**** TODO cpldInOut
    input          [3:0]          cpldInOut                  ,     // Only cpldInOut[1:0] valid in HW connection
 Input signal, set them to 1/0, read related indication register on device reg.
-** TODO update tc_500c
-*** TODO ptpClkCompensate In/out
+*** TODO update tc_500c
+**** TODO ptpClkCompensate In/out
     input    logic                ptpClkCompensateIn         ,
     output   logic                ptpClkCompensateOut        ,
 In top.sv, connect the output to input, read the address 0x0c bit8 on ptp_server module. the value is 1, then change to 0.
-*** TODO ptpMicroSemiLoadSave
+**** TODO ptpMicroSemiLoadSave
    input    logic [1:0]          ptpMicroSemiLoadSaveInP    ,
    input    logic [1:0]          ptpMicroSemiLoadSaveInN    ,
 
    input    logic                clockSynce25In             ,
 Read the register on ptp_server module.
-** TODO irqOut
+*** TODO irqOut
    output   logic                irqOut_n                   ,
 has not test, How to test?/!
-** TODO rxClkSelOut
+*** TODO rxClkSelOut
    output   logic [5:0]          rxClkSelOut                ,
 10G mode, 156.25Mhz
 25G mode, 390.625Mhz
 100G mode, 322.625Mhz
 1G mode, 125Mhz
 Config clock sel, enable and divider factor by register, then check/monitor the output clock's frequency.
-** TODO dyingGaspIn
+*** TODO dyingGaspIn
    input    logic                dyingGaspIn                ,
 add it to dyinggasp generation testcase. keep internal register trigger as 0, change it value form 0 to 1 (on top.sv) 5 times, the expected result is 5 times dying gasp frame generated.
 ** TODO update tc_500b for egress, add TC RT.
-** STARTED PTP full bandwidth. [40%]
+** TODO PTP full bandwidth. [40%]
    - [X] tc_500b, all egress port have PTP packet input.
    - [X] tc_503, all egress port have PTP packet input.
    - [ ] tc_500a, all ingress port have PTP packet input.
    - [ ] All port input PTP and non-PTP packet with full bandwidth.
    - [ ] All port input PTP packet with full bandwidth.
-** DONE Normal traffic full bandwidth with RX input some fcs errors. [100%]
-   CLOSED: [2018-05-23 Wed 15:27]
-   - State "DONE"       from "STARTED"    [2018-05-23 Wed 15:27]
-   - [X] with transceiver core. input packet size is 1500
-   - [X] bypass transceiver core. input packet size is 1500
 ** TODO full flows loopback test.[0%]
    - [ ] 64 flows do fac loop, term loop, y1564 co-exist on the same port
    - [ ] 64 flows on different ports.
-** DONE more details RMON test for mac_rx/tx
-   CLOSED: [2018-05-28 Mon 19:09]
-   - State "DONE"       from "STARTED"    [2018-05-28 Mon 19:09]
-#+BEGIN: clocktable :maxlevel 2 :scope subtree
-#+CAPTION: Clock summary at [2018-05-28 Mon 19:08]
-| Headline                                  | Time   |      |
-|-------------------------------------------+--------+------|
-| *Total time*                              | *0:25* |      |
-|-------------------------------------------+--------+------|
-| \_  STARTED more details RMON test for... |        | 0:25 |
-#+END:
-
-   :LOGBOOK:
-   CLOCK: [2018-05-28 Mon 18:41]--[2018-05-28 Mon 19:06] =>  0:25
-   :END:
-
+** DONE more details RMON test for mac_rx/tx [66%]
+*** DONE all kinds of type RMON test for mac rx/tx [100%]
+     CLOSED: [2018-05-30 Wed 09:32]
+     - State "DONE"       from "TODO"       [2018-05-30 Wed 09:32]
+   - [X] tc_207, re-prduce lab test bug. without transceiver, 64B packet with GOOD/BAD/GOOD/BAD FCS; 
+  port0 input 64B packet, port1 input 200B packet; 
+  port2 port3 input packet with some phy error (PCS error); 
+  port4 input 128B packet with all FCS error. 
+  port5 input 129B packet with all FCS error.
+   - [X] tc_208, cover all kinds of type RMON for mac_rx/tx 
+   - [X] tc_208a, to test RMON with MTU less 1518
+*** DONE Normal traffic full bandwidth with RX input some fcs errors. [100%]
+    CLOSED: [2018-05-23 Wed 15:27]
+   - State "DONE"       from "STARTED"    [2018-05-23 Wed 15:27]
+   - [X] with transceiver core. input packet size is 1500
+   - [X] bypass transceiver core. input packet size is 1500
+*** TODO Align the all related testcase between xg480_phy_25g and xg480_phy_10g device [%]
