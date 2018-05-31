@@ -1,24 +1,42 @@
-* xg480_phy 25g/10g verification todo [8%]
-** TODO sync TC TB ENV form xg480_phy_25g to xg480_phy_10g [1/3]
-   - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
-   - [X] tb_env
-   - [ ] top.sv
-   - [ ] TCs [0/2]
-     - [ ] tc_302
-     - [ ] tc_500b
-** TODO The rate_meter_multiple issues
-*** TODO Line side rate_meter_rx trigger mac_tx send out the pause.
+* xg480_phy 25g/10g verification todo [25%]
+** TODO The rate_meter_multiple issues [%]
+*** TODO Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
     - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
 rate_meter_multiple has bug, the interval of ON type pause is so closed. it's 200us, the expect value is 2ms.
 *** TODO Line side mac_tx port shaper function test based on rate_meter_multiple
     - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
 mac_tx has not implement it
-** TODO device level vlan_det_lookup module test. [66%]
-   - [X] tb_env support
-   - [X] lpbk_y1564_det transfer funciton instance the vlan_det_lookup TF.
-   - [-] testcase [1/2]
-     - [X] tc_302 based vlan_det_lookup tc. disable port based loop, provisioning 1 matchId(63)
-     - [ ] tc_302a
+** STARTED vlan_det_lookup device level test. [75%]
+   :LOGBOOK:  
+   CLOCK: [2018-05-30 Wed 12:20]--[2018-05-30 Wed 12:21] =>  0:01
+   CLOCK: [2018-05-30 Wed 12:13]--[2018-05-30 Wed 12:14] =>  0:01
+   CLOCK: [2018-05-30 Wed 11:51]--[2018-05-30 Wed 11:59] =>  0:08
+   CLOCK: [2018-05-30 Wed 11:32]--[2018-05-30 Wed 11:49] =>  0:17
+   :END:      
+*** DONE tb_env support
+    CLOSED: [2018-05-30 Wed 16:13]
+    - State "DONE"       from "TODO"       [2018-05-30 Wed 16:13]
+*** DONE transfer function support: lpbk_y1564_det transfer funciton instance the vlan_det_lookup TF.
+    CLOSED: [2018-05-30 Wed 16:13]
+    - State "DONE"       from "TODO"       [2018-05-30 Wed 16:13]
+*** TODO testcase setup [0%]
+**** STARTED tc_302 [100%]
+     :LOGBOOK:  
+     CLOCK: [2018-05-31 Thu 09:45]--[2018-05-31 Thu 09:46] =>  0:01
+     CLOCK: [2018-05-30 Wed 17:32]--[2018-05-30 Wed 17:38] =>  0:06
+     CLOCK: [2018-05-30 Wed 17:08]--[2018-05-30 Wed 17:16] =>  0:08
+     CLOCK: [2018-05-30 Wed 16:23]--[2018-05-30 Wed 16:27] =>  0:04
+     :END:      
+     - [X] flow based fac loopback by vlan_det_lookup; disable port based loop, provisioning only 1 matchId(63)
+       change the mac_rx_4.sv to every segment send request to vlan_det module; there are 2 flows did not loopback, need Jimmy to double check DUT.<2018-05-30 Wed 17:42> 
+       the vlan_det_lookup moudle has bug. Bob is working on it. <2018-05-31 Thu 09:45> 
+*** DONE align the testcase from 25g device to 10g device [100%]
+    CLOSED: [2018-05-30 Wed 17:06]
+    - State "DONE"       from "STARTED"    [2018-05-30 Wed 17:06]
+    :LOGBOOK:  
+    CLOCK: [2018-05-30 Wed 16:47]--[2018-05-30 Wed 17:03] =>  0:16
+    :END:      
+    - [X] tc_302
 ** TODO port_process_ingress/port_process_egress (afp+pcp) test. [0%]
 the spec has been ready, RTL has not been ready.
 *** TODO provisioning method
@@ -26,21 +44,26 @@ the spec has been ready, RTL has not been ready.
 *** TODO testcase [0/2]
     - [ ] ingress
     - [ ] egress
-** TODO 100g PTP
+** TODO 100g PTP [0%]
+*** TODO read 100g PTP related module spec
+*** TODO transfer function and tb_env
+*** TODO testcase setup 
 ** TODO 100g CGMII interface [%]
-   - [-] CGMII RX [1/3]
-     - [X] SPEC: the SPEC has been ready, Leo committed it. but RTL need re-write.
-     - [ ] RTL: Leo said, it need re-write.
-     - [ ] Monitor
-   - [ ] CGMII TX [0/3]
-     - [ ] SPEC
-     - [ ] RTL
-     - [ ] Driver
+*** TODO CGMII Monitor [50%]
+    - [X] CGMII RX SPEC and RTL [2/2]
+      - [X] SPEC: the SPEC has been ready, Leo committed it.<2018-05-30 Wed> 
+      - [X] RTL: it has been ready <2018-05-30 Wed> 
+    - [ ] UVM monitor 
+*** TODO CGMII Driver [%]
+    - [ ] CGMII TX [0/3]
+      - [ ] SPEC
+      - [ ] RTL
+    - [ ] UVM Driver 
 ** TODO y1564 feature test.
-*** TODO monitor, Lance is working on it.
-*** TODO generator, Lance is working on it.
+*** TODO monitor, Lance work on it.
+*** TODO generator, Lance work on it.
 ** TODO Reserved Pin on DUT's top test [%]
-*** TODO update tc_1000[0/5]
+*** TODO update tc_1000 [0/5]
 **** TODO sgmii east/west backpressure out/in pin.
 sgmiiEastRxBackpressureOut,
 sgmiiEastTxBackpressureIn,
@@ -63,7 +86,7 @@ For output signal, write the related regiset on device reg, check/monitor the si
 **** TODO cpldInOut
    input          [3:0]          cpldInOut                  ,     // Only cpldInOut[1:0] valid in HW connection
 Input signal, set them to 1/0, read related indication register on device reg.
-*** TODO update tc_500c
+*** TODO update tc_500c [%]
 **** TODO ptpClkCompensate In/out
     input    logic                ptpClkCompensateIn         ,
     output   logic                ptpClkCompensateOut        ,
@@ -87,17 +110,64 @@ Config clock sel, enable and divider factor by register, then check/monitor the 
 *** TODO dyingGaspIn
    input    logic                dyingGaspIn                ,
 add it to dyinggasp generation testcase. keep internal register trigger as 0, change it value form 0 to 1 (on top.sv) 5 times, the expected result is 5 times dying gasp frame generated.
-** TODO update tc_500b for egress, add TC RT.
-** TODO PTP full bandwidth. [40%]
-   - [X] tc_500b, all egress port have PTP packet input.
-   - [X] tc_503, all egress port have PTP packet input.
-   - [ ] tc_500a, all ingress port have PTP packet input.
-   - [ ] All port input PTP and non-PTP packet with full bandwidth.
-   - [ ] All port input PTP packet with full bandwidth.
+** TODO update tc_500b for egress, add TC RT. [0%]
+*** STARTED debug TB to support it
+    :LOGBOOK:  
+    CLOCK: [2018-05-30 Wed 16:39]--[2018-05-30 Wed 16:46] =>  0:07
+    :END:      
+** DONE PTP full bandwidth. [100%]
+   CLOSED: [2018-05-30 Wed 19:24]
+   - State "DONE"       from "STARTED"    [2018-05-30 Wed 19:24]
+   :LOGBOOK:  
+   CLOCK: [2018-05-30 Wed 14:49]--[2018-05-30 Wed 15:08] =>  0:19
+   :END:      
+*** DONE tc_503 All port input PTP packet with full bandwidth.[100%] 
+    CLOSED: [2018-05-30 Wed 19:00]
+    - State "DONE"       from "STARTED"    [2018-05-30 Wed 19:00]
+    :LOGBOOK:  
+    CLOCK: [2018-05-30 Wed 18:32]--[2018-05-30 Wed 18:59] =>  0:27
+    CLOCK: [2018-05-30 Wed 18:01]--[2018-05-30 Wed 18:06] =>  0:05
+    CLOCK: [2018-05-30 Wed 17:23]--[2018-05-30 Wed 17:31] =>  0:08
+    :END:      
+    - [X] all inress port input full bandwith traffic with PTP packet.<2018-05-30 Wed 18:59> 
+**** DONE TF side need double check.<2018-05-30 Wed 19:26> 
+     CLOSED: [2018-05-31 Thu 09:43]
+     - State "DONE"       from "STARTED"    [2018-05-31 Thu 09:43]
+     :LOGBOOK:  
+     CLOCK: [2018-05-31 Thu 09:38]--[2018-05-31 Thu 09:43] =>  0:05
+     CLOCK: [2018-05-31 Thu 08:32]--[2018-05-31 Thu 09:21] =>  0:49
+     :END:      
+    - [X] all egress port input full bandwith traffic with PTP packet, disable overwrite SA on mac_tx.
+     when set every flow input 400 packets, there are miscmp errors; Need Tonny to double check it. <2018-05-30 Wed 17:30>
+      In the ptp_process spec, about setting updateCorrectField condition is not clear, after disscution with tonny, TF need do modificaiton, if packet is event ptp, and allowopertion, set the updateCorrectField; don't care the egrRxIfPortNum any more. later, tonny wiil update the spec also. 
+*** DONE tc_504 All port input PTP and non-PTP packet with full bandwidth.[100%]
+    CLOSED: [2018-05-30 Wed 19:07]
+    - State "DONE"       from "STARTED"    [2018-05-30 Wed 19:07]
+    :LOGBOOK:  
+    CLOCK: [2018-05-30 Wed 19:00]--[2018-05-30 Wed 19:07] =>  0:07
+    CLOCK: [2018-05-30 Wed 16:21]--[2018-05-30 Wed 16:22] =>  0:01
+    CLOCK: [2018-05-30 Wed 15:58]--[2018-05-30 Wed 16:10] =>  0:12
+    CLOCK: [2018-05-30 Wed 15:54]--[2018-05-30 Wed 15:55] =>  0:01
+    :END:      
+    - [X] all egress port input full bandwidth traffic, PTP and non-PTP, disable overwrite SA on mac_tx.
+    - [X] all ingress port input full bandwidth traffic, PTP and non-PTP.<2018-05-30 Wed 19:07> 
+*** DONE align the related testcase form 25g device to 10g device [100%]
+    CLOSED: [2018-05-30 Wed 19:24]
+    - State "DONE"       from "STARTED"    [2018-05-30 Wed 19:24]
+    - State "TODO"       from "DONE"       [2018-05-30 Wed 19:09]
+    - State "DONE"       from "STARTED"    [2018-05-30 Wed 17:18]
+    :LOGBOOK:  
+    CLOCK: [2018-05-30 Wed 19:10]--[2018-05-30 Wed 19:21] =>  0:11
+    CLOCK: [2018-05-30 Wed 15:41]--[2018-05-30 Wed 15:42] =>  0:01
+    CLOCK: [2018-05-30 Wed 15:31]--[2018-05-30 Wed 15:37] =>  0:06
+    CLOCK: [2018-05-30 Wed 15:12]--[2018-05-30 Wed 15:18] =>  0:06
+    :END:      
+    - [X] tc_503 
+    - [X] tc_504
 ** TODO full flows loopback test.[0%]
    - [ ] 64 flows do fac loop, term loop, y1564 co-exist on the same port
    - [ ] 64 flows on different ports.
-** DONE more details RMON test for mac_rx/tx [66%]
+** DONE more details RMON test for mac_rx/tx [100%]
 *** DONE all kinds of type RMON test for mac rx/tx [100%]
      CLOSED: [2018-05-30 Wed 09:32]
      - State "DONE"       from "TODO"       [2018-05-30 Wed 09:32]
@@ -113,4 +183,26 @@ add it to dyinggasp generation testcase. keep internal register trigger as 0, ch
    - State "DONE"       from "STARTED"    [2018-05-23 Wed 15:27]
    - [X] with transceiver core. input packet size is 1500
    - [X] bypass transceiver core. input packet size is 1500
-*** TODO Align the all related testcase between xg480_phy_25g and xg480_phy_10g device [%]
+*** DONE Align the all related testcase between xg480_phy_25g and xg480_phy_10g device [100%]
+    CLOSED: [2018-05-30 Wed 14:48]
+    - State "DONE"       from "STARTED"    [2018-05-30 Wed 14:48]
+    :LOGBOOK:  
+    CLOCK: [2018-05-30 Wed 14:41]--[2018-05-30 Wed 14:43] =>  0:02
+    CLOCK: [2018-05-30 Wed 14:29]--[2018-05-30 Wed 14:37] =>  0:08
+    CLOCK: [2018-05-30 Wed 14:04]--[2018-05-30 Wed 14:10] =>  0:06
+    CLOCK: [2018-05-30 Wed 11:59]--[2018-05-30 Wed 12:13] =>  0:14
+    CLOCK: [2018-05-30 Wed 11:49]--[2018-05-30 Wed 11:50] =>  0:01
+    :END:      
+    - [X] tc_208
+    - [X] tc_208a
+** DONE Support Haidong lab test [100%]
+   CLOSED: [2018-05-31 Thu 10:58]
+   - State "DONE"       from "TODO"       [2018-05-31 Thu 10:58]
+*** DONE generation the dyinggasp injection testcase all provisionging
+    CLOSED: [2018-05-31 Thu 10:58]
+    - State "DONE"       from "STARTED"    [2018-05-31 Thu 10:58]
+    :LOGBOOK:  
+    CLOCK: [2018-05-31 Thu 10:31]--[2018-05-31 Thu 10:39] =>  0:08
+    CLOCK: [2018-05-31 Thu 09:48]--[2018-05-31 Thu 10:00] =>  0:12
+    :END:      
+    based on tc_201b, grep all procWrite.
