@@ -1,4 +1,4 @@
-* xg480_phy 25g/10g verification todo [25%]
+* xg480_phy 25g/10g verification todo [38%]
 ** TODO The rate_meter_multiple issues [%]
 *** TODO Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
     - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
@@ -19,17 +19,46 @@ mac_tx has not implement it
 *** DONE transfer function support: lpbk_y1564_det transfer funciton instance the vlan_det_lookup TF.
     CLOSED: [2018-05-30 Wed 16:13]
     - State "DONE"       from "TODO"       [2018-05-30 Wed 16:13]
-*** TODO testcase setup [0%]
-**** STARTED tc_302 [100%]
+*** STARTED testcase setup [50%]
+**** STARTED tc_302 [66%]
+     - State "STARTED"    from "DONE"       [2018-05-31 Thu 17:21]
+     - State "DONE"       from "STARTED"    [2018-05-31 Thu 16:23]
      :LOGBOOK:  
+     CLOCK: [2018-05-31 Thu 17:21]--[2018-05-31 Thu 17:22] =>  0:01
+     CLOCK: [2018-05-31 Thu 16:01]--[2018-05-31 Thu 16:09] =>  0:08
+     CLOCK: [2018-05-31 Thu 15:54]--[2018-05-31 Thu 15:57] =>  0:03
+     CLOCK: [2018-05-31 Thu 15:38]--[2018-05-31 Thu 15:43] =>  0:05
+     CLOCK: [2018-05-31 Thu 14:50]--[2018-05-31 Thu 15:20] =>  0:30
      CLOCK: [2018-05-31 Thu 09:45]--[2018-05-31 Thu 09:46] =>  0:01
      CLOCK: [2018-05-30 Wed 17:32]--[2018-05-30 Wed 17:38] =>  0:06
      CLOCK: [2018-05-30 Wed 17:08]--[2018-05-30 Wed 17:16] =>  0:08
      CLOCK: [2018-05-30 Wed 16:23]--[2018-05-30 Wed 16:27] =>  0:04
      :END:      
-     - [X] flow based fac loopback by vlan_det_lookup; disable port based loop, provisioning only 1 matchId(63)
+***** DONE flow based fac loopback by vlan_det_lookup; disable port based loop, provisioning only 1 matchId(63)
+      CLOSED: [2018-05-31 Thu 17:22]
+      - State "DONE"       from "TODO"       [2018-05-31 Thu 17:22]
        change the mac_rx_4.sv to every segment send request to vlan_det module; there are 2 flows did not loopback, need Jimmy to double check DUT.<2018-05-30 Wed 17:42> 
        the vlan_det_lookup moudle has bug. Bob is working on it. <2018-05-31 Thu 09:45> 
+       Add 2 parameter to LINE 257 in main_clock.sv, they are REF_JITTER1(0.0) REF_JITTER2(0.0), Re-run tc_302, then check the result again. Bob found the issue is caused by the clock's phase. <2018-05-31 Thu 15:10>; copy the wave to vsim_jitter_set_0.wlf, result is pass !?
+       Haidong advice that changing the CLKFBOUT_MULT_F form 63.000 to 64.000, re-run again.<2018-05-31 Thu 15:42>; copy the wave to vsim_just_clkfb_set_64.wlf, result is pass!?
+       Return the all modification of main_clock, is re-running.<2018-05-31 Thu 15:57> the result is pass, cannot re-produce th issus?!
+***** DONE more traffic input to lookup based on matchId 63. 
+      CLOSED: [2018-05-31 Thu 18:11]
+      - State "DONE"       from "STARTED"    [2018-05-31 Thu 18:11]
+      :LOGBOOK:  
+      CLOCK: [2018-05-31 Thu 18:00]--[2018-05-31 Thu 18:11] =>  0:11
+      CLOCK: [2018-05-31 Thu 17:43]--[2018-05-31 Thu 17:48] =>  0:05
+      CLOCK: [2018-05-31 Thu 17:23]--[2018-05-31 Thu 17:41] =>  0:18
+      :END:      
+***** TODO more matchId provisioning.
+**** DONE re-run tc_302 on 10g device TB
+     CLOSED: [2018-05-31 Thu 16:45]
+     - State "DONE"       from "STARTED"    [2018-05-31 Thu 16:45]
+     :LOGBOOK:  
+     CLOCK: [2018-05-31 Thu 16:36]--[2018-05-31 Thu 16:43] =>  0:07
+     CLOCK: [2018-05-31 Thu 16:24]--[2018-05-31 Thu 16:32] =>  0:08
+     :END:      
+     it's pass. need add more traffic flows, to generate more condiction to run this case
 *** DONE align the testcase from 25g device to 10g device [100%]
     CLOSED: [2018-05-30 Wed 17:06]
     - State "DONE"       from "STARTED"    [2018-05-30 Wed 17:06]
@@ -59,7 +88,8 @@ the spec has been ready, RTL has not been ready.
       - [ ] SPEC
       - [ ] RTL
     - [ ] UVM Driver 
-** TODO y1564 feature test.
+** CANCELLED y1564 feature test.
+   CLOSED: [2018-05-31 Thu 18:23]
 *** TODO monitor, Lance work on it.
 *** TODO generator, Lance work on it.
 ** TODO Reserved Pin on DUT's top test [%]
@@ -110,11 +140,12 @@ Config clock sel, enable and divider factor by register, then check/monitor the 
 *** TODO dyingGaspIn
    input    logic                dyingGaspIn                ,
 add it to dyinggasp generation testcase. keep internal register trigger as 0, change it value form 0 to 1 (on top.sv) 5 times, the expected result is 5 times dying gasp frame generated.
-** TODO update tc_500b for egress, add TC RT. [0%]
-*** STARTED debug TB to support it
+** STARTED update tc_500b for egress, add TC RT. [0%]
+*** STARTED update the ptp_editor's provisioning method
     :LOGBOOK:  
-    CLOCK: [2018-05-30 Wed 16:39]--[2018-05-30 Wed 16:46] =>  0:07
+    CLOCK: [2018-05-31 Thu 17:51]--[2018-05-31 Thu 17:59] =>  0:08
     :END:      
+*** TODO update the testcase.
 ** DONE PTP full bandwidth. [100%]
    CLOSED: [2018-05-30 Wed 19:24]
    - State "DONE"       from "STARTED"    [2018-05-30 Wed 19:24]
@@ -206,3 +237,49 @@ add it to dyinggasp generation testcase. keep internal register trigger as 0, ch
     CLOCK: [2018-05-31 Thu 09:48]--[2018-05-31 Thu 10:00] =>  0:12
     :END:      
     based on tc_201b, grep all procWrite.
+** DONE align the testcase between xg480_phy_25g and xg480_phy_10g [100%]
+   CLOSED: [2018-05-31 Thu 16:45]
+   - State "DONE"       from "STARTED"    [2018-05-31 Thu 16:45]
+   :LOGBOOK:  
+   CLOCK: [2018-05-31 Thu 16:14]--[2018-05-31 Thu 16:18] =>  0:04
+   :END:      
+*** DONE tc_201b, from 25g to 10g device, dyinggasp injection.
+    CLOSED: [2018-05-31 Thu 14:04]
+    - State "DONE"       from "STARTED"    [2018-05-31 Thu 14:04]
+    :LOGBOOK:  
+    CLOCK: [2018-05-31 Thu 13:58]--[2018-05-31 Thu 14:02] =>  0:04
+    CLOCK: [2018-05-31 Thu 11:04]--[2018-05-31 Thu 11:28] =>  0:24
+    :END:      
+
+*** DONE tc_201c, from 25g to 10g device, dyinggasp injection, non-zero time prov.
+    CLOSED: [2018-05-31 Thu 15:43]
+    - State "DONE"       from "STARTED"    [2018-05-31 Thu 15:43]
+    :LOGBOOK:  
+    CLOCK: [2018-05-31 Thu 14:45]--[2018-05-31 Thu 14:49] =>  0:04
+    CLOCK: [2018-05-31 Thu 14:31]--[2018-05-31 Thu 14:42] =>  0:11
+    CLOCK: [2018-05-31 Thu 14:23]--[2018-05-31 Thu 14:24] =>  0:01
+    :END:      
+*** DONE tc_201,tc_201a; from 25g to 10g device, pause injection
+    CLOSED: [2018-05-31 Thu 15:43]
+    - State "DONE"       from "STARTED"    [2018-05-31 Thu 15:43]
+    :LOGBOOK:  
+    CLOCK: [2018-05-31 Thu 14:42]--[2018-05-31 Thu 14:45] =>  0:03
+    CLOCK: [2018-05-31 Thu 14:25]--[2018-05-31 Thu 14:31] =>  0:06
+    CLOCK: [2018-05-31 Thu 14:07]--[2018-05-31 Thu 14:19] =>  0:12
+    :END:      
+*** DONE tc_200, from 25g to 10g device, mac_rx/tx basic function testcase
+    CLOSED: [2018-05-31 Thu 16:14]
+    - State "DONE"       from "STARTED"    [2018-05-31 Thu 16:14]
+    :LOGBOOK:  
+    CLOCK: [2018-05-31 Thu 16:11]--[2018-05-31 Thu 16:14] =>  0:03
+    CLOCK: [2018-05-31 Thu 15:57]--[2018-05-31 Thu 16:01] =>  0:04
+    CLOCK: [2018-05-31 Thu 15:44]--[2018-05-31 Thu 15:54] =>  0:10
+    :END:      
+*** DONE tc_004a, external reset test. if it set, DUT should do nothing.
+    CLOSED: [2018-05-31 Thu 16:44]
+    - State "DONE"       from "STARTED"    [2018-05-31 Thu 16:44]
+    :LOGBOOK:  
+    CLOCK: [2018-05-31 Thu 16:32]--[2018-05-31 Thu 16:36] =>  0:04
+    CLOCK: [2018-05-31 Thu 16:20]--[2018-05-31 Thu 16:22] =>  0:02
+    :END:      
+
