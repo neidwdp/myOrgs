@@ -43,15 +43,25 @@ mac_tx has not implement it
        Haidong advice that changing the CLKFBOUT_MULT_F form 63.000 to 64.000, re-run again.<2018-05-31 Thu 15:42>; copy the wave to vsim_just_clkfb_set_64.wlf, result is pass!?
        Return the all modification of main_clock, is re-running.<2018-05-31 Thu 15:57> the result is pass, cannot re-produce th issus?!
 ***** DONE more traffic input to lookup based on matchId 63. 
-      CLOSED: [2018-05-31 Thu 18:11]
+      CLOSED: [2018-06-01 Fri 09:26]
+      - State "DONE"       from "STARTED"    [2018-06-01 Fri 09:26]
+      - State "STARTED"    from "DONE"       [2018-06-01 Fri 09:25]
       - State "DONE"       from "STARTED"    [2018-05-31 Thu 18:11]
       :LOGBOOK:  
+      CLOCK: [2018-06-01 Fri 09:25]--[2018-06-01 Fri 09:26] =>  0:01
       CLOCK: [2018-05-31 Thu 18:00]--[2018-05-31 Thu 18:11] =>  0:11
       CLOCK: [2018-05-31 Thu 17:43]--[2018-05-31 Thu 17:48] =>  0:05
       CLOCK: [2018-05-31 Thu 17:23]--[2018-05-31 Thu 17:41] =>  0:18
       :END:      
-***** TODO more matchId provisioning.
-**** DONE re-run tc_302 on 10g device TB
+      phy1 input 51 flows, flow11--flow20 are untagged l2cp frame, they are exception. others will do flow based loopback.
+***** STARTED more matchId provisioning.
+      :LOGBOOK:  
+      CLOCK: [2018-06-01 Fri 14:22]--[2018-06-01 Fri 14:40] =>  0:18
+      CLOCK: [2018-06-01 Fri 11:54]--[2018-06-01 Fri 12:28] =>  0:34
+      CLOCK: [2018-06-01 Fri 11:53]--[2018-06-01 Fri 11:54] =>  0:01
+      :END:      
+      every port have flow based loopback.[[file:xg480_phy_verifiy_notes.org::tc_302][tc_302]]
+*** DONE re-run tc_302 on 10g device TB
      CLOSED: [2018-05-31 Thu 16:45]
      - State "DONE"       from "STARTED"    [2018-05-31 Thu 16:45]
      :LOGBOOK:  
