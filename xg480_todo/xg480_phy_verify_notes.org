@@ -2,6 +2,7 @@
 ** tc_302 
    flow based fac loopback; to test vlan_det_lookup module
    every port have flow based loopback.
+*** provisioning table on vlan_det_lookup module
 |-------+-------+----------+------+------+-------+------+------+-------+------+------+-------|
 | port# | flow# | matchId# | pri1 | dei1 |  vid1 | pri2 | dei2 |  vid2 | pri2 | dei3 |  vid3 |
 |-------+-------+----------+------+------+-------+------+------+-------+------+------+-------|
