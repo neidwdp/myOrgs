@@ -56,6 +56,11 @@ mac_tx has not implement it
       phy1 input 51 flows, flow11--flow20 are untagged l2cp frame, they are exception. others will do flow based loopback.
 ***** STARTED more matchId provisioning.
       :LOGBOOK:  
+      CLOCK: [2018-06-01 Fri 18:20]--[2018-06-01 Fri 18:26] =>  0:06
+      CLOCK: [2018-06-01 Fri 17:56]--[2018-06-01 Fri 18:01] =>  0:05
+      CLOCK: [2018-06-01 Fri 17:12]--[2018-06-01 Fri 17:44] =>  0:32
+      CLOCK: [2018-06-01 Fri 16:19]--[2018-06-01 Fri 17:06] =>  0:47
+      CLOCK: [2018-06-01 Fri 16:06]--[2018-06-01 Fri 16:11] =>  0:05
       CLOCK: [2018-06-01 Fri 14:22]--[2018-06-01 Fri 14:40] =>  0:18
       CLOCK: [2018-06-01 Fri 11:54]--[2018-06-01 Fri 12:28] =>  0:34
       CLOCK: [2018-06-01 Fri 11:53]--[2018-06-01 Fri 11:54] =>  0:01
