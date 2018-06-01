@@ -60,7 +60,7 @@ mac_tx has not implement it
       CLOCK: [2018-06-01 Fri 11:54]--[2018-06-01 Fri 12:28] =>  0:34
       CLOCK: [2018-06-01 Fri 11:53]--[2018-06-01 Fri 11:54] =>  0:01
       :END:      
-      every port have flow based loopback.[[file:xg480_phy_verifiy_notes.org::tc_302][tc_302]]
+      every port have flow based loopback.[[file:xg480_phy_verify_notes.org::tc_302][tc_302]]
 *** DONE re-run tc_302 on 10g device TB
      CLOSED: [2018-05-31 Thu 16:45]
      - State "DONE"       from "STARTED"    [2018-05-31 Thu 16:45]
