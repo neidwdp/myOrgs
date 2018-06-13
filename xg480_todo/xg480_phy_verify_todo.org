@@ -1,4 +1,4 @@
-* xg480_phy 25g/10g verification todo [38%]
+* xg480_phy 25g/10g verification todo [61%]
 ** TODO The rate_meter_multiple issues [%]
 *** TODO Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
     - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
@@ -6,8 +6,37 @@ rate_meter_multiple has bug, the interval of ON type pause is so closed. it's 20
 *** TODO Line side mac_tx port shaper function test based on rate_meter_multiple
     - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
 mac_tx has not implement it
-** STARTED vlan_det_lookup device level test. [75%]
+** DONE Port based lookback testcase updating [100%]
+   CLOSED: [2018-06-06 Wed 14:52]
+   - State "DONE"       from "STARTED"    [2018-06-06 Wed 14:52]
    :LOGBOOK:  
+   CLOCK: [2018-06-06 Wed 14:26]--[2018-06-06 Wed 14:52] =>  0:26
+   :END:      
+*** DONE tc_300
+    CLOSED: [2018-06-06 Wed 14:08]
+    - State "DONE"       from "STARTED"    [2018-06-06 Wed 14:08]
+    :LOGBOOK:  
+    CLOCK: [2018-06-06 Wed 12:17]--[2018-06-06 Wed 12:22] =>  0:05
+    :END:      
+*** DONE tc_300_lab
+    CLOSED: [2018-06-06 Wed 14:10]
+    - State "DONE"       from "STARTED"    [2018-06-06 Wed 14:10]
+    :LOGBOOK:  
+    CLOCK: [2018-06-06 Wed 14:08]--[2018-06-06 Wed 14:10] =>  0:02
+    :END:      
+*** DONE tc_301
+    CLOSED: [2018-06-06 Wed 14:24]
+    - State "DONE"       from "STARTED"    [2018-06-06 Wed 14:24]
+    :LOGBOOK:  
+    CLOCK: [2018-06-06 Wed 14:10]--[2018-06-06 Wed 14:24] =>  0:14
+    :END:      
+** DONE vlan_det_lookup device level test. [83%]
+   CLOSED: [2018-06-06 Wed 17:42]
+   - State "DONE"       from "STARTED"    [2018-06-06 Wed 17:42]
+   - State "STARTED"    from "DONE"       [2018-06-06 Wed 12:12]
+   - State "DONE"       from "STARTED"    [2018-06-06 Wed 11:57]
+   :LOGBOOK:  
+   CLOCK: [2018-06-06 Wed 17:38]--[2018-06-06 Wed 17:42] =>  0:04
    CLOCK: [2018-05-30 Wed 12:20]--[2018-05-30 Wed 12:21] =>  0:01
    CLOCK: [2018-05-30 Wed 12:13]--[2018-05-30 Wed 12:14] =>  0:01
    CLOCK: [2018-05-30 Wed 11:51]--[2018-05-30 Wed 11:59] =>  0:08
@@ -19,8 +48,14 @@ mac_tx has not implement it
 *** DONE transfer function support: lpbk_y1564_det transfer funciton instance the vlan_det_lookup TF.
     CLOSED: [2018-05-30 Wed 16:13]
     - State "DONE"       from "TODO"       [2018-05-30 Wed 16:13]
-*** STARTED testcase setup [50%]
-**** STARTED tc_302 [66%]
+*** DONE testcase setup [100%]
+    CLOSED: [2018-06-06 Wed 12:11]
+    - State "DONE"       from "TODO"       [2018-06-06 Wed 12:11]
+    - State "TODO"       from "DONE"       [2018-06-06 Wed 12:11]
+    - State "DONE"       from "STARTED"    [2018-06-06 Wed 11:56]
+**** DONE tc_302 [100%]
+     CLOSED: [2018-06-06 Wed 11:56]
+     - State "DONE"       from "STARTED"    [2018-06-06 Wed 11:56]
      - State "STARTED"    from "DONE"       [2018-05-31 Thu 17:21]
      - State "DONE"       from "STARTED"    [2018-05-31 Thu 16:23]
      :LOGBOOK:  
@@ -54,8 +89,28 @@ mac_tx has not implement it
       CLOCK: [2018-05-31 Thu 17:23]--[2018-05-31 Thu 17:41] =>  0:18
       :END:      
       phy1 input 51 flows, flow11--flow20 are untagged l2cp frame, they are exception. others will do flow based loopback.
-***** STARTED more matchId provisioning.
+***** DONE more matchId provisioning.
+      CLOSED: [2018-06-06 Wed 11:56]
+      - State "DONE"       from "STARTED"    [2018-06-06 Wed 11:56]
       :LOGBOOK:  
+      CLOCK: [2018-06-06 Wed 11:49]--[2018-06-06 Wed 11:56] =>  0:07
+      CLOCK: [2018-06-06 Wed 11:19]--[2018-06-06 Wed 11:37] =>  0:18
+      CLOCK: [2018-06-06 Wed 10:06]--[2018-06-06 Wed 10:30] =>  0:24
+      CLOCK: [2018-06-06 Wed 09:02]--[2018-06-06 Wed 09:11] =>  0:09
+      CLOCK: [2018-06-06 Wed 08:36]--[2018-06-06 Wed 08:53] =>  0:17
+      CLOCK: [2018-06-05 Tue 18:32]--[2018-06-05 Tue 19:09] =>  0:37
+      CLOCK: [2018-06-05 Tue 17:38]--[2018-06-05 Tue 18:14] =>  0:36
+      CLOCK: [2018-06-05 Tue 16:51]--[2018-06-05 Tue 17:28] =>  0:37
+      CLOCK: [2018-06-05 Tue 16:28]--[2018-06-05 Tue 16:42] =>  0:14
+      CLOCK: [2018-06-05 Tue 15:48]--[2018-06-05 Tue 16:02] =>  0:14
+      CLOCK: [2018-06-05 Tue 15:43]--[2018-06-05 Tue 15:45] =>  0:02
+      CLOCK: [2018-06-05 Tue 14:30]--[2018-06-05 Tue 14:40] =>  0:10
+      CLOCK: [2018-06-05 Tue 12:21]--[2018-06-05 Tue 12:23] =>  0:02
+      CLOCK: [2018-06-05 Tue 12:08]--[2018-06-05 Tue 12:16] =>  0:08
+      CLOCK: [2018-06-05 Tue 11:56]--[2018-06-05 Tue 12:00] =>  0:04
+      CLOCK: [2018-06-05 Tue 11:23]--[2018-06-05 Tue 11:39] =>  0:16
+      CLOCK: [2018-06-05 Tue 09:23]--[2018-06-05 Tue 09:32] =>  0:09
+      CLOCK: [2018-06-05 Tue 09:00]--[2018-06-05 Tue 09:12] =>  0:12
       CLOCK: [2018-06-01 Fri 18:20]--[2018-06-01 Fri 18:26] =>  0:06
       CLOCK: [2018-06-01 Fri 17:56]--[2018-06-01 Fri 18:01] =>  0:05
       CLOCK: [2018-06-01 Fri 17:12]--[2018-06-01 Fri 17:44] =>  0:32
@@ -65,7 +120,9 @@ mac_tx has not implement it
       CLOCK: [2018-06-01 Fri 11:54]--[2018-06-01 Fri 12:28] =>  0:34
       CLOCK: [2018-06-01 Fri 11:53]--[2018-06-01 Fri 11:54] =>  0:01
       :END:      
-      every port have flow based loopback.[[file:xg480_phy_verify_notes.org::tc_302][tc_302]]
+      every port have flow based loopback.[[file:xg480_phy_verify_notes.org::tc_302a][tc_302a]]  
+      every port have flow based loopback.[[file:xg480_phy_verify_notes.org::tc_302b][tc_302b]]  
+***** TODO tc_302b fail, need desinger to debug.
 *** DONE re-run tc_302 on 10g device TB
      CLOSED: [2018-05-31 Thu 16:45]
      - State "DONE"       from "STARTED"    [2018-05-31 Thu 16:45]
@@ -81,6 +138,9 @@ mac_tx has not implement it
     CLOCK: [2018-05-30 Wed 16:47]--[2018-05-30 Wed 17:03] =>  0:16
     :END:      
     - [X] tc_302
+*** TODO full flows loopback test.[0%]
+    - [ ] 64 flows do fac loop, term loop, y1564 co-exist on the same port
+    - [ ] 64 flows on different ports.
 ** TODO port_process_ingress/port_process_egress (afp+pcp) test. [0%]
 the spec has been ready, RTL has not been ready.
 *** TODO provisioning method
@@ -88,21 +148,56 @@ the spec has been ready, RTL has not been ready.
 *** TODO testcase [0/2]
     - [ ] ingress
     - [ ] egress
-** TODO 100g PTP [0%]
-*** TODO read 100g PTP related module spec
-*** TODO transfer function and tb_env
-*** TODO testcase setup 
-** TODO 100g CGMII interface [%]
-*** TODO CGMII Monitor [50%]
+** DONE 100g PTP [100%]
+   CLOSED: [2018-06-06 Wed 15:00]
+   - State "DONE"       from "TODO"       [2018-06-06 Wed 15:00]
+*** DONE testcase setup [100%]
+    CLOSED: [2018-06-06 Wed 15:00]
+    - State "DONE"       from "STARTED"    [2018-06-06 Wed 15:00]
+    - State "STARTED"    from "DONE"       [2018-06-06 Wed 12:13]
+    - State "DONE"       from "STARTED"    [2018-06-06 Wed 11:56]
+    :LOGBOOK:  
+    CLOCK: [2018-06-06 Wed 11:39]--[2018-06-06 Wed 11:49] =>  0:10
+    CLOCK: [2018-06-06 Wed 09:59]--[2018-06-06 Wed 10:04] =>  0:05
+    CLOCK: [2018-06-06 Wed 09:23]--[2018-06-06 Wed 09:53] =>  0:30
+    CLOCK: [2018-06-06 Wed 08:59]--[2018-06-06 Wed 09:02] =>  0:03
+    :END:      
+    - [X] [[file:xg480_phy_verify_notes.org::tc_507][tc_507]], based tc_007 and tc_500, 100G mode ptp testcase
+** TODO 100g CGMII interface [100%]
+*** DONE CGMII Monitor [100%]
+    CLOSED: [2018-06-13 Wed 11:38]
+    - State "DONE"       from "STARTED"    [2018-06-13 Wed 11:38]
+    :LOGBOOK:  
+    CLOCK: [2018-06-05 Tue 16:02]--[2018-06-05 Tue 16:05] =>  0:03
+    CLOCK: [2018-06-05 Tue 14:52]--[2018-06-05 Tue 14:53] =>  0:01
+    CLOCK: [2018-06-05 Tue 14:40]--[2018-06-05 Tue 14:45] =>  0:05
+    CLOCK: [2018-06-05 Tue 12:16]--[2018-06-05 Tue 12:21] =>  0:05
+    CLOCK: [2018-06-05 Tue 12:02]--[2018-06-05 Tue 12:08] =>  0:06
+    :END:      
     - [X] CGMII RX SPEC and RTL [2/2]
       - [X] SPEC: the SPEC has been ready, Leo committed it.<2018-05-30 Wed> 
       - [X] RTL: it has been ready <2018-05-30 Wed> 
-    - [ ] UVM monitor 
-*** TODO CGMII Driver [%]
-    - [ ] CGMII TX [0/3]
-      - [ ] SPEC
-      - [ ] RTL
-    - [ ] UVM Driver 
+    - [X] UVM monitor 
+*** DONE CGMII Driver [100%]
+    CLOSED: [2018-06-13 Wed 11:38]
+    - State "DONE"       from "STARTED"    [2018-06-13 Wed 11:38]
+    :LOGBOOK:  
+    CLOCK: [2018-06-13 Wed 10:55]--[2018-06-13 Wed 11:38] =>  0:43
+    CLOCK: [2018-06-13 Wed 09:29]--[2018-06-13 Wed 09:47] =>  0:18
+    CLOCK: [2018-06-07 Thu 10:22]--[2018-06-07 Thu 11:29] =>  1:07
+    CLOCK: [2018-06-07 Thu 09:38]--[2018-06-07 Thu 10:02] =>  0:24
+    CLOCK: [2018-06-07 Thu 09:01]--[2018-06-07 Thu 09:26] =>  0:25
+    CLOCK: [2018-06-06 Wed 16:44]--[2018-06-06 Wed 16:59] =>  0:15
+    CLOCK: [2018-06-06 Wed 15:17]--[2018-06-06 Wed 15:25] =>  0:08
+    CLOCK: [2018-06-05 Tue 17:33]--[2018-06-05 Tue 17:38] =>  0:05
+    CLOCK: [2018-06-05 Tue 16:42]--[2018-06-05 Tue 16:51] =>  0:09
+    CLOCK: [2018-06-05 Tue 16:21]--[2018-06-05 Tue 16:28] =>  0:07
+    CLOCK: [2018-06-05 Tue 16:05]--[2018-06-05 Tue 16:15] =>  0:10
+    :END:      
+    - [X] CGMII TX [2/2]
+      - [X] SPEC
+      - [X] RTL
+    - [X] UVM Driver 
 ** CANCELLED y1564 feature test.
    CLOSED: [2018-05-31 Thu 18:23]
 *** TODO monitor, Lance work on it.
@@ -210,9 +305,6 @@ add it to dyinggasp generation testcase. keep internal register trigger as 0, ch
     :END:      
     - [X] tc_503 
     - [X] tc_504
-** TODO full flows loopback test.[0%]
-   - [ ] 64 flows do fac loop, term loop, y1564 co-exist on the same port
-   - [ ] 64 flows on different ports.
 ** DONE more details RMON test for mac_rx/tx [100%]
 *** DONE all kinds of type RMON test for mac rx/tx [100%]
      CLOSED: [2018-05-30 Wed 09:32]
@@ -296,5 +388,25 @@ add it to dyinggasp generation testcase. keep internal register trigger as 0, ch
     :LOGBOOK:  
     CLOCK: [2018-05-31 Thu 16:32]--[2018-05-31 Thu 16:36] =>  0:04
     CLOCK: [2018-05-31 Thu 16:20]--[2018-05-31 Thu 16:22] =>  0:02
+    :END:      
+
+** TODO Lbus frame interface test for 100G mode.[66%]
+*** STARTED 64 to 129 bytes size packet, each type size 200us
+    :LOGBOOK:  
+    CLOCK: [2018-06-12 Tue 08:45]--[2018-06-12 Tue 08:52] =>  0:07
+    CLOCK: [2018-06-08 Fri 11:02]--[2018-06-08 Fri 11:19] =>  0:17
+    :END:      
+*** DONE 64 to 256 random
+    CLOSED: [2018-06-08 Fri 17:44]
+    - State "DONE"       from "STARTED"    [2018-06-08 Fri 17:44]
+    :LOGBOOK:  
+    CLOCK: [2018-06-08 Fri 17:18]--[2018-06-08 Fri 17:44] =>  0:26
+    :END:      
+*** DONE 64 to 9600 random
+    CLOSED: [2018-06-08 Fri 18:33]
+    - State "DONE"       from "STARTED"    [2018-06-08 Fri 18:33]
+    :LOGBOOK:  
+    CLOCK: [2018-06-08 Fri 18:26]--[2018-06-08 Fri 18:33] =>  0:07
+    CLOCK: [2018-06-08 Fri 17:44]--[2018-06-08 Fri 17:49] =>  0:05
     :END:      
 
