@@ -1,4 +1,4 @@
-* xg480_phy 25g/10g verification todo [61%]
+* xg480_phy 25g/10g verification todo [71%]
 ** TODO The rate_meter_multiple issues [%]
 *** TODO Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
     - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
@@ -163,7 +163,13 @@ the spec has been ready, RTL has not been ready.
     CLOCK: [2018-06-06 Wed 08:59]--[2018-06-06 Wed 09:02] =>  0:03
     :END:      
     - [X] [[file:xg480_phy_verify_notes.org::tc_507][tc_507]], based tc_007 and tc_500, 100G mode ptp testcase
-** TODO 100g CGMII interface [100%]
+** DONE 100g CGMII interface [100%]
+   CLOSED: [2018-06-15 Fri 18:02]
+   - State "DONE"       from "STARTED"    [2018-06-15 Fri 18:02]
+   :LOGBOOK:  
+   CLOCK: [2018-06-14 Thu 11:10]--[2018-06-14 Thu 14:00] =>  2:50
+   :END:      
+   integrating the cgmii driver/monitor into TB/TB_ENV
 *** DONE CGMII Monitor [100%]
     CLOSED: [2018-06-13 Wed 11:38]
     - State "DONE"       from "STARTED"    [2018-06-13 Wed 11:38]
@@ -390,12 +396,18 @@ add it to dyinggasp generation testcase. keep internal register trigger as 0, ch
     CLOCK: [2018-05-31 Thu 16:20]--[2018-05-31 Thu 16:22] =>  0:02
     :END:      
 
-** TODO Lbus frame interface test for 100G mode.[66%]
-*** STARTED 64 to 129 bytes size packet, each type size 200us
+** DONE Lbus frame interface test for 100G mode.[100%]
+   CLOSED: [2018-06-19 Tue 12:24]
+   - State "DONE"       from "TODO"       [2018-06-19 Tue 12:24]
+*** DONE 64 to 129 bytes size packet, each type size 200us
+    CLOSED: [2018-06-19 Tue 12:25]
+    - State "DONE"       from "STARTED"    [2018-06-19 Tue 12:25]
     :LOGBOOK:  
     CLOCK: [2018-06-12 Tue 08:45]--[2018-06-12 Tue 08:52] =>  0:07
     CLOCK: [2018-06-08 Fri 11:02]--[2018-06-08 Fri 11:19] =>  0:17
     :END:      
+    tc_006a, 2flows, 200 and 3000 bytes; it's re-produce the lab issue.
+    the issue is the lbus 's ENA is not (1 3 7 or 0xf). Leo has fixed the issue.
 *** DONE 64 to 256 random
     CLOSED: [2018-06-08 Fri 17:44]
     - State "DONE"       from "STARTED"    [2018-06-08 Fri 17:44]
