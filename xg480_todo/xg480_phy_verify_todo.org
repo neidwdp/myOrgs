@@ -1,6 +1,6 @@
-* xg480_phy 25g/10g verification todo [71%]
+* xg480_phy 25g/10g verification todo [62%]
 ** TODO The rate_meter_multiple issues [%]
-*** TODO Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
+*** TODO tc_204 Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
     - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
 rate_meter_multiple has bug, the interval of ON type pause is so closed. it's 200us, the expect value is 2ms.
 *** TODO Line side mac_tx port shaper function test based on rate_meter_multiple
@@ -152,11 +152,14 @@ the spec has been ready, RTL has not been ready.
    CLOSED: [2018-06-06 Wed 15:00]
    - State "DONE"       from "TODO"       [2018-06-06 Wed 15:00]
 *** DONE testcase setup [100%]
-    CLOSED: [2018-06-06 Wed 15:00]
+    CLOSED: [2018-06-26 Tue 18:06]
+    - State "DONE"       from "STARTED"    [2018-06-26 Tue 18:06]
+    - State "STARTED"    from "DONE"       [2018-06-26 Tue 18:01]
     - State "DONE"       from "STARTED"    [2018-06-06 Wed 15:00]
     - State "STARTED"    from "DONE"       [2018-06-06 Wed 12:13]
     - State "DONE"       from "STARTED"    [2018-06-06 Wed 11:56]
     :LOGBOOK:  
+    CLOCK: [2018-06-26 Tue 18:01]--[2018-06-26 Tue 18:05] =>  0:04
     CLOCK: [2018-06-06 Wed 11:39]--[2018-06-06 Wed 11:49] =>  0:10
     CLOCK: [2018-06-06 Wed 09:59]--[2018-06-06 Wed 10:04] =>  0:05
     CLOCK: [2018-06-06 Wed 09:23]--[2018-06-06 Wed 09:53] =>  0:30
@@ -206,62 +209,106 @@ the spec has been ready, RTL has not been ready.
     - [X] UVM Driver 
 ** CANCELLED y1564 feature test.
    CLOSED: [2018-05-31 Thu 18:23]
-*** TODO monitor, Lance work on it.
-*** TODO generator, Lance work on it.
-** TODO Reserved Pin on DUT's top test [%]
-*** TODO update tc_1000 [0/5]
-**** TODO sgmii east/west backpressure out/in pin.
-sgmiiEastRxBackpressureOut,
-sgmiiEastTxBackpressureIn,
-sgmiiWestRxBackpressureOut,
-sgmiiWestTxBackpressureIn
-In top.sv connect the output to input, then write the internal register with 1/0, read the input indication register.
-**** TODO gasicParityInOut, gasicParityErrOut
-input         gasicParityInOut  ,
-input  logic  gasicParityErrOut , // change to input for pin test
-Set those two signal 1/0, read the related indication register on device reg.
-**** TODO SFP reserve pin
-   input    logic [7:0]          sfpPresentIn_n             ,
-   input    logic [7:0]          sfpLosIn                   ,
-   input    logic [7:0]          sfpTxFaultIn               ,
-   output   logic [7:0]          sfpTxDisableOut            ,
-   output   logic [7:0]          sfpModuleSelOut            ,
-   output   logic [7:0]          sfpLowPowerModeOut         ,
-For input signal, set them to 1/0, read related indication register on device reg.
-For output signal, write the related regiset on device reg, check/monitor the signal on top.sv/TB.
-**** TODO cpldInOut
-   input          [3:0]          cpldInOut                  ,     // Only cpldInOut[1:0] valid in HW connection
-Input signal, set them to 1/0, read related indication register on device reg.
-*** TODO update tc_500c [%]
-**** TODO ptpClkCompensate In/out
-    input    logic                ptpClkCompensateIn         ,
-    output   logic                ptpClkCompensateOut        ,
-In top.sv, connect the output to input, read the address 0x0c bit8 on ptp_server module. the value is 1, then change to 0.
-**** TODO ptpMicroSemiLoadSave
-   input    logic [1:0]          ptpMicroSemiLoadSaveInP    ,
-   input    logic [1:0]          ptpMicroSemiLoadSaveInN    ,
+*** DONE monitor, Lance work on it.
+    CLOSED: [2018-06-26 Tue 09:05]
+    - State "DONE"       from "TODO"       [2018-06-26 Tue 09:05]
+*** DONE generator, Lance work on it.
+    CLOSED: [2018-06-26 Tue 09:05]
+    - State "DONE"       from "TODO"       [2018-06-26 Tue 09:05]
+** STARTED Reserved Pin on DUT's top test [83%]
+*** DONE update tc_1000 [3/4]
+    CLOSED: [2018-06-26 Tue 18:34]
+    - State "DONE"       from "STARTED"    [2018-06-26 Tue 18:34]
+      set up new test case tc_1001, it bypass transceiver, can fast run simulation
+**** DONE sgmii east/west backpressure out/in pin. tc_1001
+     CLOSED: [2018-06-26 Tue 17:46]
+     - State "DONE"       from "STARTED"    [2018-06-26 Tue 17:46]
+     :LOGBOOK:  
+     CLOCK: [2018-06-26 Tue 15:47]--[2018-06-26 Tue 17:11] =>  1:24
+     :END:      
+     sgmiiEastRxBackpressureOut,
+     sgmiiEastTxBackpressureIn,
+     sgmiiWestRxBackpressureOut,
+     sgmiiWestTxBackpressureIn
+     In top.sv connect the output to input, then write the internal register with 1/0, read the input indication register.
+**** DONE gasicParityInOut, gasicParityErrOut tc_1001
+     CLOSED: [2018-06-26 Tue 17:55]
+     - State "DONE"       from "STARTED"    [2018-06-26 Tue 17:55]
+     :LOGBOOK:  
+     CLOCK: [2018-06-26 Tue 17:46]--[2018-06-26 Tue 17:55] =>  0:09
+     :END:      
+     input         gasicParityInOut  ,
+     input  logic  gasicParityErrOut , // change to input for pin test
+     Set those two signal 1/0, read the related indication register on device reg.
+**** TODO SFP reserve pin, out pin test fail, need Haidong double check. tc_1001
+     - State "TODO"       from "DONE"       [2018-06-27 Wed 14:31]
+     - State "DONE"       from "DONE"       [2018-06-27 Wed 14:31]
+     - State "DONE"       from "STARTED"    [2018-06-26 Tue 18:26]
+     :LOGBOOK:  
+     CLOCK: [2018-06-26 Tue 18:07]--[2018-06-26 Tue 18:26] =>  0:19
+     :END:      
+     input    logic [7:0]          sfpPresentIn_n             ,
+     input    logic [7:0]          sfpLosIn                   ,
+     input    logic [7:0]          sfpTxFaultIn               ,
+     output   logic [7:0]          sfpTxDisableOut            ,
+     output   logic [7:0]          sfpModuleSelOut            ,
+     output   logic [7:0]          sfpLowPowerModeOut         ,
+     For input signal, set them to 1/0, read related indication register on device reg.
+     For output signal, write the related regiset on device reg, check/monitor the signal on top.sv/TB.
+**** DONE cpldInOut tc_1001
+     CLOSED: [2018-06-26 Tue 18:34]
+     - State "DONE"       from "TODO"       [2018-06-26 Tue 18:34]
+     input          [3:0]          cpldInOut                  ,     // Only cpldInOut[1:0] valid in HW connection
+     Input signal, set them to 1/0, read related indication register on device reg.
+*** DONE update tc_500c [100%]
+    CLOSED: [2018-06-27 Wed 14:41]
+    - State "DONE"       from "TODO"       [2018-06-27 Wed 14:41]
+**** CANCELLED ptpClkCompensate In/out, it has been correct work, if not, the pll cannot lock
+     CLOSED: [2018-06-27 Wed 14:31]
+     input    logic                ptpClkCompensateIn         ,
+     output   logic                ptpClkCompensateOut        ,
+     In top.sv, connect the output to input, read the address 0x0c bit8 on ptp_server module. the value is 1, then change to 0.
+**** DONE ptpMicroSemiLoadSave, it has been tested in the broad_sync testcase tc_500c
+     CLOSED: [2018-06-27 Wed 14:33]
+     - State "DONE"       from "TODO"       [2018-06-27 Wed 14:33]
+     input    logic [1:0]          ptpMicroSemiLoadSaveInP    ,
+     input    logic [1:0]          ptpMicroSemiLoadSaveInN    ,
 
-   input    logic                clockSynce25In             ,
-Read the register on ptp_server module.
-*** TODO irqOut
-   output   logic                irqOut_n                   ,
-has not test, How to test?/!
-*** TODO rxClkSelOut
-   output   logic [5:0]          rxClkSelOut                ,
-10G mode, 156.25Mhz
-25G mode, 390.625Mhz
-100G mode, 322.625Mhz
-1G mode, 125Mhz
-Config clock sel, enable and divider factor by register, then check/monitor the output clock's frequency.
-*** TODO dyingGaspIn
-   input    logic                dyingGaspIn                ,
-add it to dyinggasp generation testcase. keep internal register trigger as 0, change it value form 0 to 1 (on top.sv) 5 times, the expected result is 5 times dying gasp frame generated.
+     input    logic                clockSynce25In             ,
+     Read the register on ptp_server module.
+*** CANCELLED irqOut
+    CLOSED: [2018-06-28 Thu 16:23]
+    output   logic                irqOut_n                   ,
+    has not test, How to test?/!
+*** CANCELLED rxClkSelOut
+    CLOSED: [2018-06-29 Fri 10:12]
+    output   logic [5:0]          rxClkSelOut                ,
+    10G mode, 156.25Mhz
+    25G mode, 390.625Mhz
+    100G mode, 322.625Mhz
+    1G mode, 125Mhz
+    Config clock sel, enable and divider factor by register, then check/monitor the output clock's frequency.
+*** DONE dyingGaspIn
+    CLOSED: [2018-06-28 Thu 16:13]
+    - State "DONE"       from "TODO"       [2018-06-28 Thu 16:13]
+    input    logic                dyingGaspIn                ,
+    add it to dyinggasp generation testcase. keep internal register trigger as 0, change it value form 0 to 1 (on top.sv) 5 times, the expected result is 5 times dying gasp frame generated.
+*** TODO WEST/EAST fp_los data, clk pin test tc_1001, test fail, need Haidong or Tonny doulbe check
+    - State "TODO"       from "DONE"       [2018-06-29 Fri 09:28]
+    - State "DONE"       from "TODO"       [2018-06-28 Thu 18:13]
+   .fpgaWestClkIn              (),  //input
+   .fpgaWestFpIn               (),  //input
+   .fpgaWestDataIn             (),  //input
+   .fpgaWestClkOut             (),  //output
+   .fpgaWestFpOut              (),  //output
+   .fpgaWestDataOut            (),  //output
+   .fpgaEastClkIn              (),  //input
+   .fpgaEastFpIn               (),  //input
+   .fpgaEastDataIn             (),  //input
+   .fpgaEastClkOut             (),  //output
+   .fpgaEastFpOut              (),  //output
+   .fpgaEastDataOut            (),  //output
 ** STARTED update tc_500b for egress, add TC RT. [0%]
-*** STARTED update the ptp_editor's provisioning method
-    :LOGBOOK:  
-    CLOCK: [2018-05-31 Thu 17:51]--[2018-05-31 Thu 17:59] =>  0:08
-    :END:      
-*** TODO update the testcase.
 ** DONE PTP full bandwidth. [100%]
    CLOSED: [2018-05-30 Wed 19:24]
    - State "DONE"       from "STARTED"    [2018-05-30 Wed 19:24]
@@ -397,7 +444,9 @@ add it to dyinggasp generation testcase. keep internal register trigger as 0, ch
     :END:      
 
 ** DONE Lbus frame interface test for 100G mode.[100%]
-   CLOSED: [2018-06-19 Tue 12:24]
+   CLOSED: [2018-06-25 Mon 18:36]
+   - State "DONE"       from "TODO"       [2018-06-25 Mon 18:36]
+   - State "STARTED"    from "DONE"       [2018-06-25 Mon 11:12]
    - State "DONE"       from "TODO"       [2018-06-19 Tue 12:24]
 *** DONE 64 to 129 bytes size packet, each type size 200us
     CLOSED: [2018-06-19 Tue 12:25]
@@ -422,3 +471,48 @@ add it to dyinggasp generation testcase. keep internal register trigger as 0, ch
     CLOCK: [2018-06-08 Fri 17:44]--[2018-06-08 Fri 17:49] =>  0:05
     :END:      
 
+*** DONE normal traffic with loopback traffic. to test 100G arbiter [100%]
+    CLOSED: [2018-06-25 Mon 14:34]
+    - State "DONE"       from "TODO"       [2018-06-25 Mon 14:34]
+**** DONE normal traffic with fac looback tc_309 (100g mode), tc_311 (25G mode)
+     CLOSED: [2018-06-25 Mon 14:13]
+     - State "DONE"       from "STARTED"    [2018-06-25 Mon 14:13]
+     :LOGBOOK:  
+     CLOCK: [2018-06-25 Mon 14:06]--[2018-06-25 Mon 14:07] =>  0:01
+     CLOCK: [2018-06-25 Mon 12:00]--[2018-06-25 Mon 12:04] =>  0:04
+     CLOCK: [2018-06-25 Mon 11:51]--[2018-06-25 Mon 11:57] =>  0:06
+     CLOCK: [2018-06-25 Mon 11:13]--[2018-06-25 Mon 11:26] =>  0:13
+     CLOCK: [2018-06-25 Mon 10:40]--[2018-06-25 Mon 10:55] =>  0:15
+     :END:      
+***** TODO DUT has bug, the lbus_tx send out 2 SOP. Leo or Haidong is checking on it.
+**** DONE normal traffic with termail loopback tc_310  tc_312 (25G mode)
+     CLOSED: [2018-06-25 Mon 14:34]
+     - State "DONE"       from "STARTED"    [2018-06-25 Mon 14:34]
+     :LOGBOOK:  
+     CLOCK: [2018-06-25 Mon 14:29]--[2018-06-25 Mon 14:34] =>  0:05
+     CLOCK: [2018-06-25 Mon 14:07]--[2018-06-25 Mon 14:13] =>  0:06
+     CLOCK: [2018-06-25 Mon 12:05]--[2018-06-25 Mon 12:17] =>  0:12
+     CLOCK: [2018-06-25 Mon 11:01]--[2018-06-25 Mon 11:09] =>  0:08
+     :END:      
+*** DONE setup the illegal traffic input the DUT, DUT should not lock.[100%]
+    CLOSED: [2018-06-25 Mon 18:36]
+    - State "DONE"       from "TODO"       [2018-06-25 Mon 18:36]
+**** DONE NGMII interface input the illegal traffic
+     CLOSED: [2018-06-25 Mon 17:28]
+     - State "DONE"       from "STARTED"    [2018-06-25 Mon 17:28]
+     :LOGBOOK:  
+     CLOCK: [2018-06-25 Mon 16:37]--[2018-06-25 Mon 17:28] =>  0:51
+     CLOCK: [2018-06-25 Mon 14:21]--[2018-06-25 Mon 14:29] =>  0:08
+     CLOCK: [2018-06-25 Mon 11:57]--[2018-06-25 Mon 12:00] =>  0:03
+     :END:      
+     tc_020, ngmii driver gen 70% phy errors.
+**** DONE CGMII interface input the illegal traffic
+     CLOSED: [2018-06-25 Mon 18:36]
+     - State "DONE"       from "STARTED"    [2018-06-25 Mon 18:36]
+     :LOGBOOK:  
+     CLOCK: [2018-06-25 Mon 17:28]--[2018-06-25 Mon 18:36] =>  1:08
+     :END:      
+
+** TODO all control register test [%]
+** STARTED 10G 25G device interface random reset. [%]
+** TODO 10G 25G 100G interface if support the LPI [%]
