@@ -1,4 +1,4 @@
-* xg480_phy 25g/10g verification todo [62%]
+* xg480_phy 25g/10g verification todo [64%]
 ** TODO The rate_meter_multiple issues [%]
 *** TODO tc_204 Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
     - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
@@ -215,7 +215,8 @@ the spec has been ready, RTL has not been ready.
 *** DONE generator, Lance work on it.
     CLOSED: [2018-06-26 Tue 09:05]
     - State "DONE"       from "TODO"       [2018-06-26 Tue 09:05]
-** STARTED Reserved Pin on DUT's top test [83%]
+** DONE Reserved Pin on DUT's top test [83%]
+   CLOSED: [2018-07-02 Mon 08:54]
 *** DONE update tc_1000 [3/4]
     CLOSED: [2018-06-26 Tue 18:34]
     - State "DONE"       from "STARTED"    [2018-06-26 Tue 18:34]
