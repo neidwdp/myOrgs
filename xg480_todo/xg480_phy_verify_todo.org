@@ -1,17 +1,25 @@
 * xg480_phy 25g/10g verification todo [66%]
-** STARTED The rate_meter_multiple issues [33%]
-*** TODO tc_204 Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
+** STARTED The rate_meter_multiple issues [100%]
+*** DONE tc_204 Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
+    CLOSED: [2018-07-09 Mon 17:06]
+    - State "DONE"       from "TODO"       [2018-07-09 Mon 17:06]
     - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
-rate_meter_multiple has bug, the interval of ON type pause is so closed. it's 200us, the expect value is 2ms.
-*** STARTED tc_209 Line side mac_tx port shaper function (by rate_meter_multiple module) test.[%]
+**** TODO rate_meter_rx trigger mac_tx gen pause has bug, the interval of ON type pause is so closed. it's 200us, the expect value is 2ms.
+*** DONE tc_209 Line side mac_tx port shaper function (by rate_meter_multiple module) test.[50%]
+    CLOSED: [2018-07-09 Mon 18:08]
+    - State "DONE"       from "STARTED"    [2018-07-09 Mon 18:08]
    :LOGBOOK:  
+   CLOCK: [2018-07-09 Mon 17:07]--[2018-07-09 Mon 17:45] =>  0:38
    CLOCK: [2018-07-09 Mon 15:51]--[2018-07-09 Mon 16:11] =>  0:20
    :END:      
-**** STARTED SYS side DRIVER/MONITOR don't respond BP, DUT segbuf will overflow, DUT should not send out the fragment of packet.
+**** DONE SYS side DRIVER/MONITOR don't respond BP, DUT segbuf will overflow, DUT should not send out the fragment of packet.
+     CLOSED: [2018-07-09 Mon 17:45]
+     - State "DONE"       from "STARTED"    [2018-07-09 Mon 17:45]
     :LOGBOOK:  
     CLOCK: [2018-07-09 Mon 16:32]--[2018-07-09 Mon 16:43] =>  0:11
     :END:      
     tc_209
+***** TODO port shaper didn't gen rate Exceed out, egress input traffic 25G, port shaper set 10G. need Tonny double check.
 **** TODO make SYS side DRIVER/MONITOR respond BP, if shaper set 15G, input 25G, if driver receive the BP, driver will adapt the 15G 
 *** DONE tc_301a tc_301b arbition with rate meter multiple, 25G device, 10G mode, sys side use rate meter multiple shaper to 10G.
     CLOSED: [2018-07-09 Mon 16:59]
@@ -563,7 +571,7 @@ rate_meter_multiple has bug, the interval of ON type pause is so closed. it's 20
     Need DUT (LBUS) support register prov interface disable/enable
     tc_006l
 ** TODO 10G 25G 100G interface if support the LPI [%]
-** STARTED sys side traffic packet with ITMH/OTMH [66%]
+** STARTED sys side traffic packet with ITMH/OTMH [60%]
    :LOGBOOK:  
    CLOCK: [2018-07-05 Thu 09:32]--[2018-07-05 Thu 09:56] =>  0:24
    :END:      
@@ -577,8 +585,11 @@ rate_meter_multiple has bug, the interval of ON type pause is so closed. it's 20
     CLOSED: [2018-07-06 Fri 14:45]
     - State "DONE"       from "TODO"       [2018-07-06 Fri 14:45]
     the line side don't gen ITMH/OTMH, but sys-side need gen ITMH. 
-*** STARTED the eth_object_parser need parser OTMH.
+*** DONE the eth_object_parser need parser OTMH.
+    CLOSED: [2018-07-09 Mon 18:41]
+    - State "DONE"       from "STARTED"    [2018-07-09 Mon 18:41]
     :LOGBOOK:  
+    CLOCK: [2018-07-09 Mon 18:27]--[2018-07-09 Mon 18:41] =>  0:14
     CLOCK: [2018-07-09 Mon 11:44]--[2018-07-09 Mon 11:50] =>  0:06
     CLOCK: [2018-07-06 Fri 14:57]--[2018-07-06 Fri 15:16] =>  0:19
     :END:      
