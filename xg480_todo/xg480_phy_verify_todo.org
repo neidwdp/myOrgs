@@ -1,11 +1,23 @@
-* xg480_phy 25g/10g verification todo [64%]
-** TODO The rate_meter_multiple issues [%]
+* xg480_phy 25g/10g verification todo [66%]
+** STARTED The rate_meter_multiple issues [33%]
 *** TODO tc_204 Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
     - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
 rate_meter_multiple has bug, the interval of ON type pause is so closed. it's 200us, the expect value is 2ms.
-*** TODO Line side mac_tx port shaper function test based on rate_meter_multiple
-    - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
-mac_tx has not implement it
+*** STARTED tc_209 Line side mac_tx port shaper function (by rate_meter_multiple module) test.[%]
+   :LOGBOOK:  
+   CLOCK: [2018-07-09 Mon 15:51]--[2018-07-09 Mon 16:11] =>  0:20
+   :END:      
+**** STARTED SYS side DRIVER/MONITOR don't respond BP, DUT segbuf will overflow, DUT should not send out the fragment of packet.
+    :LOGBOOK:  
+    CLOCK: [2018-07-09 Mon 16:32]--[2018-07-09 Mon 16:43] =>  0:11
+    :END:      
+    tc_209
+**** TODO make SYS side DRIVER/MONITOR respond BP, if shaper set 15G, input 25G, if driver receive the BP, driver will adapt the 15G 
+*** DONE tc_301a tc_301b arbition with rate meter multiple, 25G device, 10G mode, sys side use rate meter multiple shaper to 10G.
+    CLOSED: [2018-07-09 Mon 16:59]
+    - State "DONE"       from "TODO"       [2018-07-09 Mon 16:59]
+    25G device work as 10G mode. Becasue system side always work as 25G mode, so sys side need rate_meter to limit the output traffic. 
+    for 10G mode terminal looback, if line side input traffic + terminal loop traffic > 10G, rate_meter_multiple will BP terminal loop traffic.
 ** DONE Port based lookback testcase updating [100%]
    CLOSED: [2018-06-06 Wed 14:52]
    - State "DONE"       from "STARTED"    [2018-06-06 Wed 14:52]
@@ -142,10 +154,10 @@ mac_tx has not implement it
     - [ ] 64 flows do fac loop, term loop, y1564 co-exist on the same port
     - [ ] 64 flows on different ports.
 ** TODO port_process_ingress/port_process_egress (afp+pcp) test. [0%]
-the spec has been ready, RTL has not been ready.
-*** TODO provisioning method
-*** TODO transfer function
-*** TODO testcase [0/2]
+   the spec has been ready, RTL has not been ready.
+   - [ ] provisioning method
+   - [ ] transfer function
+   - [ ] testcase [0/2]
     - [ ] ingress
     - [ ] egress
 ** DONE 100g PTP [100%]
@@ -309,7 +321,6 @@ the spec has been ready, RTL has not been ready.
    .fpgaEastClkOut             (),  //output
    .fpgaEastFpOut              (),  //output
    .fpgaEastDataOut            (),  //output
-** STARTED update tc_500b for egress, add TC RT. [0%]
 ** DONE PTP full bandwidth. [100%]
    CLOSED: [2018-05-30 Wed 19:24]
    - State "DONE"       from "STARTED"    [2018-05-30 Wed 19:24]
@@ -472,7 +483,7 @@ the spec has been ready, RTL has not been ready.
     CLOCK: [2018-06-08 Fri 17:44]--[2018-06-08 Fri 17:49] =>  0:05
     :END:      
 
-*** DONE normal traffic with loopback traffic. to test 100G arbiter [100%]
+*** DONE normal traffic with loopback traffic. to test arbitration [66%]
     CLOSED: [2018-06-25 Mon 14:34]
     - State "DONE"       from "TODO"       [2018-06-25 Mon 14:34]
 **** DONE normal traffic with fac looback tc_309 (100g mode), tc_311 (25G mode)
@@ -485,8 +496,7 @@ the spec has been ready, RTL has not been ready.
      CLOCK: [2018-06-25 Mon 11:13]--[2018-06-25 Mon 11:26] =>  0:13
      CLOCK: [2018-06-25 Mon 10:40]--[2018-06-25 Mon 10:55] =>  0:15
      :END:      
-***** TODO DUT has bug, the lbus_tx send out 2 SOP. Leo or Haidong is checking on it.
-**** DONE normal traffic with termail loopback tc_310  tc_312 (25G mode)
+**** DONE normal traffic with termail loopback tc_310 (100G mode) tc_312 (25G mode)
      CLOSED: [2018-06-25 Mon 14:34]
      - State "DONE"       from "STARTED"    [2018-06-25 Mon 14:34]
      :LOGBOOK:  
@@ -495,6 +505,13 @@ the spec has been ready, RTL has not been ready.
      CLOCK: [2018-06-25 Mon 12:05]--[2018-06-25 Mon 12:17] =>  0:12
      CLOCK: [2018-06-25 Mon 11:01]--[2018-06-25 Mon 11:09] =>  0:08
      :END:      
+**** STARTED re-run TCs when desinger fixing bug. (The bug: arbitration cannot always correctly work when normal traffic and lpbk traffic are valid in the same time.)
+     :LOGBOOK:  
+     CLOCK: [2018-07-05 Thu 11:36]--[2018-07-05 Thu 12:01] =>  0:25
+     :END:      
+     re-run tc_309,<2018-07-05 Thu 12:09> result:
+     normal traffic is 50G, 900 packets, all output.
+     loop traffic is 50G, 900 packets, just half output. it's not expected. haidong is checking on it. <2018-07-05 Thu 12:11>
 *** DONE setup the illegal traffic input the DUT, DUT should not lock.[100%]
     CLOSED: [2018-06-25 Mon 18:36]
     - State "DONE"       from "TODO"       [2018-06-25 Mon 18:36]
@@ -514,6 +531,80 @@ the spec has been ready, RTL has not been ready.
      CLOCK: [2018-06-25 Mon 17:28]--[2018-06-25 Mon 18:36] =>  1:08
      :END:      
 
-** TODO all control register test [%]
-** STARTED 10G 25G device interface random reset. [%]
+*** DONE update the cmac lbus monitor, if rx_rdy is 0 and sop has been valid, max allow 4.
+    CLOSED: [2018-07-05 Thu 11:34]
+    - State "DONE"       from "STARTED"    [2018-07-05 Thu 11:34]
+    :LOGBOOK:  
+    CLOCK: [2018-07-05 Thu 10:33]--[2018-07-05 Thu 11:00] =>  0:27
+    CLOCK: [2018-07-05 Thu 09:56]--[2018-07-05 Thu 10:08] =>  0:12
+    :END:      
+** STARTED all control register test [%]
+   tc_1002.
+** DONE random disable/enable interface, the DUT should not lock . [100%]
+   CLOSED: [2018-07-03 Tue 16:06]
+   - State "DONE"       from "STARTED"    [2018-07-03 Tue 16:06]
+*** DONE 25G device 25G mode, random disable/enable NGMII interface.
+    CLOSED: [2018-07-03 Tue 15:46]
+    - State "DONE"       from "TODO"       [2018-07-03 Tue 15:46]
+    tc_004a.
+**** TODO more times disable/enable ngmii, DUT output fragment of packet, it should not; Waiting Tonny to doulbe check and fixed it.
+*** DONE 25G device 10G mode, random disable/enable NGMII interface.
+    CLOSED: [2018-07-03 Tue 16:06]
+    - State "DONE"       from "TODO"       [2018-07-03 Tue 16:06]
+    tc_003a
+*** DONE 25G device 100G mode, random disable/enable CGMII interface.
+    CLOSED: [2018-07-03 Tue 15:58]
+    - State "DONE"       from "TODO"       [2018-07-03 Tue 15:58]
+    Need DUT (CGMII) support register prov interface disable/enable.
+    tc_006l
+*** DONE 25G device 100G mode, random disable/enable LBUS interface.
+    CLOSED: [2018-07-03 Tue 15:58]
+    - State "DONE"       from "TODO"       [2018-07-03 Tue 15:58]
+    Need DUT (LBUS) support register prov interface disable/enable
+    tc_006l
 ** TODO 10G 25G 100G interface if support the LPI [%]
+** STARTED sys side traffic packet with ITMH/OTMH [66%]
+   :LOGBOOK:  
+   CLOCK: [2018-07-05 Thu 09:32]--[2018-07-05 Thu 09:56] =>  0:24
+   :END:      
+*** DONE the eth_agent need one more layer after ethernet layer before phy layer.
+    CLOSED: [2018-07-06 Fri 14:45]
+    - State "DONE"       from "STARTED"    [2018-07-06 Fri 14:45]
+    :LOGBOOK:  
+    CLOCK: [2018-07-05 Thu 14:33]--[2018-07-05 Thu 16:09] =>  1:36
+    :END:      
+*** DONE modify all phy_*_constraints.sv. 
+    CLOSED: [2018-07-06 Fri 14:45]
+    - State "DONE"       from "TODO"       [2018-07-06 Fri 14:45]
+    the line side don't gen ITMH/OTMH, but sys-side need gen ITMH. 
+*** STARTED the eth_object_parser need parser OTMH.
+    :LOGBOOK:  
+    CLOCK: [2018-07-09 Mon 11:44]--[2018-07-09 Mon 11:50] =>  0:06
+    CLOCK: [2018-07-06 Fri 14:57]--[2018-07-06 Fri 15:16] =>  0:19
+    :END:      
+
+*** TODO CGMII IF ADVA HDR test
+*** TODO NGMII IF ADVA HDR test
+** STARTED Help Atlanta Mike check the T_dcn_switch_v1.0_r112857 regression results [0%]
+   DEADLINE: <2018-07-12 Thu>
+   :LOGBOOK:  
+   CLOCK: [2018-07-09 Mon 14:22]--[2018-07-09 Mon 14:47] =>  0:25
+   :END:      
+*** STARTED dcn_switch tc_009 checking, ATL 13 errors, SZX no errors
+    SCHEDULED: <2018-07-09 Mon>
+    :LOGBOOK:  
+    CLOCK: [2018-07-09 Mon 14:47]--[2018-07-09 Mon 15:21] =>  0:34
+    :END:      
+    after double checking the tc009 from Mike, the ATL run tc_009 with 1 ETH 9 FRMs mode. However, SZX run tc_009 with 2 ETHs 8 FRMs mode. double checking the svn log, it has been said on 2017-09-27 r107278, For tc_009, the default is 2 ETH port test.
+*** TODO dcn_switch tc_009a checking, ATL 57011 errors, SZX ?
+    SCHEDULED: <2018-07-09 Mon>
+*** TODO dcn_switch tc_017b checking, ATL 7 errors, SZX ?
+    SCHEDULED: <2018-07-09 Mon>
+*** TODO dch_switch tc_018 checking, ATL 550 errors, SZX ?
+    SCHEDULED: <2018-07-10 Tue>
+*** TODO dcn_switch tc_020 checking, ATL 60 errors, SZX ?
+    SCHEDULED: <2018-07-10 Tue>
+*** TODO dcn_switch tc_021 checking, ATL 23 errors, SZX no errors.
+    SCHEDULED: <2018-07-11 Wed>
+*** TODO dcn_switch tc_022 checking, ATL 5 errors, SZX no errors.
+    SCHEDULED: <2018-07-11 Wed>
