@@ -1,12 +1,20 @@
-* xg480_phy 25g/10g verification todo [66%]
-** STARTED The rate_meter_multiple issues [100%]
+* xg480_phy 25g/10g verification todo [81%]
+** DONE The rate_meter_multiple issues [66%]
+   CLOSED: [2018-07-11 Wed 16:50]
+   - State "DONE"       from "STARTED"    [2018-07-11 Wed 16:50]
 *** DONE tc_204 Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
     CLOSED: [2018-07-09 Mon 17:06]
     - State "DONE"       from "TODO"       [2018-07-09 Mon 17:06]
     - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
-**** TODO rate_meter_rx trigger mac_tx gen pause has bug, the interval of ON type pause is so closed. it's 200us, the expect value is 2ms.
-*** DONE tc_209 Line side mac_tx port shaper function (by rate_meter_multiple module) test.[50%]
-    CLOSED: [2018-07-09 Mon 18:08]
+**** DONE tc_204 rate_meter_rx trigger mac_tx gen pause has bug, the interval of ON type pause is so closed. it's 200us, the expect value is 2ms.
+     CLOSED: [2018-07-12 Thu 14:51]
+     - State "DONE"       from "STARTED"    [2018-07-12 Thu 14:51]
+     :LOGBOOK:  
+     CLOCK: [2018-07-12 Thu 11:10]--[2018-07-12 Thu 14:51] =>  3:41
+     :END:      
+     Tonny remove the progma translate_off/on for the fast simulation.
+*** STARTED tc_209 Line side mac_tx port shaper function (by rate_meter_multiple module) test.[50%]
+    - State "STARTED"    from "DONE"       [2018-07-12 Thu 14:57]
     - State "DONE"       from "STARTED"    [2018-07-09 Mon 18:08]
    :LOGBOOK:  
    CLOCK: [2018-07-09 Mon 17:07]--[2018-07-09 Mon 17:45] =>  0:38
@@ -19,12 +27,12 @@
     CLOCK: [2018-07-09 Mon 16:32]--[2018-07-09 Mon 16:43] =>  0:11
     :END:      
     tc_209
-***** TODO port shaper didn't gen rate Exceed out, egress input traffic 25G, port shaper set 10G. need Tonny double check.
+***** TODO tc_209 port shaper didn't gen rate Exceed out, egress input traffic 25G, port shaper set 10G. need Tonny double check.
 **** TODO make SYS side DRIVER/MONITOR respond BP, if shaper set 15G, input 25G, if driver receive the BP, driver will adapt the 15G 
 *** DONE tc_301a tc_301b arbition with rate meter multiple, 25G device, 10G mode, sys side use rate meter multiple shaper to 10G.
-    CLOSED: [2018-07-09 Mon 16:59]
+    CLOSED: [2018-07-09 Mon 16:59] 
     - State "DONE"       from "TODO"       [2018-07-09 Mon 16:59]
-    25G device work as 10G mode. Becasue system side always work as 25G mode, so sys side need rate_meter to limit the output traffic. 
+    25G device work as 10G mode. Becasue system side always work as 25G mode, so sys side need rate_meter to limit the output traffic.
     for 10G mode terminal looback, if line side input traffic + terminal loop traffic > 10G, rate_meter_multiple will BP terminal loop traffic.
 ** DONE Port based lookback testcase updating [100%]
    CLOSED: [2018-06-06 Wed 14:52]
@@ -73,7 +81,7 @@
     - State "DONE"       from "TODO"       [2018-06-06 Wed 12:11]
     - State "TODO"       from "DONE"       [2018-06-06 Wed 12:11]
     - State "DONE"       from "STARTED"    [2018-06-06 Wed 11:56]
-**** DONE tc_302 [100%]
+**** DONE tc_302 vlan based fac loobpack [100%]
      CLOSED: [2018-06-06 Wed 11:56]
      - State "DONE"       from "STARTED"    [2018-06-06 Wed 11:56]
      - State "STARTED"    from "DONE"       [2018-05-31 Thu 17:21]
@@ -142,15 +150,19 @@
       :END:      
       every port have flow based loopback.[[file:xg480_phy_verify_notes.org::tc_302a][tc_302a]]  
       every port have flow based loopback.[[file:xg480_phy_verify_notes.org::tc_302b][tc_302b]]  
-***** TODO tc_302b fail, need desinger to debug.
-*** DONE re-run tc_302 on 10g device TB
-     CLOSED: [2018-05-31 Thu 16:45]
-     - State "DONE"       from "STARTED"    [2018-05-31 Thu 16:45]
+***** DONE tc_302b fail, need desinger to debug.
+      CLOSED: [2018-07-11 Wed 17:42]
+      - State "DONE"       from "STARTED"    [2018-07-11 Wed 17:42]
+      :LOGBOOK:  
+      CLOCK: [2018-07-11 Wed 16:31]--[2018-07-11 Wed 16:35] =>  0:04
+      CLOCK: [2018-07-11 Wed 15:29]--[2018-07-11 Wed 16:21] =>  0:52
+      :END:      
+**** DONE tc_303 vlan based terminal loopback
+     CLOSED: [2018-07-13 Fri 15:31]
+     - State "DONE"       from "STARTED"    [2018-07-13 Fri 15:31]
      :LOGBOOK:  
-     CLOCK: [2018-05-31 Thu 16:36]--[2018-05-31 Thu 16:43] =>  0:07
-     CLOCK: [2018-05-31 Thu 16:24]--[2018-05-31 Thu 16:32] =>  0:08
+     CLOCK: [2018-07-13 Fri 14:51]--[2018-07-13 Fri 15:31] =>  0:40
      :END:      
-     it's pass. need add more traffic flows, to generate more condiction to run this case
 *** DONE align the testcase from 25g device to 10g device [100%]
     CLOSED: [2018-05-30 Wed 17:06]
     - State "DONE"       from "STARTED"    [2018-05-30 Wed 17:06]
@@ -158,6 +170,14 @@
     CLOCK: [2018-05-30 Wed 16:47]--[2018-05-30 Wed 17:03] =>  0:16
     :END:      
     - [X] tc_302
+**** DONE re-run tc_302 on 10g device TB
+     CLOSED: [2018-05-31 Thu 16:45]
+     - State "DONE"       from "STARTED"    [2018-05-31 Thu 16:45]
+     :LOGBOOK:  
+     CLOCK: [2018-05-31 Thu 16:36]--[2018-05-31 Thu 16:43] =>  0:07
+     CLOCK: [2018-05-31 Thu 16:24]--[2018-05-31 Thu 16:32] =>  0:08
+     :END:      
+     it's pass. need add more traffic flows, to generate more condiction to run this case
 *** TODO full flows loopback test.[0%]
     - [ ] 64 flows do fac loop, term loop, y1564 co-exist on the same port
     - [ ] 64 flows on different ports.
@@ -383,10 +403,10 @@
      CLOSED: [2018-05-30 Wed 09:32]
      - State "DONE"       from "TODO"       [2018-05-30 Wed 09:32]
    - [X] tc_207, re-prduce lab test bug. without transceiver, 64B packet with GOOD/BAD/GOOD/BAD FCS; 
-  port0 input 64B packet, port1 input 200B packet; 
-  port2 port3 input packet with some phy error (PCS error); 
-  port4 input 128B packet with all FCS error. 
-  port5 input 129B packet with all FCS error.
+     port0 input 64B packet, port1 input 200B packet; 
+     port2 port3 input packet with some phy error (PCS error); 
+     port4 input 128B packet with all FCS error. 
+     port5 input 129B packet with all FCS error.
    - [X] tc_208, cover all kinds of type RMON for mac_rx/tx 
    - [X] tc_208a, to test RMON with MTU less 1518
 *** DONE Normal traffic full bandwidth with RX input some fcs errors. [100%]
@@ -513,7 +533,7 @@
      CLOCK: [2018-06-25 Mon 12:05]--[2018-06-25 Mon 12:17] =>  0:12
      CLOCK: [2018-06-25 Mon 11:01]--[2018-06-25 Mon 11:09] =>  0:08
      :END:      
-**** STARTED re-run TCs when desinger fixing bug. (The bug: arbitration cannot always correctly work when normal traffic and lpbk traffic are valid in the same time.)
+**** STARTED tc_309 re-run TCs when desinger fixing bug. (The bug: arbitration cannot always correctly work when normal traffic and lpbk traffic are valid in the same time.)
      :LOGBOOK:  
      CLOCK: [2018-07-05 Thu 11:36]--[2018-07-05 Thu 12:01] =>  0:25
      :END:      
@@ -551,27 +571,37 @@
 ** DONE random disable/enable interface, the DUT should not lock . [100%]
    CLOSED: [2018-07-03 Tue 16:06]
    - State "DONE"       from "STARTED"    [2018-07-03 Tue 16:06]
-*** DONE 25G device 25G mode, random disable/enable NGMII interface.
+*** DONE 25G device 25G mode, tc_004a random disable/enable NGMII interface.
     CLOSED: [2018-07-03 Tue 15:46]
     - State "DONE"       from "TODO"       [2018-07-03 Tue 15:46]
     tc_004a.
-**** TODO more times disable/enable ngmii, DUT output fragment of packet, it should not; Waiting Tonny to doulbe check and fixed it.
-*** DONE 25G device 10G mode, random disable/enable NGMII interface.
+**** TODO tc_004a more times disable/enable ngmii, DUT output fragment of packet, it should not; Waiting Tonny to doulbe check and fixed it.
+*** DONE 25G device 10G mode, tc_003a random disable/enable NGMII interface.
     CLOSED: [2018-07-03 Tue 16:06]
     - State "DONE"       from "TODO"       [2018-07-03 Tue 16:06]
     tc_003a
-*** DONE 25G device 100G mode, random disable/enable CGMII interface.
+*** DONE 25G device 100G mode, tc_006l random disable/enable CGMII interface.
     CLOSED: [2018-07-03 Tue 15:58]
     - State "DONE"       from "TODO"       [2018-07-03 Tue 15:58]
     Need DUT (CGMII) support register prov interface disable/enable.
     tc_006l
-*** DONE 25G device 100G mode, random disable/enable LBUS interface.
+*** DONE 25G device 100G mode, tc_006l random disable/enable LBUS interface.
     CLOSED: [2018-07-03 Tue 15:58]
     - State "DONE"       from "TODO"       [2018-07-03 Tue 15:58]
     Need DUT (LBUS) support register prov interface disable/enable
     tc_006l
-** TODO 10G 25G 100G interface if support the LPI [%]
-** STARTED sys side traffic packet with ITMH/OTMH [60%]
+*** DONE 10G device 10G mode, tc_004a random disable/enable NGMII interface.
+    CLOSED: [2018-07-13 Fri 14:24]
+    - State "DONE"       from "TODO"       [2018-07-13 Fri 14:24]
+*** DONE 10G device 1G mode, tc_003a random disable/enable NGMII interface.
+    CLOSED: [2018-07-13 Fri 14:38]
+    - State "DONE"       from "TODO"       [2018-07-13 Fri 14:38]
+** CANCELLED 10G 25G 100G interface if support the LPI 
+   CLOSED: [2018-07-11 Wed 14:55]
+   Tonny said, DUT don't support on this release.
+** DONE sys side traffic packet with ITMH/OTMH [80%]
+   CLOSED: [2018-07-11 Wed 14:46]
+   - State "DONE"       from "STARTED"    [2018-07-11 Wed 14:46]
    :LOGBOOK:  
    CLOCK: [2018-07-05 Thu 09:32]--[2018-07-05 Thu 09:56] =>  0:24
    :END:      
@@ -594,28 +624,87 @@
     CLOCK: [2018-07-06 Fri 14:57]--[2018-07-06 Fri 15:16] =>  0:19
     :END:      
 
-*** TODO CGMII IF ADVA HDR test
-*** TODO NGMII IF ADVA HDR test
-** STARTED Help Atlanta Mike check the T_dcn_switch_v1.0_r112857 regression results [0%]
-   DEADLINE: <2018-07-12 Thu>
+*** DONE CGMII IF ADVA HDR test
+    CLOSED: [2018-07-10 Tue 18:48]
+    - State "DONE"       from "STARTED"    [2018-07-10 Tue 18:48]
+    :LOGBOOK:
+    CLOCK: [2018-07-10 Tue 16:17]--[2018-07-10 Tue 18:48] =>  2:31
+    CLOCK: [2018-07-10 Tue 14:48]--[2018-07-10 Tue 14:56] =>  0:08
+    :END:
+**** DONE EGRESS (CGMII RX) test, CGMII IF ADVA HDR support.  
+     CLOSED: [2018-07-10 Tue 18:52]
+     - State "DONE"       from "TODO"       [2018-07-10 Tue 18:52]
+**** DONE IGRESS (CGMII TX) test, CGMII IF ADVA HDR support. 
+     CLOSED: [2018-07-11 Wed 14:46]
+     - State "DONE"       from "STARTED"    [2018-07-11 Wed 14:46]
+     :LOGBOOK:  
+     CLOCK: [2018-07-10 Tue 18:54]--[2018-07-10 Tue 19:13] =>  0:19
+     :END:      
+     CGMII_TX monitor need add the fcs re-calc function.
+     eth_object_parser need add the adva hdr support mode.
+*** WAITING NGMII IF ADVA HDR test, need NGMII RTL support. waiting Tonny 
+** DONE Help Atlanta Mike check the T_dcn_switch_v1.0_r112857 regression results [100%]
+   CLOSED: [2018-07-10 Tue 12:25] DEADLINE: <2018-07-12 Thu>
+   - State "DONE"       from "STARTED"    [2018-07-10 Tue 12:25]
    :LOGBOOK:  
    CLOCK: [2018-07-09 Mon 14:22]--[2018-07-09 Mon 14:47] =>  0:25
    :END:      
-*** STARTED dcn_switch tc_009 checking, ATL 13 errors, SZX no errors
-    SCHEDULED: <2018-07-09 Mon>
+*** DONE dcn_switch tc_009 checking, ATL 13 errors, SZX no errors
+    CLOSED: [2018-07-10 Tue 12:24] SCHEDULED: <2018-07-09 Mon>
+    - State "DONE"       from "STARTED"    [2018-07-10 Tue 12:24]
     :LOGBOOK:  
     CLOCK: [2018-07-09 Mon 14:47]--[2018-07-09 Mon 15:21] =>  0:34
     :END:      
     after double checking the tc009 from Mike, the ATL run tc_009 with 1 ETH 9 FRMs mode. However, SZX run tc_009 with 2 ETHs 8 FRMs mode. double checking the svn log, it has been said on 2017-09-27 r107278, For tc_009, the default is 2 ETH port test.
-*** TODO dcn_switch tc_009a checking, ATL 57011 errors, SZX ?
-    SCHEDULED: <2018-07-09 Mon>
-*** TODO dcn_switch tc_017b checking, ATL 7 errors, SZX ?
-    SCHEDULED: <2018-07-09 Mon>
-*** TODO dch_switch tc_018 checking, ATL 550 errors, SZX ?
-    SCHEDULED: <2018-07-10 Tue>
-*** TODO dcn_switch tc_020 checking, ATL 60 errors, SZX ?
-    SCHEDULED: <2018-07-10 Tue>
-*** TODO dcn_switch tc_021 checking, ATL 23 errors, SZX no errors.
-    SCHEDULED: <2018-07-11 Wed>
-*** TODO dcn_switch tc_022 checking, ATL 5 errors, SZX no errors.
-    SCHEDULED: <2018-07-11 Wed>
+    ../../../scripts/run_sim_questa -local_output off -database local_db
+    -set_ethernet_port 2
+*** DONE dcn_switch tc_009a checking, ATL 57011 errors, SZX ?
+    CLOSED: [2018-07-10 Tue 12:23] SCHEDULED: <2018-07-09 Mon>
+    - State "DONE"       from "TODO"       [2018-07-10 Tue 12:23]
+    to test frm interface backpreasure. The DUT has overflow, so the result will have the OVM_ERROR， missing and mismatch errors. It’s expected.   The testcase is not regression. 
+*** CANCELLED dcn_switch tc_017b checking, ATL 7 errors, SZX ?
+    CLOSED: [2018-07-11 Wed 14:58] SCHEDULED: <2018-07-09 Mon>
+    - State "STARTED"    from "DONE"       [2018-07-10 Tue 12:24]
+    - State "DONE"       from "TODO"       [2018-07-10 Tue 12:24]
+      DUT joiner is not support padding on this release. TF has beed support. the case is fail. It’s expected. The testcase is not regression
+*** DONE dch_switch tc_018 checking, ATL 550 errors, SZX ?
+    CLOSED: [2018-07-10 Tue 12:24] SCHEDULED: <2018-07-10 Tue>
+    - State "DONE"       from "TODO"       [2018-07-10 Tue 12:24]
+    ETH0 to DCN0. Queue overflow Indication Register verify. The DUT has overflow, so the result will have the OVM_ERROR， missing and mismatch errors. It’s expected.   The testcase is not regression  
+*** DONE dcn_switch tc_020 checking, ATL 60 errors, SZX ?
+    CLOSED: [2018-07-10 Tue 12:24] SCHEDULED: <2018-07-10 Tue>
+    - State "DONE"       from "TODO"       [2018-07-10 Tue 12:24]
+    MS almost full discard test,  the memory system will drop yellow frames when queue  reach almost full.  the result will have the OVM_ERROR，It’s expected.   The testcase is not regression
+*** DONE dcn_switch tc_021 checking, ATL 23 errors, SZX no errors.
+    CLOSED: [2018-07-10 Tue 12:25] SCHEDULED: <2018-07-11 Wed>
+    ../../../scripts/run_sim_questa -local_output off -database local_db
+    -set_ethernet_port 4
+*** DONE dcn_switch tc_022 checking, ATL 5 errors, SZX no errors.
+    CLOSED: [2018-07-10 Tue 12:25] SCHEDULED: <2018-07-11 Wed>
+    ../../../scripts/run_sim_questa -local_output off -database local_db
+    -set_ethernet_port 2
+** STARTED update sys-sim.mk base on xgPro style.
+   :LOGBOOK:  
+   CLOCK: [2018-07-11 Wed 18:01]--[2018-07-11 Wed 18:32] =>  0:31
+   :END:      
+** TODO load sharing regression support for xg480 phy device.
+** DONE individually bypass transceivers.
+   CLOSED: [2018-07-12 Thu 19:06]
+   - State "DONE"       from "TODO"       [2018-07-12 Thu 19:06]
+   BYPASS_TRANSCEIVER_0 for Line0, port0-3
+   BYPASS_TRANSCEIVER_1 for Line1, port4-7
+   BYPASS_TRANSCEIVER_2 for Sys0, port8-11
+   BYPASS_TRANSCEIVER_3 for Sys1, port12-15
+** DONE tc_007a 100G mode, to test and debug the xco4ma soft core. Bypass all transceivers expect xco4ma soft 100G core.
+   CLOSED: [2018-07-13 Fri 09:34]
+   - State "DONE"       from "STARTED"    [2018-07-13 Fri 09:34]
+   - State "STARTED"    from "DONE"       [2018-07-13 Fri 09:34]
+   - State "DONE"       from "TODO"       [2018-07-12 Thu 19:08]
+   tc_007a, 100G mode, to test and debug the xco4ma soft core.
+   pipe0 has traffic, 
+   LINE side: bypass transceiver(CMAC), LBUS input traffic.
+   SYS side:  don't bypass transceiver, CGMII connect to xco4ma core then connect to GTY.
+   pipe1 no traffic,
+   LINE and SYS side both bypass transceiver, make testcase run faster.
+     
+    
