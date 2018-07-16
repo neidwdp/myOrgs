@@ -1,5 +1,5 @@
 * xg480_phy 25g/10g verification todo [81%]
-** DONE The rate_meter_multiple issues [66%]
+** DONE The rate_meter_multiple issues [100%]
    CLOSED: [2018-07-11 Wed 16:50]
    - State "DONE"       from "STARTED"    [2018-07-11 Wed 16:50]
 *** DONE tc_204 Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
@@ -13,7 +13,9 @@
      CLOCK: [2018-07-12 Thu 11:10]--[2018-07-12 Thu 14:51] =>  3:41
      :END:      
      Tonny remove the progma translate_off/on for the fast simulation.
-*** STARTED tc_209 Line side mac_tx port shaper function (by rate_meter_multiple module) test.[50%]
+*** DONE tc_209 Line side mac_tx port shaper function (by rate_meter_multiple module) test.[100%]
+    CLOSED: [2018-07-16 Mon 16:43]
+    - State "DONE"       from "STARTED"    [2018-07-16 Mon 16:43]
     - State "STARTED"    from "DONE"       [2018-07-12 Thu 14:57]
     - State "DONE"       from "STARTED"    [2018-07-09 Mon 18:08]
    :LOGBOOK:  
@@ -27,8 +29,12 @@
     CLOCK: [2018-07-09 Mon 16:32]--[2018-07-09 Mon 16:43] =>  0:11
     :END:      
     tc_209
-***** TODO tc_209 port shaper didn't gen rate Exceed out, egress input traffic 25G, port shaper set 10G. need Tonny double check.
-**** TODO make SYS side DRIVER/MONITOR respond BP, if shaper set 15G, input 25G, if driver receive the BP, driver will adapt the 15G 
+***** DONE tc_209 port shaper didn't gen rate Exceed out, egress input traffic 25G, port shaper set 10G. need Tonny double check.
+      CLOSED: [2018-07-16 Mon 16:50]
+      - State "DONE"       from "TODO"       [2018-07-16 Mon 16:50]
+        <2018-07-16 Mon 16:50> rate_meter multiple can send out the BP to arbiter, but arbiter didn't response it. after Haidong checking, modifiy the cfg_pkg.sv, the issue has gone. the issue is due to the priority of arbiter scheduling.
+**** CANCELLED make SYS side DRIVER/MONITOR respond BP, if shaper set 15G, input 25G, if driver receive the BP, driver will adapt the 15G 
+     CLOSED: [2018-07-16 Mon 16:43]
 *** DONE tc_301a tc_301b arbition with rate meter multiple, 25G device, 10G mode, sys side use rate meter multiple shaper to 10G.
     CLOSED: [2018-07-09 Mon 16:59] 
     - State "DONE"       from "TODO"       [2018-07-09 Mon 16:59]
@@ -483,12 +489,13 @@
     CLOCK: [2018-05-31 Thu 16:20]--[2018-05-31 Thu 16:22] =>  0:02
     :END:      
 
-** DONE Lbus frame interface test for 100G mode.[100%]
+** DONE Lbus frame interface test for 100G mode.[93%]
    CLOSED: [2018-06-25 Mon 18:36]
    - State "DONE"       from "TODO"       [2018-06-25 Mon 18:36]
    - State "STARTED"    from "DONE"       [2018-06-25 Mon 11:12]
    - State "DONE"       from "TODO"       [2018-06-19 Tue 12:24]
-*** DONE 64 to 129 bytes size packet, each type size 200us
+*** DONE tc_006,  CGMII_LOOP, rate:80G, packet size 5000B, input 2000 packets. testcase ready
+*** DONE tc_006a, CGMII to LBUS, LBUS to CGMII, 100G, flow0 3000B, flow1 200B, testcase ready
     CLOSED: [2018-06-19 Tue 12:25]
     - State "DONE"       from "STARTED"    [2018-06-19 Tue 12:25]
     :LOGBOOK:  
@@ -497,21 +504,31 @@
     :END:      
     tc_006a, 2flows, 200 and 3000 bytes; it's re-produce the lab issue.
     the issue is the lbus 's ENA is not (1 3 7 or 0xf). Leo has fixed the issue.
-*** DONE 64 to 256 random
+*** DONE tc_006b, CGMII to LBUS, LBUS to CGMII, 100G, 64 to 256 random, testcase ready
     CLOSED: [2018-06-08 Fri 17:44]
     - State "DONE"       from "STARTED"    [2018-06-08 Fri 17:44]
     :LOGBOOK:  
     CLOCK: [2018-06-08 Fri 17:18]--[2018-06-08 Fri 17:44] =>  0:26
     :END:      
-*** DONE 64 to 9600 random
+*** DONE tc_006c, CGMII to LBUS, LBUS to CGMII, 100G, 64 to 9600 random, testcase ready
     CLOSED: [2018-06-08 Fri 18:33]
     - State "DONE"       from "STARTED"    [2018-06-08 Fri 18:33]
     :LOGBOOK:  
     CLOCK: [2018-06-08 Fri 18:26]--[2018-06-08 Fri 18:33] =>  0:07
     CLOCK: [2018-06-08 Fri 17:44]--[2018-06-08 Fri 17:49] =>  0:05
     :END:      
-
-*** DONE normal traffic with loopback traffic. to test arbitration [66%]
+*** DONE tc_006d, CGMII to LBUS, LBUS to CGMII, 100G, flow0 64 - 256B, flow1 64 - 9600B, testcase ready
+*** DONE tc_006e, CGMII to LBUS, LBUS to CGMII, 100G 64 65 97 80 81 110 111 112 245 246 257B, one by one size input, every size input 50us testcase ready
+*** DONE tc_006f, CGMII to LBUS, LBUS to CGMII, 100G 64 65 97 80 81 110 111 112 245 246 257B, in the same time input, every size input 200 packets testcase ready
+*** DONE tc_006g, CGMII_LOOP, 100G 65B, testcase ready
+*** DONE tc_006h, CGMII_LOOP, 100G 81B, testcase ready
+*** DONE tc_006i, CGMII_LOOP, 100G 81B, testcase ready
+*** DONE tc_006j, CGMII_LOOP, 100G 64 128 192 256 320 384B, testcase ready
+*** DONE tc_006k, CGMII_LOOP, 100G 9600B, testcase ready
+*** STARTED tc_006k, 9600B CGMII_LOOP, fail when regression, Leo checking. <2018-07-16 Mon 18:05>
+    - State "STARTED"    from "DONE"       [2018-07-16 Mon 19:06]
+    - State "DONE"       from "STARTED"    [2018-07-16 Mon 19:05]
+*** DONE normal traffic with loopback traffic. to test arbitration [100%]
     CLOSED: [2018-06-25 Mon 14:34]
     - State "DONE"       from "TODO"       [2018-06-25 Mon 14:34]
 **** DONE normal traffic with fac looback tc_309 (100g mode), tc_311 (25G mode)
@@ -533,7 +550,9 @@
      CLOCK: [2018-06-25 Mon 12:05]--[2018-06-25 Mon 12:17] =>  0:12
      CLOCK: [2018-06-25 Mon 11:01]--[2018-06-25 Mon 11:09] =>  0:08
      :END:      
-**** STARTED tc_309 re-run TCs when desinger fixing bug. (The bug: arbitration cannot always correctly work when normal traffic and lpbk traffic are valid in the same time.)
+**** DONE tc_309 re-run TCs when desinger fixing bug. (The bug: arbitration cannot always correctly work when normal traffic and lpbk traffic are valid in the same time.)
+     CLOSED: [2018-07-16 Mon 14:03]
+     - State "DONE"       from "STARTED"    [2018-07-16 Mon 14:03]
      :LOGBOOK:  
      CLOCK: [2018-07-05 Thu 11:36]--[2018-07-05 Thu 12:01] =>  0:25
      :END:      
@@ -631,10 +650,10 @@
     CLOCK: [2018-07-10 Tue 16:17]--[2018-07-10 Tue 18:48] =>  2:31
     CLOCK: [2018-07-10 Tue 14:48]--[2018-07-10 Tue 14:56] =>  0:08
     :END:
-**** DONE EGRESS (CGMII RX) test, CGMII IF ADVA HDR support.  
+**** DONE tc_006m EGRESS (CGMII RX) test, CGMII IF ADVA HDR support.  
      CLOSED: [2018-07-10 Tue 18:52]
      - State "DONE"       from "TODO"       [2018-07-10 Tue 18:52]
-**** DONE IGRESS (CGMII TX) test, CGMII IF ADVA HDR support. 
+**** DONE tc_006m IGRESS (CGMII TX) test, CGMII IF ADVA HDR support. 
      CLOSED: [2018-07-11 Wed 14:46]
      - State "DONE"       from "STARTED"    [2018-07-11 Wed 14:46]
      :LOGBOOK:  
