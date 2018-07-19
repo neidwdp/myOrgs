@@ -1,5 +1,5 @@
-* xg480_phy 25g/10g verification todo [81%]
-** DONE The rate_meter_multiple issues [100%]
+* xg480_phy 25g/10g verification todo [90%]
+** DONE The rate_meter_multiple issues [66%]
    CLOSED: [2018-07-11 Wed 16:50]
    - State "DONE"       from "STARTED"    [2018-07-11 Wed 16:50]
 *** DONE tc_204 Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
@@ -13,8 +13,8 @@
      CLOCK: [2018-07-12 Thu 11:10]--[2018-07-12 Thu 14:51] =>  3:41
      :END:      
      Tonny remove the progma translate_off/on for the fast simulation.
-*** DONE tc_209 Line side mac_tx port shaper function (by rate_meter_multiple module) test.[100%]
-    CLOSED: [2018-07-16 Mon 16:43]
+*** TODO tc_209 Line side mac_tx port shaper function (by rate_meter_multiple module) test.[100%]
+    - State "TODO"       from "DONE"       [2018-07-19 Thu 14:58]
     - State "DONE"       from "STARTED"    [2018-07-16 Mon 16:43]
     - State "STARTED"    from "DONE"       [2018-07-12 Thu 14:57]
     - State "DONE"       from "STARTED"    [2018-07-09 Mon 18:08]
@@ -22,6 +22,7 @@
    CLOCK: [2018-07-09 Mon 17:07]--[2018-07-09 Mon 17:45] =>  0:38
    CLOCK: [2018-07-09 Mon 15:51]--[2018-07-09 Mon 16:11] =>  0:20
    :END:      
+    double check the output rate for fixed size packet. it should almost equal the setting rate.
 **** DONE SYS side DRIVER/MONITOR don't respond BP, DUT segbuf will overflow, DUT should not send out the fragment of packet.
      CLOSED: [2018-07-09 Mon 17:45]
      - State "DONE"       from "STARTED"    [2018-07-09 Mon 17:45]
@@ -184,9 +185,6 @@
      CLOCK: [2018-05-31 Thu 16:24]--[2018-05-31 Thu 16:32] =>  0:08
      :END:      
      it's pass. need add more traffic flows, to generate more condiction to run this case
-*** TODO full flows loopback test.[0%]
-    - [ ] 64 flows do fac loop, term loop, y1564 co-exist on the same port
-    - [ ] 64 flows on different ports.
 ** TODO port_process_ingress/port_process_egress (afp+pcp) test. [0%]
    the spec has been ready, RTL has not been ready.
    - [ ] provisioning method
@@ -287,7 +285,7 @@
      input         gasicParityInOut  ,
      input  logic  gasicParityErrOut , // change to input for pin test
      Set those two signal 1/0, read the related indication register on device reg.
-**** TODO SFP reserve pin, out pin test fail, need Haidong double check. tc_1001
+**** TODO SFP status and control pin, out pin test fail, need Haidong double check. tc_1001
      - State "TODO"       from "DONE"       [2018-06-27 Wed 14:31]
      - State "DONE"       from "DONE"       [2018-06-27 Wed 14:31]
      - State "DONE"       from "STARTED"    [2018-06-26 Tue 18:26]
@@ -528,6 +526,7 @@
 *** STARTED tc_006k, 9600B CGMII_LOOP, fail when regression, Leo checking. <2018-07-16 Mon 18:05>
     - State "STARTED"    from "DONE"       [2018-07-16 Mon 19:06]
     - State "DONE"       from "STARTED"    [2018-07-16 Mon 19:05]
+      revert the leo's modificaion of frame to cgmii. buffer form 16 to 10 to re-produce the seg_buffer issue. to re-produce the seg_buffer issue.
 *** DONE normal traffic with loopback traffic. to test arbitration [100%]
     CLOSED: [2018-06-25 Mon 14:34]
     - State "DONE"       from "TODO"       [2018-06-25 Mon 14:34]
@@ -585,7 +584,7 @@
     CLOCK: [2018-07-05 Thu 10:33]--[2018-07-05 Thu 11:00] =>  0:27
     CLOCK: [2018-07-05 Thu 09:56]--[2018-07-05 Thu 10:08] =>  0:12
     :END:      
-** STARTED all control register test [%]
+** TODO all control and status register test [%]
    tc_1002.
 ** DONE random disable/enable interface, the DUT should not lock . [100%]
    CLOSED: [2018-07-03 Tue 16:06]
@@ -702,11 +701,6 @@
     CLOSED: [2018-07-10 Tue 12:25] SCHEDULED: <2018-07-11 Wed>
     ../../../scripts/run_sim_questa -local_output off -database local_db
     -set_ethernet_port 2
-** STARTED update sys-sim.mk base on xgPro style.
-   :LOGBOOK:  
-   CLOCK: [2018-07-11 Wed 18:01]--[2018-07-11 Wed 18:32] =>  0:31
-   :END:      
-** TODO load sharing regression support for xg480 phy device.
 ** DONE individually bypass transceivers.
    CLOSED: [2018-07-12 Thu 19:06]
    - State "DONE"       from "TODO"       [2018-07-12 Thu 19:06]
@@ -726,4 +720,41 @@
    pipe1 no traffic,
    LINE and SYS side both bypass transceiver, make testcase run faster.
      
-    
+   
+* TODO load sharing regression support for xg480 phy device. [%]
+** STARTED update sys-sim.mk base on xgPro style.
+   :LOGBOOK:  
+   CLOCK: [2018-07-11 Wed 18:01]--[2018-07-11 Wed 18:32] =>  0:31
+   :END:      
+ 
+** TODO based on the PRI number to generate the tc list (yaml format)
+
+* review test plan <2018-07-19 Thu 16:36> [28%]
+** TODO the RMON (eth_stats) test [%]
+*** TODO termnal loop mode, blocked packet should be counter by eth_stat 
+*** TODO pause has own couter in RMON, shoud not count by Mcast. whatever pause action in mac rx
+*** TODO double check y1564 related RMON [%]
+   with normal traffic together test.
+*** TODO down mon, no rmon. 
+*** TODO up mon, has rmon. 
+*** TODO up gen, has rmon. 
+*** TODO down mon, no rmon. 
+** DONE tc_007 double check. has fatel error. After cleanup the defines in tb_env.sv, the fatel has gone.
+   CLOSED: [2018-07-19 Thu 16:28]
+   - State "DONE"       from "STARTED"    [2018-07-19 Thu 16:28]
+   :LOGBOOK:  
+   CLOCK: [2018-07-19 Thu 15:43]--[2018-07-19 Thu 16:28] =>  0:45
+   :END:      
+** DONE add tc_007a to test plan
+   CLOSED: [2018-07-19 Thu 16:34]
+   - State "DONE"       from "STARTED"    [2018-07-19 Thu 16:34]
+   :LOGBOOK:  
+   CLOCK: [2018-07-19 Thu 16:29]--[2018-07-19 Thu 16:34] =>  0:05
+   :END:      
+** TODO normal traffc running, monitor the all underflow overflow indication registers, they should not asserted
+   Before running traffic, ROC all the underflow overflow indication registers.
+** TODO all port have normal + loop traffic (some vlans are loops, some vlans are normal) test.[0%]
+   loop + normal + y1564 gen. (if egress + pause + dying gasp gen)
+   The PRI is: dyinggasp > pause > normal traffic > loop > y1546 
+*** TODO 25G mode in pipe1, 100G mode in pipe0 (ku5p)
+*** TODO 10G mode in 10G device (ku3p)
