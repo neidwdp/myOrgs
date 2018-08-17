@@ -65,7 +65,7 @@
     :LOGBOOK:  
     CLOCK: [2018-06-06 Wed 14:10]--[2018-06-06 Wed 14:24] =>  0:14
     :END:      
-** DONE vlan_det_lookup device level test. [83%]
+** DONE vlan_det_lookup device level test. [100%]
    CLOSED: [2018-06-06 Wed 17:42]
    - State "DONE"       from "STARTED"    [2018-06-06 Wed 17:42]
    - State "STARTED"    from "DONE"       [2018-06-06 Wed 12:12]
@@ -79,6 +79,7 @@
    :END:      
 *** DONE tb_env support
     CLOSED: [2018-05-30 Wed 16:13]
+    - State "DONE"       from "DONE"       [2018-08-17 Fri 17:26]
     - State "DONE"       from "TODO"       [2018-05-30 Wed 16:13]
 *** DONE transfer function support: lpbk_y1564_det transfer funciton instance the vlan_det_lookup TF.
     CLOSED: [2018-05-30 Wed 16:13]
@@ -586,6 +587,9 @@
     :END:      
 ** TODO all control and status register test [%]
    tc_1002.
+*** TODO normal traffc running, monitor the all underflow overflow indication registers, they should not asserted
+    tc_common_base.sv
+    Before running traffic, ROC all the underflow overflow indication registers.
 ** DONE random disable/enable interface, the DUT should not lock . [100%]
    CLOSED: [2018-07-03 Tue 16:06]
    - State "DONE"       from "STARTED"    [2018-07-03 Tue 16:06]
@@ -721,24 +725,47 @@
    LINE and SYS side both bypass transceiver, make testcase run faster.
      
    
-* TODO load sharing regression support for xg480 phy device. [%]
+* TODO load sharing regression support for xg480 phy device. [0%]
 ** STARTED update sys-sim.mk base on xgPro style.
    :LOGBOOK:  
+   CLOCK: [2018-07-20 Fri 16:24]--[2018-07-20 Tue 18:25] =>  2:01
+   CLOCK: [2018-07-20 Fri 15:01]--[2018-07-20 Fri 15:31] =>  0:30
    CLOCK: [2018-07-11 Wed 18:01]--[2018-07-11 Wed 18:32] =>  0:31
    :END:      
  
 ** TODO based on the PRI number to generate the tc list (yaml format)
+** STARTED on Wednesday, regression the short time running testcase
+   :LOGBOOK:  
+   CLOCK: [2018-07-25 Wed 09:45]--[2018-07-25 Wed 10:52] =>  1:07
+   :END:      
+** TODO on Weekend, regression all testcases (long time testcase and short time testcase)
 
-* review test plan <2018-07-19 Thu 16:36> [28%]
-** TODO the RMON (eth_stats) test [%]
-*** TODO termnal loop mode, blocked packet should be counter by eth_stat 
-*** TODO pause has own couter in RMON, shoud not count by Mcast. whatever pause action in mac rx
+
+* review test plan <2018-07-19 Thu 16:36> [50%]
+** TODO the RMON (eth_stats) test [66%]
+*** DONE termnal loop mode, blocked packet should be counter by eth_stat, tc_301 pass 
+    CLOSED: [2018-07-20 Fri 11:09]
+    - State "DONE"       from "STARTED"    [2018-07-20 Fri 11:09]
+    :LOGBOOK:  
+    CLOCK: [2018-07-20 Fri 09:05]--[2018-07-20 Fri 09:48] =>  0:43
+    :END:      
+*** DONE tc_202 pause has own couter in RMON, shoud not count by Mcast. whatever pause action in mac rx [50%]
+    CLOSED: [2018-07-19 Thu 18:52]
+    - State "DONE"       from "STARTED"    [2018-07-19 Thu 18:52]
+    :LOGBOOK:  
+    CLOCK: [2018-07-19 Thu 17:56]--[2018-07-19 Thu 18:52] =>  0:56
+    :END:      
+**** DONE DUT has bug, the pasue should not count by Macst, should count to pause.
+     CLOSED: [2018-07-20 Fri 09:00]
+     - State "DONE"       from "TODO"       [2018-07-20 Fri 09:00]
+**** WAITING tc202 fail, becasue DUT mac_rx has not implemented the pause action funciton.
+     - State "TODO"       from "WAITING"    [2018-07-20 Fri 09:08]
 *** TODO double check y1564 related RMON [%]
    with normal traffic together test.
-*** TODO down mon, no rmon. 
-*** TODO up mon, has rmon. 
-*** TODO up gen, has rmon. 
-*** TODO down mon, no rmon. 
+**** TODO down mon, no rmon. 
+**** TODO up mon, has rmon. 
+**** TODO up gen, has rmon. 
+**** TODO down gen, no rmon. 
 ** DONE tc_007 double check. has fatel error. After cleanup the defines in tb_env.sv, the fatel has gone.
    CLOSED: [2018-07-19 Thu 16:28]
    - State "DONE"       from "STARTED"    [2018-07-19 Thu 16:28]
@@ -751,10 +778,122 @@
    :LOGBOOK:  
    CLOCK: [2018-07-19 Thu 16:29]--[2018-07-19 Thu 16:34] =>  0:05
    :END:      
-** TODO normal traffc running, monitor the all underflow overflow indication registers, they should not asserted
-   Before running traffic, ROC all the underflow overflow indication registers.
-** TODO all port have normal + loop traffic (some vlans are loops, some vlans are normal) test.[0%]
+** STARTED all port have normal + loop traffic (some vlans are loops, some vlans are normal) test.[0%]
+   :LOGBOOK:  
+   CLOCK: [2018-07-20 Fri 13:40]--[2018-07-20 Fri 14:21] =>  0:41
+   :END:      
    loop + normal + y1564 gen. (if egress + pause + dying gasp gen)
    The PRI is: dyinggasp > pause > normal traffic > loop > y1546 
-*** TODO 25G mode in pipe1, 100G mode in pipe0 (ku5p)
+*** TODO tc_309 25G mode in pipe1, 100G mode in pipe0 (ku5p)
 *** TODO 10G mode in 10G device (ku3p)
+** TODO 25G 65B full bandwidth test fail, DUT has bug.(Need tonny double check)
+   input 25Gpbs, 65B packet,  DUT out add more then 12 Bytes IPG.
+
+
+* pipeline structure modification [100%]
+** DONE mac_tx transfer_function comments out the pause and dying gasp related prov register. 
+   CLOSED: [2018-07-31 Tue 14:17]
+   - State "DONE"       from "TODO"       [2018-07-31 Tue 14:17]
+** DONE in mac_tx transfer_function re-add the pause and dying gasp related prov register based on pause_dgasp_inj module. 
+   CLOSED: [2018-08-08 Wed 14:27]
+   - State "DONE"       from "TODO"       [2018-08-08 Wed 14:27]
+** DONE port_parser_transfer_function comments out "DEF_MACRX_CTX_HIGHEST_MDL_PROV_ADDRX". 
+   CLOSED: [2018-08-08 Wed 14:28]
+   - State "DONE"       from "TODO"       [2018-08-08 Wed 14:28]
+   - State "TODO"       from "DONE"       [2018-08-08 Wed 14:27]
+   - State "DONE"       from "TODO"       [2018-08-08 Wed 14:27]
+** DONE ptp_process_transfer_function. 
+   CLOSED: [2018-08-08 Wed 14:27]
+   - State "DONE"       from "TODO"       [2018-08-08 Wed 14:27]
+   //bit [`DEF_MACTX_SYS_PORT_SYS_PORT_SIZE-1:0] egrRxIfPortNum;
+      //bit [`DEF_MACTX_CTX_PTP_TX_LATENCY_PROV_TX_LATENCY_SIZE-1:0] txLatency;
+      //bit [`DEF_MACRX_CTX_PTP_RX_LATENCY_PROV_RX_LATENCY_SIZE-1:0] rxFixedLatency;
+      //bit [`DEF_MACRX_CTX_PORT_PROV_PORT_NUM_SIZE-1:0]             rxPortNum;
+   //bit [`DEF_MACTX_SYS_PORT_SYS_PORT_SIZE-1:0]                     sysPortNum;
+//                 `DEF_MACRX_CTX_PTP_RX_LATENCY_PROV_ADDRX: begin
+//                 `DEF_MACTX_CTX_PTP_TX_LATENCY_PROV_ADDRX: begin
+** DONE ptp_editor transfer function
+   CLOSED: [2018-08-08 Wed 14:27]
+   - State "DONE"       from "TODO"       [2018-08-08 Wed 14:27]
+   //bit [`DEF_MACTX_SYS_PORT_SYS_PORT_SIZE-1:0] egrRxIfPortNum;
+   //bit [`DEF_MACTX_SYS_PORT_SYS_PORT_SIZE-1:0]                     sysPortNum;
+** DONE mac_rx_methods.svh [100%]
+   CLOSED: [2018-08-08 Wed 14:27]
+   - State "DONE"       from "TODO"       [2018-08-08 Wed 14:27]
+   line 146
+*** DONE has been finished
+    CLOSED: [2018-08-01 Wed 16:42]
+    - State "DONE"       from "TODO"       [2018-08-01 Wed 16:42]
+         //writeData1 = 0;
+         //writeData1[`DEF_MACRX_CTX_HIGHEST_MDL_PROV_MDL_BITS] = p.highestMdl[i];
+         //writeAddress1 = 0;
+         //writeAddress1 = `DEF_MACRX_CTX_HIGHEST_MDL_PROV_BASE + (i*4) + baseAddrOffset;
+
+*** DONE move the ptp related provisioning method to ptp_porcess methodss.svh
+    CLOSED: [2018-08-01 Wed 16:43]
+    - State "DONE"       from "TODO"       [2018-08-01 Wed 16:43]
+         //writeData2 = p.rxFixedLatency[i];
+         //writeAddress2 = 0;
+         //writeAddress2 = `DEF_MACRX_CTX_PTP_RX_LATENCY_PROV_BASE + (i*4) + baseAddrOffset;
+
+         //writeData3 = 0;
+         //writeData3[`DEF_MACRX_CTX_PTP_PROV_PTP_TRANSPORT_TYPE_BITS] = p.ptpTransportType[i];
+         //writeAddress3 = 0;
+         //writeAddress3 = `DEF_MACRX_CTX_PTP_PROV_BASE + (i*4) + baseAddrOffset;
+
+         //writeData4 = 0;
+         //writeData4[`DEF_MACRX_CTX_PORT_PROV_PORT_NUM_BITS] = p.rxPortNum[i];
+         //writeAddress4 = 0;
+         //writeAddress4 = `DEF_MACRX_CTX_PORT_PROV_BASE + (i*4) + baseAddrOffset;
+
+   line 180 - 202
+** DONE mac_tx_methods.svh
+   CLOSED: [2018-08-08 Wed 14:27]
+   - State "DONE"       from "TODO"       [2018-08-08 Wed 14:27]
+   pasu and dying gase injection.
+   line 163 - 226
+   line 259 - 342
+   line 348 - 374
+   line 412 - 495 
+
+   ptp related
+   line 605 -624
+   line 627 -645
+   line 650 -672
+   line 675 -691
+
+   line 697 -742
+   line 798 -861
+   line 887 -950
+   line 976 -1039
+   line 1060 -1078
+   line 1092 -1108
+   line 1123 -1152
+** DONE lpbk_y1564_det_methods.svh
+   CLOSED: [2018-08-08 Wed 14:27]
+   - State "DONE"       from "TODO"       [2018-08-08 Wed 14:27]
+   line 140-145
+//            if      (p.constraintSelector == 0) `lpbkCtrlZeroTimeProv(i,0)
+//            else if (p.constraintSelector == 1) `lpbkCtrlZeroTimeProv(i,1)
+//            else if (p.constraintSelector == 2) `lpbkCtrlZeroTimeProv(e,0)
+//            else if (p.constraintSelector == 3) `lpbkCtrlZeroTimeProv(e,1)
+   line 212-218
+//            if      (p.constraintSelector == 0) begin `lpbkDaZeroTimeProv(i,0) `lpbkSaZeroTimeProv(i,0) `lpbkLaZeroTimeProv(i,0) end
+//            else if (p.constraintSelector == 1) begin `lpbkDaZeroTimeProv(i,1) `lpbkSaZeroTimeProv(i,1) `lpbkLaZeroTimeProv(i,1) end
+//            else if (p.constraintSelector == 2) begin `lpbkDaZeroTimeProv(e,0) `lpbkSaZeroTimeProv(e,0) `lpbkLaZeroTimeProv(e,0) end
+//            else if (p.constraintSelector == 3) begin `lpbkDaZeroTimeProv(e,1) `lpbkSaZeroTimeProv(e,1) `lpbkLaZeroTimeProv(e,1) end
+
+   line 249-254
+//            if      (p.constraintSelector == 0) begin `lpbkMatchIdZeroTimeProv(i,0) end
+//            else if (p.constraintSelector == 1) begin `lpbkMatchIdZeroTimeProv(i,1) end
+//            else if (p.constraintSelector == 2) begin `lpbkMatchIdZeroTimeProv(e,0) end
+//            else if (p.constraintSelector == 3) begin `lpbkMatchIdZeroTimeProv(e,1) end
+
+
+* regression test issues [%]
+** TODO tc_503 egress, ptp_editor calc TSG has bug.
+   just check the first 'UVM_ERROR' in the tc_503.log
+** TODO tc_301a tc_301b sys side rate meter multiple set 10G.
+   tc_301b, all input the constant size packet.
+   port1 to port9 8G, 
+   port9 to port9 10G, it should come out 2G, but in fact is 2.15G, it not correct.
