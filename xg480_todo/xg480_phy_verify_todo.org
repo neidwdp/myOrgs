@@ -234,7 +234,9 @@
 **** DONE tc_030
      CLOSED: [2018-09-07 Fri 16:46]
      - State "DONE"       from "TODO"       [2018-09-07 Fri 16:46]
-*** TODO tc_030a egress with OTMH/ITMH.
+*** TODO tc_030a egress with OTMH/ITMH. 25G device
+*** TODO tc_030b egress with OTMH/ITMH. 25G device, 100G mode.
+*** TODO tc_030a egress with OTMH/ITMH. 10G device
 ** DONE 100g PTP [100%]
    CLOSED: [2018-06-06 Wed 15:00]
    - State "DONE"       from "TODO"       [2018-06-06 Wed 15:00]
