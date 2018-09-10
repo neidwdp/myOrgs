@@ -231,13 +231,6 @@
 **** DONE transfer function
      CLOSED: [2018-09-07 Fri 14:11]
      - State "DONE"       from "TODO"       [2018-09-07 Fri 14:11]
-
-   the spec has been ready, RTL has not been ready.
-   - [ ] provisioning method
-   - [ ] transfer function
-   - [ ] testcase [0/2]
-    - [ ] ingress
-    - [ ] egress
 **** DONE tc_030
      CLOSED: [2018-09-07 Fri 16:46]
      - State "DONE"       from "TODO"       [2018-09-07 Fri 16:46]
