@@ -1,11 +1,12 @@
-* xg480_phy 25g/10g verification todo [90%]
+* xg480_phy 25g/10g verification todo [95%]
 ** DONE The rate_meter_multiple issues [66%]
    CLOSED: [2018-07-11 Wed 16:50]
    - State "DONE"       from "STARTED"    [2018-07-11 Wed 16:50]
-*** DONE tc_204 Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
-    CLOSED: [2018-07-09 Mon 17:06]
+*** TODO tc_204 Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
+    - State "TODO"       from "DONE"       [2018-08-22 Wed 10:32]
     - State "DONE"       from "TODO"       [2018-07-09 Mon 17:06]
     - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
+     input traffic 25G, rate meter set to 1G, but pause frame PB upstream with 1.118G
 **** DONE tc_204 rate_meter_rx trigger mac_tx gen pause has bug, the interval of ON type pause is so closed. it's 200us, the expect value is 2ms.
      CLOSED: [2018-07-12 Thu 14:51]
      - State "DONE"       from "STARTED"    [2018-07-12 Thu 14:51]
@@ -13,7 +14,9 @@
      CLOCK: [2018-07-12 Thu 11:10]--[2018-07-12 Thu 14:51] =>  3:41
      :END:      
      Tonny remove the progma translate_off/on for the fast simulation.
-*** TODO tc_209 Line side mac_tx port shaper function (by rate_meter_multiple module) test.[100%]
+*** DONE tc_209 Line side mac_tx port shaper function (by rate_meter_multiple module) test.[100%]
+    CLOSED: [2018-08-22 Wed 09:16]
+    - State "DONE"       from "TODO"       [2018-08-22 Wed 09:16]
     - State "TODO"       from "DONE"       [2018-07-19 Thu 14:58]
     - State "DONE"       from "STARTED"    [2018-07-16 Mon 16:43]
     - State "STARTED"    from "DONE"       [2018-07-12 Thu 14:57]
@@ -23,6 +26,7 @@
    CLOCK: [2018-07-09 Mon 15:51]--[2018-07-09 Mon 16:11] =>  0:20
    :END:      
     double check the output rate for fixed size packet. it should almost equal the setting rate.
+    <2018-08-22 Wed 09:13> After correcting the CLOCK1X_FREQUENCY to 177_777_778, the rate of output traffic is equal the prov value. so it pass.
 **** DONE SYS side DRIVER/MONITOR don't respond BP, DUT segbuf will overflow, DUT should not send out the fragment of packet.
      CLOSED: [2018-07-09 Mon 17:45]
      - State "DONE"       from "STARTED"    [2018-07-09 Mon 17:45]
@@ -186,13 +190,58 @@
      CLOCK: [2018-05-31 Thu 16:24]--[2018-05-31 Thu 16:32] =>  0:08
      :END:      
      it's pass. need add more traffic flows, to generate more condiction to run this case
-** TODO port_process_ingress/port_process_egress (afp+pcp) test. [0%]
+** DONE port_process_ingress/port_process_egress (afp+pcp) test. [100%]
+   CLOSED: [2018-09-10 Mon 11:11]
+   - State "DONE"       from "TODO"       [2018-09-10 Mon 11:11]
+*** DONE port_proc_ingress [100%]
+    CLOSED: [2018-09-10 Mon 11:11]
+    - State "DONE"       from "STARTED"    [2018-09-10 Mon 11:11]
+    :LOGBOOK:  
+    CLOCK: [2018-09-04 Tue 14:08]--[2018-09-04 Tue 18:17] =>  4:09
+    CLOCK: [2018-09-04 Tue 12:08]--[2018-09-04 Tue 12:26] =>  0:18
+    :END:      
+**** DONE provisioning method
+     CLOSED: [2018-09-06 Thu 11:18]
+     - State "DONE"       from "STARTED"    [2018-09-06 Thu 11:18]
+     :LOGBOOK:  
+     CLOCK: [2018-09-04 Tue 11:48]--[2018-09-04 Tue 12:03] =>  0:15
+     :END:      
+**** DONE transfer function
+     CLOSED: [2018-09-06 Thu 15:23]
+     - State "DONE"       from "STARTED"    [2018-09-06 Thu 15:23]
+     :LOGBOOK:  
+     CLOCK: [2018-09-06 Thu 11:18]--[2018-09-06 Thu 15:09] =>  3:51
+     :END:      
+**** DONE tc_030 Ingress to test pcpDecoder and push pvid, swap priVid
+     CLOSED: [2018-09-07 Fri 16:46]
+     - State "DONE"       from "STARTED"    [2018-09-07 Fri 16:46]
+     :LOGBOOK:  
+     CLOCK: [2018-09-07 Fri 15:43]--[2018-09-07 Fri 16:46] =>  1:03
+     CLOCK: [2018-09-07 Fri 14:19]--[2018-09-07 Fri 15:02] =>  0:43
+     :END:      
+*** DONE port_proc_egress [100%]
+    CLOSED: [2018-09-10 Mon 11:11]
+    - State "DONE"       from "STARTED"    [2018-09-10 Mon 11:11]
+    :LOGBOOK:  
+    CLOCK: [2018-09-06 Thu 16:58]--[2018-09-06 Thu 17:59] => 1:01
+    :END:      
+**** DONE provisioning method
+     CLOSED: [2018-09-07 Fri 14:11]
+     - State "DONE"       from "TODO"       [2018-09-07 Fri 14:11]
+**** DONE transfer function
+     CLOSED: [2018-09-07 Fri 14:11]
+     - State "DONE"       from "TODO"       [2018-09-07 Fri 14:11]
+
    the spec has been ready, RTL has not been ready.
    - [ ] provisioning method
    - [ ] transfer function
    - [ ] testcase [0/2]
     - [ ] ingress
     - [ ] egress
+**** DONE tc_030
+     CLOSED: [2018-09-07 Fri 16:46]
+     - State "DONE"       from "TODO"       [2018-09-07 Fri 16:46]
+*** TODO tc_030a egress with OTMH/ITMH.
 ** DONE 100g PTP [100%]
    CLOSED: [2018-06-06 Wed 15:00]
    - State "DONE"       from "TODO"       [2018-06-06 Wed 15:00]
@@ -725,7 +774,7 @@
    LINE and SYS side both bypass transceiver, make testcase run faster.
      
    
-* TODO load sharing regression support for xg480 phy device. [0%]
+* load sharing regression support for xg480 phy device. [0%]
 ** STARTED update sys-sim.mk base on xgPro style.
    :LOGBOOK:  
    CLOCK: [2018-07-20 Fri 16:24]--[2018-07-20 Tue 18:25] =>  2:01
@@ -741,8 +790,10 @@
 ** TODO on Weekend, regression all testcases (long time testcase and short time testcase)
 
 
-* review test plan <2018-07-19 Thu 16:36> [50%]
-** TODO the RMON (eth_stats) test [66%]
+* review test plan <2018-07-19 Thu 16:36> [83%]
+** DONE the RMON (eth_stats) test [100%]
+   CLOSED: [2018-08-22 Wed 10:45]
+   - State "DONE"       from "TODO"       [2018-08-22 Wed 10:45]
 *** DONE termnal loop mode, blocked packet should be counter by eth_stat, tc_301 pass 
     CLOSED: [2018-07-20 Fri 11:09]
     - State "DONE"       from "STARTED"    [2018-07-20 Fri 11:09]
@@ -760,12 +811,22 @@
      - State "DONE"       from "TODO"       [2018-07-20 Fri 09:00]
 **** WAITING tc202 fail, becasue DUT mac_rx has not implemented the pause action funciton.
      - State "TODO"       from "WAITING"    [2018-07-20 Fri 09:08]
-*** TODO double check y1564 related RMON [%]
+*** DONE double check y1564 related RMON [100%]
+    CLOSED: [2018-08-22 Wed 10:44]
+    - State "DONE"       from "TODO"       [2018-08-22 Wed 10:44]
    with normal traffic together test.
-**** TODO down mon, no rmon. 
-**** TODO up mon, has rmon. 
-**** TODO up gen, has rmon. 
-**** TODO down gen, no rmon. 
+**** DONE down mon, no rmon. tc_400 has been covered 
+     CLOSED: [2018-08-22 Wed 10:44]
+     - State "DONE"       from "TODO"       [2018-08-22 Wed 10:44]
+**** DONE up mon, has rmon.  tc_400 has been covered
+     CLOSED: [2018-08-22 Wed 10:44]
+     - State "DONE"       from "TODO"       [2018-08-22 Wed 10:44]
+**** DONE up gen, has rmon.  tc_402 has been covered
+     CLOSED: [2018-08-22 Wed 10:44]
+     - State "DONE"       from "TODO"       [2018-08-22 Wed 10:44]
+**** DONE down gen, no rmon. tc_402 has been covered
+     CLOSED: [2018-08-22 Wed 10:44]
+     - State "DONE"       from "TODO"       [2018-08-22 Wed 10:44]
 ** DONE tc_007 double check. has fatel error. After cleanup the defines in tb_env.sv, the fatel has gone.
    CLOSED: [2018-07-19 Thu 16:28]
    - State "DONE"       from "STARTED"    [2018-07-19 Thu 16:28]
@@ -778,16 +839,72 @@
    :LOGBOOK:  
    CLOCK: [2018-07-19 Thu 16:29]--[2018-07-19 Thu 16:34] =>  0:05
    :END:      
-** STARTED all port have normal + loop traffic (some vlans are loops, some vlans are normal) test.[0%]
+** STARTED all port have normal + loop traffic (some vlans are loops, some vlans are normal) test.[66%]
    :LOGBOOK:  
    CLOCK: [2018-07-20 Fri 13:40]--[2018-07-20 Fri 14:21] =>  0:41
    :END:      
    loop + normal + y1564 gen. (if egress + pause + dying gasp gen)
    The PRI is: dyinggasp > pause > normal traffic > loop > y1546 
-*** TODO tc_309 25G mode in pipe1, 100G mode in pipe0 (ku5p)
+*** DONE tc_410 25G mode in pipe1, 100G mode in pipe0 (ku5p)
+    CLOSED: [2018-08-23 Thu 11:10]
+    - State "DONE"       from "STARTED"    [2018-08-23 Thu 11:10]
+    :LOGBOOK:  
+    CLOCK: [2018-08-23 Thu 09:51]--[2018-08-23 Thu 11:08] =>  1:17
+    CLOCK: [2018-08-22 Wed 18:03]--[2018-08-22 Wed 18:46] =>  0:43
+    CLOCK: [2018-08-22 Wed 17:44]--[2018-08-22 Wed 17:54] =>  0:10
+    CLOCK: [2018-08-22 Wed 16:53]--[2018-08-22 Wed 17:17] =>  0:24
+    :END:      
+    pipe0 100g mode, the y1564 gen must prov to single mode. 
+    ingress(up) y1564 gen disable, because it output from cgmii, cgmii don't calc FCS, eth_object_parser will report useless uvm_error.
+    egress (down) y1564 gen is normal.
+
+*** DONE tc_411 25G mode in pipe1, 100G mode in pipe0 (ku5p)
+    CLOSED: [2018-08-23 Thu 14:26]
+    - State "DONE"       from "STARTED"    [2018-08-23 Thu 14:26]
+    pipe1 25g mode
+    ingress (up) y1564 gen is normal.
+    egress (down) y1564 gen is normal. port6 10G y1564 injection, 5G fac_loop(port6 to port6), 10G normal traffic (port14 to port6)
+
+
 *** TODO 10G mode in 10G device (ku3p)
-** TODO 25G 65B full bandwidth test fail, DUT has bug.(Need tonny double check)
+** DONE tc_002a, 25G 65B full bandwidth test fail, DUT has bug.(Need tonny double check)
+   CLOSED: [2018-08-20 Mon 11:17]
+   - State "DONE"       from "TODO"       [2018-08-20 Mon 11:17]
    input 25Gpbs, 65B packet,  DUT out add more then 12 Bytes IPG.
+   Tonny has fiexed the bug on 15th Aug 2018
+
+** DONE full bandwidth with segment size boundary packet size.[100%]
+   CLOSED: [2018-08-22 Wed 15:29]
+   - State "DONE"       from "TODO"       [2018-08-22 Wed 15:29]
+*** DONE tc_002b 10G device
+    CLOSED: [2018-08-22 Wed 15:29]
+    - State "DONE"       from "TODO"       [2018-08-22 Wed 15:29]
+    Port0, 2, 4, 6
+    context0: 125 ~ 128
+    context1: 129 ~ 132
+    context2: 133
+    context3: 141
+    context4-21: 149 + (contextId-4)*8
+    
+    Port1, 3, 5, 7
+    context0: 128+125 ~ 128+128
+    context1: 128+129 ~ 132+128
+    context2: 128+133
+    context3: 128+141
+    context4-21: 128+149 + (contextId-4)*8
+
+*** DONE tc_002b 25G device
+    CLOSED: [2018-08-22 Wed 15:19]
+    - State "DONE"       from "TODO"       [2018-08-22 Wed 15:19]
+    Port0, 2, 4, 6
+    context0: 125 ~ 128
+    context1: 129 ~ 141
+    context2-12: 142 + (contextId-2)*16
+    
+    Port1, 3, 5, 7
+    context0: 128+125 ~ 128+128
+    context1: 128+129 ~ 128+141
+    context2-12: 128+142 + (contextId-2)*16
 
 
 * pipeline structure modification [100%]
@@ -890,10 +1007,16 @@
 //            else if (p.constraintSelector == 3) begin `lpbkMatchIdZeroTimeProv(e,1) end
 
 
-* regression test issues [%]
-** TODO tc_503 egress, ptp_editor calc TSG has bug.
-   just check the first 'UVM_ERROR' in the tc_503.log
-** TODO tc_301a tc_301b sys side rate meter multiple set 10G.
+* regression test issues [100%]
+** DONE tc_503 egress, ptp_editor calc TSG has bug.
+   CLOSED: [2018-09-10 Mon 11:12]
+   - State "DONE"       from "TODO"       [2018-09-10 Mon 11:12]
+   need Tonny double check, just check the first 'UVM_ERROR' in the tc_503.log
+** DONE tc_301a tc_301b sys side rate meter multiple set 10G.
+   CLOSED: [2018-08-20 Mon 11:10]
+   - State "DONE"       from "TODO"       [2018-08-20 Mon 11:10]
    tc_301b, all input the constant size packet.
    port1 to port9 8G, 
    port9 to port9 10G, it should come out 2G, but in fact is 2.15G, it not correct.
+
+   Correct the `define CLOCK1X_FREQUENCY        177_777_778, the rate_meter_multiple method could prov the correct the value.
