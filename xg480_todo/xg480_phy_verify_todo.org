@@ -766,6 +766,9 @@
    pipe1 no traffic,
    LINE and SYS side both bypass transceiver, make testcase run faster.
      
+** TODO xg480_sys_timing v2.0 PCIE (DMA mode) interface verification [%] 
+*** TODO waiting Tonny to generate the Root mode core.
+*** TODO integrate the Root and EP core to TB.
    
 * load sharing regression support for xg480 phy device. [0%]
 ** STARTED update sys-sim.mk base on xgPro style.
