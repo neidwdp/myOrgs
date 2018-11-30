@@ -1,8 +1,10 @@
-* xg480_phy 25g/10g verification todo [95%]
-** DONE The rate_meter_multiple issues [66%]
+* xg480_phy 25g/10g verification todo [93%]
+** DONE The rate_meter_multiple issues [100%]
    CLOSED: [2018-07-11 Wed 16:50]
    - State "DONE"       from "STARTED"    [2018-07-11 Wed 16:50]
-*** TODO tc_204 Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
+*** DONE tc_204 Line side rate_meter_rx trigger mac_tx send out the pause; the interval isn't correct.
+    CLOSED: [2018-09-12 Wed 10:12]
+    - State "DONE"       from "TODO"       [2018-09-12 Wed 10:12]
     - State "TODO"       from "DONE"       [2018-08-22 Wed 10:32]
     - State "DONE"       from "TODO"       [2018-07-09 Mon 17:06]
     - State "TODO"       from "WAITING"    [2018-05-30 Wed 11:25]
@@ -219,6 +221,7 @@
      CLOCK: [2018-09-07 Fri 15:43]--[2018-09-07 Fri 16:46] =>  1:03
      CLOCK: [2018-09-07 Fri 14:19]--[2018-09-07 Fri 15:02] =>  0:43
      :END:      
+**** DONE tc_030a 10G deive ingress to test CTAG STAG DEI handle
 *** DONE port_proc_egress [100%]
     CLOSED: [2018-09-10 Mon 11:11]
     - State "DONE"       from "STARTED"    [2018-09-10 Mon 11:11]
@@ -234,9 +237,17 @@
 **** DONE tc_030
      CLOSED: [2018-09-07 Fri 16:46]
      - State "DONE"       from "TODO"       [2018-09-07 Fri 16:46]
-*** TODO tc_030a egress with OTMH/ITMH. 25G device
-*** TODO tc_030b egress with OTMH/ITMH. 25G device, 100G mode.
-*** TODO tc_030a egress with OTMH/ITMH. 10G device
+**** DONE port_proc_egress remove the pcp_encoder function.
+     CLOSED: [2018-09-25 Tue 18:11]
+     - State "DONE"       from "TODO"       [2018-09-25 Tue 18:11]
+*** DONE tc_030a tc_004b egress with OTMH/ITMH. 25G device
+    CLOSED: [2018-09-12 Wed 10:12]
+    - State "DONE"       from "TODO"       [2018-09-12 Wed 10:12]
+*** CANCELLED tc_030b egress with OTMH/ITMH. 25G device, 100G mode. // Qumran cannot send out the OTMH
+    CLOSED: [2018-09-18 Tue 14:18]
+*** DONE tc_030a tc_004b egress with OTMH/ITMH. 10G device
+    CLOSED: [2018-09-12 Wed 10:12]
+    - State "DONE"       from "TODO"       [2018-09-12 Wed 10:12]
 ** DONE 100g PTP [100%]
    CLOSED: [2018-06-06 Wed 15:00]
    - State "DONE"       from "TODO"       [2018-06-06 Wed 15:00]
@@ -634,7 +645,7 @@
 *** TODO normal traffc running, monitor the all underflow overflow indication registers, they should not asserted
     tc_common_base.sv
     Before running traffic, ROC all the underflow overflow indication registers.
-** DONE random disable/enable interface, the DUT should not lock . [100%]
+** DONE random disable/enable interface, the DUT shouldn't lock . [100%]
    CLOSED: [2018-07-03 Tue 16:06]
    - State "DONE"       from "STARTED"    [2018-07-03 Tue 16:06]
 *** DONE 25G device 25G mode, tc_004a random disable/enable NGMII interface.
@@ -665,7 +676,7 @@
 ** CANCELLED 10G 25G 100G interface if support the LPI 
    CLOSED: [2018-07-11 Wed 14:55]
    Tonny said, DUT don't support on this release.
-** DONE sys side traffic packet with ITMH/OTMH [80%]
+** DONE sys side traffic packet with ITMH/OTMH [100%]
    CLOSED: [2018-07-11 Wed 14:46]
    - State "DONE"       from "STARTED"    [2018-07-11 Wed 14:46]
    :LOGBOOK:  
@@ -708,7 +719,8 @@
      :END:      
      CGMII_TX monitor need add the fcs re-calc function.
      eth_object_parser need add the adva hdr support mode.
-*** WAITING NGMII IF ADVA HDR test, need NGMII RTL support. waiting Tonny 
+*** CANCELLED tc_004b NGMII IF ADVA HDR test, need NGMII RTL support. waiting Tonny // Qumran cannot send out the OTMH 
+    CLOSED: [2018-09-18 Tue 14:17]
 ** DONE Help Atlanta Mike check the T_dcn_switch_v1.0_r112857 regression results [100%]
    CLOSED: [2018-07-10 Tue 12:25] DEADLINE: <2018-07-12 Thu>
    - State "DONE"       from "STARTED"    [2018-07-10 Tue 12:25]
@@ -749,13 +761,36 @@
     CLOSED: [2018-07-10 Tue 12:25] SCHEDULED: <2018-07-11 Wed>
     ../../../scripts/run_sim_questa -local_output off -database local_db
     -set_ethernet_port 2
-** DONE individually bypass transceivers.
-   CLOSED: [2018-07-12 Thu 19:06]
+** DONE individually bypass transceivers.[100%]
+*** DONE 25G device
+   CLOSED: [2018-09-18 Tue 14:35]
+   - State "DONE"       from "TODO"       [2018-09-18 Tue 14:35]
    - State "DONE"       from "TODO"       [2018-07-12 Thu 19:06]
    BYPASS_TRANSCEIVER_0 for Line0, port0-3
    BYPASS_TRANSCEIVER_1 for Line1, port4-7
    BYPASS_TRANSCEIVER_2 for Sys0, port8-11
    BYPASS_TRANSCEIVER_3 for Sys1, port12-15
+*** DONE 10G device 
+    CLOSED: [2018-09-20 Thu 10:16]
+    - State "DONE"       from "DONE"       [2018-09-20 Thu 10:17]
+    - State "DONE"       from "TODO"       [2018-09-20 Thu 10:16]
+   BYPASS_TRANSCEIVER_0 for Line0, port0-3
+   BYPASS_TRANSCEIVER_1 for Line1, port4-7
+   BYPASS_TRANSCEIVER_2 for Sys0, port8-11
+   BYPASS_TRANSCEIVER_3 for Sys1, port12-15
+** DONE 10G_1G transceiver quad cord debug.[100%]
+   CLOSED: [2018-09-25 Tue 15:54]
+   - State "DONE"       from "TODO"       [2018-09-25 Tue 15:54]
+*** DONE tc_010a,just 10G mode, read all DRP registers
+    CLOSED: [2018-09-21 Fri 12:19]
+    - State "DONE"       from "TODO"       [2018-09-21 Fri 12:19]
+*** DONE tc_010b,10G switch to 1G, read all DRP registers
+    CLOSED: [2018-09-21 Fri 12:19]
+    - State "DONE"       from "TODO"       [2018-09-21 Fri 12:19]
+*** DONE tc_010c,10G switch to 1G, then switch back 10G mode, read all DRP registers
+    CLOSED: [2018-09-21 Fri 12:19]
+    - State "DONE"       from "TODO"       [2018-09-21 Fri 12:19]
+
 ** DONE tc_007a 100G mode, to test and debug the xco4ma soft core. Bypass all transceivers expect xco4ma soft 100G core.
    CLOSED: [2018-07-13 Fri 09:34]
    - State "DONE"       from "STARTED"    [2018-07-13 Fri 09:34]
@@ -768,10 +803,136 @@
    pipe1 no traffic,
    LINE and SYS side both bypass transceiver, make testcase run faster.
      
-** TODO xg480_sys_timing v2.0 PCIE (DMA mode) interface verification [%] 
-*** TODO waiting Tonny to generate the Root mode core.
-*** TODO integrate the Root and EP core to TB.
+** TODO xg480_sys_timing v2.0 PCIE (DMA mode) interface verification [100%] 
+*** DONE add the pcie uvm based agent to TB.
+    CLOSED: [2018-10-11 Thu 09:30]
+    - State "DONE"       from "TODO"       [2018-10-11 Thu 09:30]
+*** DONE tc_002 to debug the pcie 
+    CLOSED: [2018-10-17 Wed 11:54]
+    - State "DONE"       from "TODO"       [2018-10-17 Wed 11:54]
+*** DONE pcie physical link up
+    CLOSED: [2018-10-19 Fri 09:17]
+    - State "DONE"       from "TODO"       [2018-10-19 Fri 09:17]
+*** DONE pcie data layer link up
+    CLOSED: [2018-10-19 Fri 09:17]
+    - State "DONE"       from "TODO"       [2018-10-19 Fri 09:17]
+*** DONE pcie transaction layer up
+    CLOSED: [2018-10-22 Mon 11:38]
+    - State "DONE"       from "TODO"       [2018-10-22 Mon 11:38]
+*** TODO pcie DMA mode methods
+** CANCELLED compress the IPG not preamble to support OTMH.[100%] // Qumran don't support the OTMH.
+   CLOSED: [2018-09-18 Tue 14:16]
+   - State "DONE"       from "TODO"       [2018-09-18 Tue 14:16]
+*** CANCELLED CGMII compress IPG to support OTMH for TB
+    CLOSED: [2018-09-18 Tue 14:16]
+*** CANCELLED NGMII compress IPG to support OTMH for TB
+    CLOSED: [2018-09-18 Tue 14:16]
+*** CANCELLED the ether_object_paser_25g_phy.sv need support compress IPG to support OTMH for TB
+    CLOSED: [2018-09-18 Tue 14:17]
    
+** DONE BULK interface (TWAMP) np_tx, service_app_filter test [100%]
+   CLOSED: [2018-10-17 Wed 08:59]
+   - State "DONE"       from "TODO"       [2018-10-17 Wed 08:59]
+*** DONE In TB, connect the east to np_tx to west. 10G device has been ready
+    CLOSED: [2018-10-15 Mon 13:13]
+    - State "DONE"       from "TODO"       [2018-10-15 Mon 13:13]
+*** DONE In TB, connect the ser_app_filter TF. 10G device has been ready
+    CLOSED: [2018-10-15 Mon 13:13]
+    - State "DONE"       from "TODO"       [2018-10-15 Mon 13:13]
+*** DONE TB connection in 25G device
+    CLOSED: [2018-10-17 Wed 08:59]
+    - State "DONE"       from "TODO"       [2018-10-17 Wed 08:59]
+*** DONE encap_gen, add the NP_HDR type.
+    CLOSED: [2018-10-15 Mon 14:42]
+    - State "DONE"       from "TODO"       [2018-10-15 Mon 14:42]
+*** DONE tc_040, east if (gen) -> np_tx -> bulk west if (monitor)
+    CLOSED: [2018-09-28 Fri 13:50]
+    - State "DONE"       from "TODO"       [2018-09-28 Fri 13:50]
+*** DONE tc_041, twamp packet from sys port(gen) -> service_app_filter (trap) -> np_tx -> bulk west if (monitor)
+    CLOSED: [2018-09-28 Fri 18:04]
+    - State "DONE"       from "TODO"       [2018-09-28 Fri 18:04]
+
+*** DONE tc_042, twamp packet from sys port(gen) -> service_app_filter (trap) -> np_tx -> bulk west if (monitor) and east if -> np_tx -> west if
+    CLOSED: [2018-10-16 Tue 09:38]
+    - State "DONE"       from "TODO"       [2018-10-16 Tue 09:38]
+*** DONE tc_041 fail in 10G device, when both port8 port9 input twawp, the bulk los issue has been gone. but the destport srcport miscmp in npHdr.
+    CLOSED: [2018-10-17 Wed 08:58]
+    - State "DONE"       from "TODO"       [2018-10-17 Wed 08:58]
+** DONE MDIO interface test [100%]
+   CLOSED: [2018-10-17 Wed 10:35]
+   - State "DONE"       from "TODO"       [2018-10-17 Wed 10:35]
+*** DONE instance the modle mdio_phy.sv in top.sv
+    CLOSED: [2018-10-11 Thu 09:27]
+    - State "DONE"       from "TODO"       [2018-10-11 Thu 09:27]
+
+*** DONE connect the DUT and mdio_phy.sv in top.sv
+    CLOSED: [2018-10-11 Thu 12:20]
+    - State "DONE"       from "TODO"       [2018-10-11 Thu 12:20]
+*** DONE tc_014 setup testcase 
+    CLOSED: [2018-10-17 Wed 08:59]
+    - State "DONE"       from "TODO"       [2018-10-17 Wed 08:59]
+    
+*** DONE direct write method in general_methods.svh
+    CLOSED: [2018-10-17 Wed 10:35]
+    - State "DONE"       from "TODO"       [2018-10-17 Wed 10:35]
+*** DONE direct read method in general_methods.svh
+    CLOSED: [2018-10-17 Wed 10:35]
+    - State "DONE"       from "TODO"       [2018-10-17 Wed 10:35]
+*** DONE indirect write method in general_methods.svh
+    CLOSED: [2018-10-17 Wed 10:35]
+    - State "DONE"       from "TODO"       [2018-10-17 Wed 10:35]
+*** DONE indirect read method in general_methods.svh
+    CLOSED: [2018-10-17 Wed 10:35]
+    - State "DONE"       from "TODO"       [2018-10-17 Wed 10:35]
+
+** DONE 100g caui4_monitor[100%]
+   CLOSED: [2018-11-08 Thu 15:57]
+   - State "DONE"       from "TODO"       [2018-11-08 Thu 15:57]
+*** DONE sync detection function
+    CLOSED: [2018-11-01 Thu 15:44]
+    - State "DONE"       from "TODO"       [2018-11-01 Thu 15:44]
+*** DONE alignment marker detection
+    CLOSED: [2018-11-01 Thu 15:44]
+    - State "DONE"       from "TODO"       [2018-11-01 Thu 15:44]
+*** DONE packet receiving
+    CLOSED: [2018-11-08 Thu 15:56]
+    - State "DONE"       from "TODO"       [2018-11-08 Thu 15:56]
+** DONE 100g caui4_driver
+   CLOSED: [2018-11-08 Thu 15:57]
+   - State "DONE"       from "TODO"       [2018-11-08 Thu 15:57]
+** DONE Drivers support BP (respond the almost full form DUT.)[100%]
+   CLOSED: [2018-11-01 Thu 18:42]
+   - State "DONE"       from "TODO"       [2018-11-01 Thu 18:42]
+*** DONE tc_003b in 10g device ngmii driver support BP
+    CLOSED: [2018-11-01 Thu 18:42]
+    - State "DONE"       from "TODO"       [2018-11-01 Thu 18:42]
+*** DONE connect the BP between DUT and TB
+    CLOSED: [2018-11-01 Thu 18:42]
+    - State "DONE"       from "TODO"       [2018-11-01 Thu 18:42]
+*** DONE xxv driver support BP
+    CLOSED: [2018-11-01 Thu 18:42]
+    - State "DONE"       from "TODO"       [2018-11-01 Thu 18:42]
+*** DONE cgmii driver support BP
+    CLOSED: [2018-11-01 Thu 18:42]
+    - State "DONE"       from "TODO"       [2018-11-01 Thu 18:42]
+    
+** DONE change the 100G y1564 tc with transceiver for client side[100%]
+   CLOSED: [2018-11-09 Fri 18:50]
+   - State "DONE"       from "TODO"       [2018-11-09 Fri 18:50]
+*** DONE tc_405
+    CLOSED: [2018-11-09 Fri 18:50]
+    - State "DONE"       from "TODO"       [2018-11-09 Fri 18:50]
+*** DONE tc_405a
+    CLOSED: [2018-11-09 Fri 18:50]
+    - State "DONE"       from "TODO"       [2018-11-09 Fri 18:50]
+*** DONE tc_407
+    CLOSED: [2018-11-09 Fri 18:50]
+    - State "DONE"       from "TODO"       [2018-11-09 Fri 18:50]
+*** DONE tc_407a
+    CLOSED: [2018-11-09 Fri 18:50]
+    - State "DONE"       from "TODO"       [2018-11-09 Fri 18:50]
+
+
 * load sharing regression support for xg480 phy device. [0%]
 ** STARTED update sys-sim.mk base on xgPro style.
    :LOGBOOK:  
@@ -863,8 +1024,8 @@
     ingress (up) y1564 gen is normal.
     egress (down) y1564 gen is normal. port6 10G y1564 injection, 5G fac_loop(port6 to port6), 10G normal traffic (port14 to port6)
 
-
 *** TODO 10G mode in 10G device (ku3p)
+
 ** DONE tc_002a, 25G 65B full bandwidth test fail, DUT has bug.(Need tonny double check)
    CLOSED: [2018-08-20 Mon 11:17]
    - State "DONE"       from "TODO"       [2018-08-20 Mon 11:17]
@@ -1018,3 +1179,205 @@
    port9 to port9 10G, it should come out 2G, but in fact is 2.15G, it not correct.
 
    Correct the `define CLOCK1X_FREQUENCY        177_777_778, the rate_meter_multiple method could prov the correct the value.
+** DONE 25G device regression issues [100%]
+   CLOSED: [2018-10-22 Mon 17:15]
+   - State "DONE"       from "TODO"       [2018-10-22 Mon 17:15]
+*** DONE 20181022 regression [100%]
+    CLOSED: [2018-10-22 Mon 18:25]
+    - State "DONE"       from "TODO"       [2018-10-22 Mon 18:25]
+**** DONE 20181022: tc_006d	: Fail! (The tc_006d.log is unfinished.) 100G case, Dongping check. reduce the simulaiton time
+    CLOSED: [2018-10-22 Mon 17:00]
+- State "DONE"       from "DONE"       [2018-10-22 Mon 18:25]
+    - State "DONE"       from "TODO"       [2018-10-22 Mon 17:0**
+**** DONE 20181022: tc_006l	: Fail! (UVM_ERROR & Error) 100G case, random dis/ena cgmii and LBUS interface, the DUT should not lock, it's not regression case
+    CLOSED: [2018-10-22 Mon 13:57]
+    - State "DONE"       from "TODO"       [2018-10-22 Mon 13:57**
+**** DONE 20181022: tc_006m	: Fail! (UVM_ERROR & Error) // CGMII OTMH test,have not finish feature testing. it's not use anymore, remove this case.
+    CLOSED: [2018-10-22 Mon 16:50]
+    - State "DONE"       from "TODO"       [2018-10-22 Mon 16:5**
+**** DONE 20181022: tc_302b	: Fail! (UVM_ERROR & Error) // vlan look det, there is phase compensation between clock1x and clock3x. This issue need Bob to solve.
+    CLOSED: [2018-10-22 Mon 12:18]
+    - State "DONE"       from "TODO"       [2018-10-22 Mon 12:18]
+**** DONE Send the email, told Bob the issue is still here. vlan look det clock1x and clock3x issue; there is phase compensation between clock1x and clock3x. This issue need Bob to solve.
+     CLOSED: [2018-11-21 Wed 14:28]
+     - State "DONE"       from "STARTED"    [2018-11-21 Wed 14:28]
+     - State "STARTED"    from "DONE"       [2018-10-22 Mon 13:****
+<2018-11-21 Wed 14:37>the vlan det lookup method has bug, the number of matchIds is not same as DUT, after Lance modified it, the error has been gone.
+**** DONE 20181022: tc_309	: Fail! (UVM_ERROR & Error) // 100G mode, normal traffic and fac lpbk traffic, it's test arbitration. 
+    CLOSED: [2018-10-22 Mon 14:32]
+    - State "DONE"       from "STARTED"    [2018-10-22 Mon 14:32]
+    normal traffic (port8 to  port0), input 9 packets, but DUT discard 3 packe***
+**** DONE 20181022: tc_604	: Fail! (UVM_ERROR & Error) // mac_rx MTU test, DUT will send out the packet with FCS error, but TF will discard them. it's not regression testcase
+    CLOSED: [2018-10-22 Mon 17:15]
+    - State "DONE"       from "TODO"       [2018-10-22 Mon 17:15**
+
+*** TODO 20181112 regression [70%]
+**** DONE tc_006a bypass cmac 100G tc, in fact it's pass, the script search wrong path.
+     CLOSED: [2018-11-14 Wed 10:57]
+     - State "DONE"       from "TODO"       [2018-11-14 Wed 10:57]
+**** DONE tc_041a 100g twamp tc, the bulk input traffic should include the NP HDR.
+     CLOSED: [2018-11-14 Wed 12:23]
+     - State "DONE"       from "TODO"       [2018-11-14 Wed 12:23]
+**** DONE tc_208a RMON, input MTU and FCS packet to test RMON, the result is expected.
+     CLOSED: [2018-11-12 Mon 17:56]
+     - State "DONE"       from "TODO"       [2018-11-12 Mon 17:56]
+**** DONE tc_208  RMON, input MTU and FCS packet to test RMON, the result is expected.
+     CLOSED: [2018-11-12 Mon 17:56]
+     - State "DONE"       from "TODO"       [2018-11-12 Mon 17:56]
+**** DONE tc_302b vlan lookup det, need Bob double check. has been sent the email to Bob
+     CLOSED: [2018-11-14 Wed 14:35]
+     - State "DONE"       from "TODO"       [2018-11-14 Wed 14:35]
+       When enable the vlan lookup det register access test, there are 5 miscmp, may the provisioning method has bug, the Lance is double checking.
+       the last miscmp is:
+       UVM_INFO @ 879000.000000 ns: reporter [MISCMP] Miscompare for scoreboardItemB.data: lhs = 'h8 : rhs = 'h8000
+       UVM_INFO @ 879000.000000 ns: reporter [MISCMP] 1 Miscompare(s) for object scoreboardItemA@93611 vs. scoreboardItemB@93627
+       UVM_ERROR @ 879000.000000 ns: uvm_test_top.tbEnv_u1.scoreboardControlPlane [Scoreboard] 
+                   Context number:  0x2d0020
+                   lhs fields are data from the TRANSFER_FUNCTION
+                   rhs fields are data from the DUT
+
+<2018-11-21 Wed 14:36>the vlan det lookup method has bug, the number of matchIds is not same as DUT, after Lance modified it, the error has been gone.
+**** TODO tc_403 y1564 lance check
+**** DONE tc_405 y1564, lance had been check, DUT has issue.
+     CLOSED: [2018-11-26 Mon 12:26]
+     - State "DONE"       from "WAITING"    [2018-11-26 Mon 12:26]
+     - State "WAITING"    from "TODO"       [2018-11-12 Mon 17:08]
+**** DONE tc_405a y1564, lance had been check, DUT has issue.
+     CLOSED: [2018-11-26 Mon 12:26]
+     - State "DONE"       from "WAITING"    [2018-11-26 Mon 12:26]
+     - State "WAITING"    from "TODO"       [2018-11-12 Mon 17:11]
+**** TODO tc_407 y1564, lance check
+**** WAITING tc_407a, y1564 lance had been check, DUT has issue. 
+     - State "WAITING"    from "TODO"       [2018-11-12 Mon 17:11]
+*** TODO 20181126 regression [%]
+**** TODO 100G local_bus underflow; If start sending the valid date, there should at least 4 valid data after txRdy un-set.
+
+** DONE 10G device  regression issues [100%]
+   CLOSED: [2018-10-23 Tue 09:30]
+   - State "DONE"       from "TODO"       [2018-10-23 Tue 09:30]
+*** DONE 20181022 regression [100%]
+    CLOSED: [2018-10-23 Tue 09:30]
+    - State "DONE"       from "TODO"       [2018-10-23 Tue 09:30]
+**** DONE 20181022: tc_000_lab	: Fail! (UVM_ERROR & Error) Base traffic, Dongping check. it's duplicate of tc_000. so remove it from regresion list.
+    CLOSED: [2018-10-22 Mon 18:09]
+- State "DONE"       from "DONE"       [2018-10-23 Tue 09:30]
+    - State "DONE"       from "TODO"       [2018-10-22 Mon 18:0**
+**** DONE 20181022: tc_001	: Fail! (The tc_001.log is unfinished.) // always waiting the xcvr_quad_drp_hw_acc_indication_completed 
+    CLOSED: [2018-10-23 Tue 09:29]
+    - State "DONE"       from "TODO"       [2018-10-23 Tue 09:2**
+**** DONE 20181022: tc_010	: Fail! (UVM_ERROR & Error)             //1G to 10G switch has not been ready.
+    CLOSED: [2018-10-23 Tue 09:29]
+    - State "DONE"       from "TODO"       [2018-10-23 Tue 09:2**
+**** DONE 20181022: tc_011	: Fail! (Compile Error)    I2c case, Dongping check, re-add the I2c bankId.
+    CLOSED: [2018-10-22 Mon 17:51]
+    - State "DONE"       from "TODO"       [2018-10-22 Mon 17:5**
+**** DONE 20181022: tc_604	: Fail! (UVM_ERROR & Error) // mac_rx MTU test, DUT will send out the packet with FCS error, but TF will discard them. it's not regression testcase
+    CLOSED: [2018-10-22 Mon 17:31]
+    - State "DONE"       from "TODO"       [2018-10-22 Mon 17:31]
+
+*** TODO 20181112 regression [33%]
+**** DONE tc_208a RMON, input MTU and FCS packet to test RMON, the result is expected.
+     CLOSED: [2018-11-12 Mon 17:56]
+     - State "DONE"       from "TODO"       [2018-11-12 Mon 17:56]
+**** DONE tc_208  RMON, input MTU and FCS packet to test RMON, the result is expected.
+     CLOSED: [2018-11-12 Mon 17:55]
+     - State "DONE"       from "TODO"       [2018-11-12 Mon 17:55]
+**** WAITING tc_400 y1564 lance check
+     - State "WAITING"    from "TODO"       [2018-11-12 Mon 17:12]
+**** WAITING tc_401 y1564 lance check
+     - State "WAITING"    from "TODO"       [2018-11-12 Mon 17:12]
+**** WAITING tc_402a y1564 lance check
+     - State "WAITING"    from "TODO"       [2018-11-12 Mon 17:13]
+**** WAITING tc_403 y1564 lance check
+     - State "WAITING"    from "TODO"       [2018-11-12 Mon 17:16]
+
+
+* TODO The PPT for internal training, the subject is FPGA verification process [%]
+** TODO The overview of FPGA development work flow, there are 4 phase.
+*** PLAN, documents.
+*** EXECUTE(coding), RTL design, Test Bench are created(setup).
+*** FUNCTIONAL VERIFY, module level, subsystem level, device level simulation.
+*** LAB VERIFY, 
+*** SUPPORT, Deliver the build to Customer(SW, HW, SIT), 
+** TODO The verification phase in the FPGA development flow.
+** TODO The overview of FPGA verificaion work flow
+** TODO The test plan
+** TODO The system-verilog language
+** TODO The UVM, Universal Verification Methodology
+** TODO code re-use
+** TODO code coverage
+** TODO functional coverage
+** TODO regression
+
+
+* Daily meeting [52%]
+** done
+*** DONE re-run tc_407a to verify the Tonny's modificaion about local_bus issue (100G mode, traffic + y1564)
+    CLOSED: [2018-11-19 Mon 17:31]
+    - State "DONE"       from "TODO"       [2018-11-19 Mon 17:31]
+<2018-11-19 Mon 17:30> in eth-fpga3, do make update, re-run tc_407 tc_407a tc_405 tc_405a, the result will get on tomorrow.
+
+*** DONE cgmii_to_frame RTL compile error. Haidong or Tonny to fix it.
+    CLOSED: [2018-11-21 Wed 14:38]
+    - State "DONE"       from "TODO"       [2018-11-21 Wed 14:38]
+      Tonny has been fixed it
+
+*** DONE NPI test, let Polo change the NPI test process, form vlan based to port based y1564 gen/mon.
+    CLOSED: [2018-11-19 Mon 17:34]
+    - State "DONE"       from "TODO"       [2018-11-19 Mon 17:34]
+10 times test, all pass. the packet size should >= 512
+
+*** DONE tc_213 xg480_phy_25g/10g device pause response test. the RTL has been ready
+    CLOSED: [2018-11-27 Tue 09:36]
+    - State "DONE"       from "TODO"       [2018-11-27 Tue 09:36]
+0 2 4 6 enable pause, 1 3 5 7 port disable pause. the quanta = 00 or FF
+Pause response is added in mac_tx module, the related changes in core level RTL is also done. Please Dongping run test cases to verify the pause response function.
+
+Please note that:
+   The pause backpressure doesn't affect down injected Y1564  - from the stack, the Y1564 DOWN injection is after MAC_TX.
+   The pause backpressure doesn't affect pause/dying gasp injection
+
+mulit seg packet 
+
+tc_213, pause peer function basic testcase, when receiving pause with quanta 0xffff, the traffic will stop; reveiving the pasue with quanta 0x0 the traffic will go on.
+
+*** DONE tc_302b testcase result. RTL has bug, need Bob double check. has been sent email.
+    CLOSED: [2018-11-19 Mon 18:00]
+    - State "DONE"       from "TODO"       [2018-11-19 Mon 18:00]
+      Jimmy said he was checking.<2018-11-20 Tue 09:50> 
+    <2018-11-21 Wed 14:37>the vlan det lookup method has bug, the number of matchIds is not same as DUT, after Lance modified it, the error has been gone.
+
+*** DONE IO CPLD gasic_slave_pro_bfm.sv, remove useless checking.
+   CLOSED: [2018-11-26 Mon 15:13]
+   - State "DONE"       from "TODO"       [2018-11-26 Mon 15:13]
+
+*** DONE tc_031 port process ing, for pri vlan, if swap disable, discard 
+    CLOSED: [2018-11-27 Tue 13:48]
+    - State "DONE"       from "TODO"       [2018-11-27 Tue 13:48]
+*** DONE tc_203 pause response and pause injection dying gasp injection
+    CLOSED: [2018-11-27 Tue 09:36]
+    - State "DONE"       from "TODO"       [2018-11-27 Tue 09:36]
+*** DONE tc_404a pause response for y1564 injection
+    CLOSED: [2018-11-27 Tue 15:12]
+    - State "DONE"       from "TODO"       [2018-11-27 Tue 15:12]
+*** DONE oob interface debug, device reg 0xB0, related port bit write1, the oob will set. 
+    CLOSED: [2018-11-28 Wed 12:18]
+    - State "DONE"       from "STARTED"    [2018-11-28 Wed 12:18]
+*** DONE ge104 TB and TB_ENV with PCIE interface.
+    CLOSED: [2018-11-30 Fri 16:13]
+    - State "DONE"       from "TODO"       [2018-11-30 Fri 16:13]
+*** STARTED east bulk input error packet (FCS error,  no eop, pcs error)
+DUT if send out the Error packet?
+    - State "STARTED"    from "DONE"       [2018-11-30 Fri 18:27]
+    - State "DONE"       from "STARTED"    [2018-11-30 Fri 18:18]
+*** STARTED dbg register all alarm (overflow underflow) indication. need verifiy.
+** todo
+*** TODO send bip error, (if need Dongping to verify it)
+*** TODO 1X100g_4X10g
+cgmii loop script.
+
+*** TODO 4X25g_4X10g
+*** TODO warning handle
+*** TODO xg480_sys_timing PCIE lab debug plan discuss with Lucky 
+* ge100
+** ge114pro vm  (10.0)
