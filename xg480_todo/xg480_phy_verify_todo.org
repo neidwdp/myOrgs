@@ -1310,7 +1310,7 @@
 ** TODO regression
 
 
-* Daily meeting [52%]
+* Daily meeting [73%]
 ** done
 *** DONE re-run tc_407a to verify the Tonny's modificaion about local_bus issue (100G mode, traffic + y1564)
     CLOSED: [2018-11-19 Mon 17:31]
@@ -1366,18 +1366,29 @@ tc_213, pause peer function basic testcase, when receiving pause with quanta 0xf
 *** DONE ge104 TB and TB_ENV with PCIE interface.
     CLOSED: [2018-11-30 Fri 16:13]
     - State "DONE"       from "TODO"       [2018-11-30 Fri 16:13]
-*** STARTED east bulk input error packet (FCS error,  no eop, pcs error)
-DUT if send out the Error packet?
+*** DONE east bulk input error packet (FCS error,  no eop, pcs error)
+    CLOSED: [2018-12-03 Mon 11:09]
+    - State "DONE"       from "STARTED"    [2018-12-03 Mon 11:09]
     - State "STARTED"    from "DONE"       [2018-11-30 Fri 18:27]
     - State "DONE"       from "STARTED"    [2018-11-30 Fri 18:18]
+when DUT receive error packet, it will counter to receive error, and do nothing, send out. it's expected. it has been confirmed with Haidong.
 *** STARTED dbg register all alarm (overflow underflow) indication. need verifiy.
+*** DONE TB warning handle
+    CLOSED: [2018-12-03 Mon 15:26]
+    - State "DONE"       from "STARTED"    [2018-12-03 Mon 15:26]
+*** DONE 25G device, DRP register switch values, tc_010a tc_010b tc_010c.
+    CLOSED: [2018-12-03 Mon 17:30]
+    - State "DONE"       from "STARTED"    [2018-12-03 Mon 17:30]
+      tc_010a: read transceiver DRP registers, after power on
+      tc_010b: read transceiver DRP registers, after power on, 25G switch 10G
+      tc_010c: read transceiver DRP registers, after power on, 25G switch 10G switch 25G
 ** todo
 *** TODO send bip error, (if need Dongping to verify it)
 *** TODO 1X100g_4X10g
 cgmii loop script.
 
 *** TODO 4X25g_4X10g
-*** TODO warning handle
 *** TODO xg480_sys_timing PCIE lab debug plan discuss with Lucky 
+
 * ge100
 ** ge114pro vm  (10.0)
