@@ -1,0 +1,61 @@
+* <2018-12-03 Mon 22:16> [66%]
+** DONE 数学 [100%]
+   CLOSED: [2018-12-03 Mon 22:52]
+   - State "DONE"       from "TODO"       [2018-12-03 Mon 22:52]
+*** DONE 订正知识能力训练
+    CLOSED: [2018-12-03 Mon 22:44]
+    - State "DONE"       from "TODO"       [2018-12-03 Mon 22:44]
+*** DONE 小口P28
+    CLOSED: [2018-12-03 Mon 22:45]
+    - State "DONE"       from "TODO"       [2018-12-03 Mon 22:45]
+** DONE 语文 [100%]
+   CLOSED: [2018-12-03 Mon 22:52]
+   - State "DONE"       from "TODO"       [2018-12-03 Mon 22:52]
+*** DONE 默写达人 12 13 14
+    CLOSED: [2018-12-03 Mon 22:45]
+    - State "DONE"       from "TODO"       [2018-12-03 Mon 22:45]
+*** DONE 预习 15
+    CLOSED: [2018-12-03 Mon 22:46]
+    - State "DONE"       from "TODO"       [2018-12-03 Mon 22:46]
+** DONE 英语 [100%]
+   CLOSED: [2018-12-03 Mon 22:52]
+   - State "DONE"       from "TODO"       [2018-12-03 Mon 22:52]
+*** DONE 背诵课本P38
+    CLOSED: [2018-12-03 Mon 22:50]
+    - State "DONE"       from "TODO"       [2018-12-03 Mon 22:50]
+** DONE 跳绳 [100%]
+   CLOSED: [2018-12-03 Mon 22:52]
+   - State "DONE"       from "TODO"       [2018-12-03 Mon 22:52]
+*** DONE 1分10妙视频
+    CLOSED: [2018-12-03 Mon 22:50]
+    - State "DONE"       from "TODO"       [2018-12-03 Mon 22:50]
+*** DONE 上传视频，更新数据 CLOSED: [2018-12-03 Mon 22:50] - State "DONE"       from "TODO"       [2018-12-03 Mon 22:50]
+** TODO 钢琴作业 [25%]
+*** DONE 2019新年音乐会曲目
+    CLOSED: [2018-12-03 Mon 22:51]
+    - State "DONE"       from "TODO"       [2018-12-03 Mon 22:51]
+*** TODO 考级曲目1
+*** TODO 考级曲目2
+*** TODO 考级音阶 琶音 半音
+** TODO 声乐作业 [%]
+*** TODO 12.16号比赛曲目 逆战
+
+* <2018-12-04 > [%]
+** TODO 数学 [%]
+*** TODO 订正知识能力训练
+*** TODO 小口P28
+** TODO 语文 [%]
+*** TODO 默写达人 12 13 14
+*** TODO 预习 15
+** TODO 英语 [%]
+*** TODO 背诵课本P38
+** TODO 跳绳 [%]
+*** TODO 1分10妙视频
+*** TODO 上传视频，更新数据
+** TODO 钢琴作业 [%]
+*** TODO 2019新年音乐会曲目
+*** TODO 考级曲目1
+*** TODO 考级曲目2
+*** TODO 考级音阶 琶音 半音
+** TODO 声乐作业 [%]
+*** TODO 12.16号比赛曲目 逆战
