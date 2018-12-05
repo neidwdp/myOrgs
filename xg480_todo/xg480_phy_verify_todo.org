@@ -1310,7 +1310,7 @@
 ** TODO regression
 
 
-* Daily meeting [73%]
+* Daily meeting [65%]
 ** done
 *** DONE re-run tc_407a to verify the Tonny's modificaion about local_bus issue (100G mode, traffic + y1564)
     CLOSED: [2018-11-19 Mon 17:31]
@@ -1363,16 +1363,11 @@ tc_213, pause peer function basic testcase, when receiving pause with quanta 0xf
 *** DONE oob interface debug, device reg 0xB0, related port bit write1, the oob will set. 
     CLOSED: [2018-11-28 Wed 12:18]
     - State "DONE"       from "STARTED"    [2018-11-28 Wed 12:18]
-*** DONE ge104 TB and TB_ENV with PCIE interface.
+*** DONE ge104 TB and TB_ENV with PCIE interface, correct the user interface clock to 62.5, the PCIE correctly link up.
     CLOSED: [2018-11-30 Fri 16:13]
+    - State "DONE"       from "DONE"       [2018-12-05 Wed 09:42]
+    - State "DONE"       from "DONE"       [2018-12-04 Tue 15:53]
     - State "DONE"       from "TODO"       [2018-11-30 Fri 16:13]
-*** DONE east bulk input error packet (FCS error,  no eop, pcs error)
-    CLOSED: [2018-12-03 Mon 11:09]
-    - State "DONE"       from "STARTED"    [2018-12-03 Mon 11:09]
-    - State "STARTED"    from "DONE"       [2018-11-30 Fri 18:27]
-    - State "DONE"       from "STARTED"    [2018-11-30 Fri 18:18]
-when DUT receive error packet, it will counter to receive error, and do nothing, send out. it's expected. it has been confirmed with Haidong.
-*** STARTED dbg register all alarm (overflow underflow) indication. need verifiy.
 *** DONE TB warning handle
     CLOSED: [2018-12-03 Mon 15:26]
     - State "DONE"       from "STARTED"    [2018-12-03 Mon 15:26]
@@ -1382,7 +1377,43 @@ when DUT receive error packet, it will counter to receive error, and do nothing,
       tc_010a: read transceiver DRP registers, after power on
       tc_010b: read transceiver DRP registers, after power on, 25G switch 10G
       tc_010c: read transceiver DRP registers, after power on, 25G switch 10G switch 25G
+*** DONE bulk if NPI test support
+    CLOSED: [2018-12-05 Wed 14:53]
+    - State "DONE"       from "STARTED"    [2018-12-05 Wed 14:53]
+**** DONE tc_043, west input east output
+     CLOSED: [2018-12-05 Wed 12:28]
+     - State "DONE"       from "TODO"       [2018-12-05 Wed 12:28]
+**** DONE tc_044, west set loopback, west input, west output
+     CLOSED: [2018-12-05 Wed 14:52]
+     - State "DONE"       from "TODO"       [2018-12-05 Wed 14:52]
+*** DONE 1G pasue 10G device 1G mode, tc_214
+    CLOSED: [2018-12-05 Wed 09:39]
+    - State "DONE"       from "STARTED"    [2018-12-05 Wed 09:39]
+*** DONE 10G pasue 10G device tc_213
+    CLOSED: [2018-12-04 Tue 15:53]
+    - State "DONE"       from "TODO"       [2018-12-04 Tue 15:53]
+*** DONE 25G pause 25G device tc_213
+    CLOSED: [2018-12-04 Tue 15:54]
+    - State "DONE"       from "TODO"       [2018-12-04 Tue 15:54]
+*** DONE 100G pasue 25G devie tc_214
+    CLOSED: [2018-12-04 Tue 18:28]
+    - State "DONE"       from "DONE"       [2018-12-05 Wed 11:05]
+    - State "DONE"       from "TODO"       [2018-12-04 Tue 18:28]
+*** DONE ge104 run_vlog cleanup
+    CLOSED: [2018-12-05 Wed 11:05]
+    - State "DONE"       from "TODO"       [2018-12-05 Wed 11:05]
 ** todo
+*** WAITING east bulk input error packet (FCS error,  no eop, pcs error)
+    - State "STARTED"    from "DONE"       [2018-12-04 Tue 15:54]
+    - State "DONE"       from "STARTED"    [2018-12-03 Mon 11:09]
+    - State "STARTED"    from "DONE"       [2018-11-30 Fri 18:27]
+    - State "DONE"       from "STARTED"    [2018-11-30 Fri 18:18]
+when DUT receive error packet, it will counter to receive error, and do nothing, send out. it's not expected. should set error in gmii_if.
+*** STARTED dbg register all alarm (overflow underflow) indication. need verifiy.
+*** TODO 10g 25G SW switch testcase support
+*** TODO IO FPGA 1G PTP testcase 
+*** TODO PCIE IF, abort, timeout,  error condiction, corner condiction
+*** TODO QSGMII, ge104
 *** TODO send bip error, (if need Dongping to verify it)
 *** TODO 1X100g_4X10g
 cgmii loop script.
