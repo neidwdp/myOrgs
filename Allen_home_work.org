@@ -122,41 +122,126 @@
 ** DONE 声乐作业, 12.16 比赛曲目 逆战
    CLOSED: [2018-12-05 Wed 20:53]
    - State "DONE"       from "TODO"       [2018-12-05 Wed 20:53]
-* a [%]
-** TODO 数学 [100%]
-*** TODO 订正知识能力训练
-*** TODO 小口P28
-** TODO 语文 [100%]
-*** TODO 默写达人 12 13 14
-*** TODO 预习 15
-** TODO 英语 [100%]
-*** TODO 背诵课本P38
-** TODO 跳绳 [100%]
-*** TODO 1分10妙视频
-*** TODO 上传视频，更新数据 
+* <2018-12-06 Thu 19:34> [66%]
+** DONE 数学 [100%]
+   CLOSED: [2018-12-06 Thu 20:32]
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 20:32]
+*** DONE 订正知识能力训练, 按照59页提示
+    CLOSED: [2018-12-06 Thu 20:32]
+    - State "DONE"       from "TODO"       [2018-12-06 Thu 20:32]
+*** DONE 大口P35 36
+    CLOSED: [2018-12-06 Thu 19:37]
+    - State "DONE"       from "TODO"       [2018-12-06 Thu 19:37]
+** DONE 语文 [100%]
+   CLOSED: [2018-12-08 Sat 08:33]
+   - State "DONE"       from "TODO"       [2018-12-08 Sat 08:33]
+*** DONE 补 默写达人, 其中复习
+    CLOSED: [2018-12-08 Sat 08:33]
+    - State "DONE"       from "TODO"       [2018-12-08 Sat 08:33]
+*** DONE 朗读朱德的扁担 上传
+    CLOSED: [2018-12-06 Thu 19:40]
+    - State "DONE"       from "TODO"       [2018-12-06 Thu 19:40]
+** DONE 英语, 背诵p44 45  
+   CLOSED: [2018-12-06 Thu 20:54]
+   - State "DONE"       from "TODO"       [2018-12-06 Thu 20:54]
+** DONE 跳绳, 1分10妙视频, 每日更新
+   - State "DONE"       from "DONE"       [2018-12-06 Thu 19:40]
 ** TODO 钢琴作业 [25%]
-*** TODO 2019新年音乐会曲目
+*** DONE 2019新年音乐会曲目, 可以基本跟着节奏鼓点弹完整曲 
+    CLOSED: [2018-12-06 Thu 20:24]
+    - State "DONE"       from "TODO"       [2018-12-06 Thu 20:24]
 *** TODO 考级曲目1
 *** TODO 考级曲目2
 *** TODO 考级音阶 琶音 半音
-** TODO 声乐作业 [%]
-*** TODO 12.16号比赛曲目 逆战
-* a [%]
-** TODO 数学 [100%]
-*** TODO 订正知识能力训练
-*** TODO 小口P28
-** TODO 语文 [100%]
-*** TODO 默写达人 12 13 14
-*** TODO 预习 15
-** TODO 英语 [100%]
-*** TODO 背诵课本P38
-** TODO 跳绳 [100%]
-*** TODO 1分10妙视频
-*** TODO 上传视频，更新数据 
-** TODO 钢琴作业 [25%]
-*** TODO 2019新年音乐会曲目
-*** TODO 考级曲目1
-*** TODO 考级曲目2
-*** TODO 考级音阶 琶音 半音
-** TODO 声乐作业 [%]
-*** TODO 12.16号比赛曲目 逆战
+** TODO 声乐作业, 12.16号比赛曲目 逆战
+* <2018-12-08 Sat 08:35> [14/20] [70%]
+** DONE 数学  订 知识能力训练                                                   :数学:
+   CLOSED: [2018-12-08 Sat 14:19]
+   - State "DONE"       from "TODO"       [2018-12-08 Sat 14:19]
+** DONE 数学  订 书 按照p69提示                                                 :数学:
+   CLOSED: [2018-12-08 Sat 18:52]
+   - State "DONE"       from "TODO"       [2018-12-08 Sat 18:52]
+** DONE 数学  大口 P37,38                                                      :数学:
+    CLOSED: [ 2018-12-08 Sat 10:16]
+    - State " DONE"       from "TODO"       [2018-12-08 Sat 10:16]
+** DONE 数学  报纸第10期                                                        :数学:
+   CLOSED: [2018-12-08 Sat 13:11]
+   - State "DONE"       from "TODO"       [2018-12-08 Sat 13:11]
+** DONE 语文  背诵古诗,芙蓉楼送辛渐                                             :语文:
+    CLOSED: [ 2018-12-08 Sat 09:43]
+    - State " DONE"       from "TODO"       [2018-12-08 Sat 09:43]
+** DONE 语文  背诵古诗,宋元二使安西                                             :语文:
+    CLOSED: [ 2018-12-08 Sat 10:03]
+    - State " DONE"       from "TODO"       [2018-12-08 Sat 10:03]
+** DONE 语文  补 默写达人 p54 p55                                               :语文:
+   CLOSED: [2018-12-08 Sat 19:31]
+   - State "DONE"       from "TODO"       [2018-12-08 Sat 19:31]
+** TODO 语文  补 小学语文写字                                                   :语文:
+** TODO 语文  知 16 朱德的扁担                                                  :语文:
+** DONE 语文  预习 17 课                                                        :语文:
+   CLOSED: [2018-12-08 Sat 12:55]
+   - State "DONE"       from "TODO"       [2018-12-08 Sat 12:55]
+** DONE 英语  背诵第9课, 语音上传                                               :English:
+   CLOSED: [2018-12-08 Sat 14:43]
+   - State "DONE"       from "TODO"       [2018-12-08 Sat 14:43]
+** DONE 英语  复习第7 8 9 课, 下周一单元测试                                    :English:
+   CLOSED: [2018-12-08 Sat 14:52]
+   - State "DONE"       from "TODO"       [2018-12-08 Sat 14:52]
+** DONE 音乐  上传小花雀                                                        :学校音乐:
+   CLOSED: [2018-12-08 Sat 14:05]
+   - State "DONE"       from "TODO"       [2018-12-08 Sat 14:05]
+** DONE 跳绳  1分10妙视频, 每日更新                                             :跳绳:
+   CLOSED: [2018-12-08 Sat 15:24]
+   - State "DONE"       from "TODO"       [2018-12-08 Sat 15:24]
+** DONE 钢琴  2019新年音乐会曲目, 可以基本跟着节奏鼓点弹完整曲                  :钢琴:
+   CLOSED: [2018-12-08 Sat 20:21]
+   - State "DONE"       from "TODO"       [2018-12-08 Sat 20:21]
+** TODO 钢琴  考级曲目1                                                         :钢琴:
+** TODO 钢琴  考级曲目2                                                         :钢琴:
+** TODO 钢琴  考级音阶 琶音 半音                                                :钢琴:
+** DONE 声乐  12.16号比赛曲目 逆战                                              :声乐:
+   CLOSED: [2018-12-08 Sat 15:06]
+   - State "DONE"       from "TODO"       [2018-12-08 Sat 15:06]
+** TODO 贝塔玛英语 作业                                                         :English:
+* <2018-12-09 Sun 10:42> [3/14] [21%]
+** DONE 8:30  足球课 
+   CLOSED: [2018-12-09 Sun 10:44]
+   - State "DONE"       from "TODO"       [2018-12-09 Sun 10:44]
+** DONE 语文  补 默写达人 p56 p57                                               :语文:
+   CLOSED: [2018-12-09 Sun 10:58]
+   - State "DONE"       from "TODO"       [2018-12-09 Sun 10:58]
+** DONE 11:20 钢琴课
+   CLOSED: [2018-12-09 Sun 12:31]
+   - State "DONE"       from "TODO"       [2018-12-09 Sun 12:31]
+** TODO 13:30 玩胜体能
+** TODO 15:30 声乐
+** TODO 语文  补 小学语文写字                                                   :语文:
+** TODO 语文  知 16 朱德的扁担                                                  :语文:
+** TODO 跳绳  1分10妙视频, 每日更新                                             :跳绳:
+** TODO 钢琴  2019新年音乐会曲目, 可以基本跟着节奏鼓点弹完整曲                  :钢琴:
+** TODO 钢琴  考级曲目1                                                         :钢琴:
+** TODO 钢琴  考级曲目2                                                         :钢琴:
+** TODO 钢琴  考级音阶 琶音 半音                                                :钢琴:
+** TODO 声乐  12.16号比赛曲目 逆战                                              :声乐:
+** TODO 贝塔玛英语 作业                                                         :English:
+* template [/] [%]
+** TODO 数学  订 知识能力训练                                                   :数学:
+** TODO 数学  订 书 按照p69提示                                                 :数学:
+** TODO 数学  大口 P37,38                                                       :数学:
+** TODO 数学  报纸第10期                                                        :数学:
+** TODO 语文  背诵古诗,芙蓉楼送辛渐                                             :语文:
+** TODO 语文  背诵古诗,宋元二使安西                                             :语文:
+** TODO 语文  补 默写达人 p54 p55                                               :语文:
+** TODO 语文  补 小学语文写字                                                   :语文:
+** TODO 语文  知 16 朱德的扁担                                                  :语文:
+** TODO 语文  预习 17 课                                                        :语文:
+** TODO 英语  背诵第9课, 语音上传                                               :English:
+** TODO 英语  复习第7 8 9 课, 下周一单元测试                                    :English:
+** TODO 音乐  上传小花雀                                                        :学校音乐:
+** TODO 跳绳  1分10妙视频, 每日更新                                             :跳绳:
+** TODO 钢琴  2019新年音乐会曲目, 可以基本跟着节奏鼓点弹完整曲                  :钢琴:
+** TODO 钢琴  考级曲目1                                                         :钢琴:
+** TODO 钢琴  考级曲目2                                                         :钢琴:
+** TODO 钢琴  考级音阶 琶音 半音                                                :钢琴:
+** TODO 声乐  12.16号比赛曲目 逆战                                              :声乐:
+** TODO 贝塔玛英语 作业                                                         :English:
