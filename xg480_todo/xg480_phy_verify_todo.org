@@ -1179,12 +1179,8 @@
    port9 to port9 10G, it should come out 2G, but in fact is 2.15G, it not correct.
 
    Correct the `define CLOCK1X_FREQUENCY        177_777_778, the rate_meter_multiple method could prov the correct the value.
-** DONE 25G device regression issues [100%]
-   CLOSED: [2018-10-22 Mon 17:15]
-   - State "DONE"       from "TODO"       [2018-10-22 Mon 17:15]
-*** DONE 20181022 regression [100%]
-    CLOSED: [2018-10-22 Mon 18:25]
-    - State "DONE"       from "TODO"       [2018-10-22 Mon 18:25]
+** ku5p [100%]
+*** 20181022 regression [100%]
 **** DONE 20181022: tc_006d	: Fail! (The tc_006d.log is unfinished.) 100G case, Dongping check. reduce the simulaiton time
     CLOSED: [2018-10-22 Mon 17:00]
 - State "DONE"       from "DONE"       [2018-10-22 Mon 18:25]
@@ -1211,7 +1207,7 @@
     CLOSED: [2018-10-22 Mon 17:15]
     - State "DONE"       from "TODO"       [2018-10-22 Mon 17:15**
 
-*** TODO 20181112 regression [70%]
+*** 20181112 regression [70%]
 **** DONE tc_006a bypass cmac 100G tc, in fact it's pass, the script search wrong path.
      CLOSED: [2018-11-14 Wed 10:57]
      - State "DONE"       from "TODO"       [2018-11-14 Wed 10:57]
@@ -1249,15 +1245,19 @@
 **** TODO tc_407 y1564, lance check
 **** WAITING tc_407a, y1564 lance had been check, DUT has issue. 
      - State "WAITING"    from "TODO"       [2018-11-12 Mon 17:11]
-*** TODO 20181126 regression [%]
-**** TODO 100G local_bus underflow; If start sending the valid date, there should at least 4 valid data after txRdy un-set.
 
-** DONE 10G device  regression issues [100%]
-   CLOSED: [2018-10-23 Tue 09:30]
-   - State "DONE"       from "TODO"       [2018-10-23 Tue 09:30]
-*** DONE 20181022 regression [100%]
-    CLOSED: [2018-10-23 Tue 09:30]
-    - State "DONE"       from "TODO"       [2018-10-23 Tue 09:30]
+*** 20181210 regression [/][%]
+**** TODO tc_001	: Fail! (UVM_ERROR & Error) 10G with transceiver basic traffic, Dongping check
+**** TODO tc_010	: Fail! (UVM_ERROR & Error) 10G with transceiver basic traffic, Dongping check
+**** TODO tc_040	: Fail! (UVM_ERROR & Error) NP and bulk interface, Dongping check
+**** TODO tc_041a	: Fail! (UVM_ERROR & Error) NP and bulk interface, Dongping check
+**** TODO tc_041	: Fail! (UVM_ERROR & Error) NP and bulk interface, Dongping check
+**** TODO tc_042a	: Fail! (UVM_ERROR & Error) NP and bulk interface, Dongping check
+**** TODO tc_042	: Fail! (UVM_ERROR & Error) NP and bulk interface, Dongping check
+**** TODO tc_401	: Fail! (UVM_ERROR & Error) y1564, Lance check
+
+** ku3p [100%]
+*** 20181022 regression [100%]
 **** DONE 20181022: tc_000_lab	: Fail! (UVM_ERROR & Error) Base traffic, Dongping check. it's duplicate of tc_000. so remove it from regresion list.
     CLOSED: [2018-10-22 Mon 18:09]
 - State "DONE"       from "DONE"       [2018-10-23 Tue 09:30]
@@ -1274,8 +1274,7 @@
 **** DONE 20181022: tc_604	: Fail! (UVM_ERROR & Error) // mac_rx MTU test, DUT will send out the packet with FCS error, but TF will discard them. it's not regression testcase
     CLOSED: [2018-10-22 Mon 17:31]
     - State "DONE"       from "TODO"       [2018-10-22 Mon 17:31]
-
-*** TODO 20181112 regression [33%]
+*** 20181112 regression [33%]
 **** DONE tc_208a RMON, input MTU and FCS packet to test RMON, the result is expected.
      CLOSED: [2018-11-12 Mon 17:56]
      - State "DONE"       from "TODO"       [2018-11-12 Mon 17:56]
@@ -1290,6 +1289,18 @@
      - State "WAITING"    from "TODO"       [2018-11-12 Mon 17:13]
 **** WAITING tc_403 y1564 lance check
      - State "WAITING"    from "TODO"       [2018-11-12 Mon 17:16]
+
+*** 20181210 regression [/][%]
+**** TODO tc_000	: Fail! (UVM_ERROR & Error) // based traffic , Dongping check
+**** TODO tc_003	: Fail! (UVM_ERROR & Error) // based traffic , Dongping check
+**** TODO tc_004	: Fail! (UVM_ERROR & Error) // based traffic , Dongping check
+**** TODO tc_040	: Fail! (UVM_ERROR & Error) //NP and bulk interface, Dongping check
+**** TODO tc_041	: Fail! (UVM_ERROR & Error) //NP and bulk interface, Dongping check
+**** TODO tc_042	: Fail! (UVM_ERROR & Error) //NP and bulk interface, Dongping check
+**** TODO tc_400	: Fail! (UVM_ERROR & Error) // y1564 Lance check
+**** TODO tc_401	: Fail! (UVM_ERROR & Error)  // y1564 Lance check
+**** TODO tc_403	: Fail! (UVM_ERROR & Error)  // y1564 Lance check
+
 
 
 * TODO The PPT for internal training, the subject is FPGA verification process [%]
@@ -1310,7 +1321,7 @@
 ** TODO regression
 
 
-* Daily meeting [65%]
+* Daily meeting [72%]
 ** done
 *** DONE re-run tc_407a to verify the Tonny's modificaion about local_bus issue (100G mode, traffic + y1564)
     CLOSED: [2018-11-19 Mon 17:31]
@@ -1377,7 +1388,7 @@ tc_213, pause peer function basic testcase, when receiving pause with quanta 0xf
       tc_010a: read transceiver DRP registers, after power on
       tc_010b: read transceiver DRP registers, after power on, 25G switch 10G
       tc_010c: read transceiver DRP registers, after power on, 25G switch 10G switch 25G
-*** DONE bulk if NPI test support
+*** DONE bulk if NPI test support 
     CLOSED: [2018-12-05 Wed 14:53]
     - State "DONE"       from "STARTED"    [2018-12-05 Wed 14:53]
 **** DONE tc_043, west input east output
@@ -1386,23 +1397,35 @@ tc_213, pause peer function basic testcase, when receiving pause with quanta 0xf
 **** DONE tc_044, west set loopback, west input, west output
      CLOSED: [2018-12-05 Wed 14:52]
      - State "DONE"       from "TODO"       [2018-12-05 Wed 14:52]
-*** DONE 1G pasue 10G device 1G mode, tc_214
+       <2018-12-05 Wed 15:01> testcase fail, 
+*** DONE 1G pasue 10G device 1G mode, tc_214 
     CLOSED: [2018-12-05 Wed 09:39]
     - State "DONE"       from "STARTED"    [2018-12-05 Wed 09:39]
-*** DONE 10G pasue 10G device tc_213
+*** DONE 10G pasue 10G device tc_213 
     CLOSED: [2018-12-04 Tue 15:53]
     - State "DONE"       from "TODO"       [2018-12-04 Tue 15:53]
-*** DONE 25G pause 25G device tc_213
+*** DONE 25G pause 25G device tc_213 
     CLOSED: [2018-12-04 Tue 15:54]
     - State "DONE"       from "TODO"       [2018-12-04 Tue 15:54]
-*** DONE 100G pasue 25G devie tc_214
+*** DONE 100G pasue 25G devie tc_214 
     CLOSED: [2018-12-04 Tue 18:28]
     - State "DONE"       from "DONE"       [2018-12-05 Wed 11:05]
     - State "DONE"       from "TODO"       [2018-12-04 Tue 18:28]
-*** DONE ge104 run_vlog cleanup
+*** DONE ge104 run_vlog cleanup 
     CLOSED: [2018-12-05 Wed 11:05]
     - State "DONE"       from "TODO"       [2018-12-05 Wed 11:05]
+*** DONE 10g 25G SW switch testcase support
+    CLOSED: [2018-12-06 Thu 10:24]
+    - State "DONE"       from "TODO"       [2018-12-06 Thu 10:24]
+      tc_010d:  after power on
+      tc_010e:  after power on, 25G switch 10G, by DRP
+      tc_010f:  after power on, 25G switch 10G switch 25G, by DRP
+      tc_102, 10G device, 10G switch to 1G
+*** DONE IO FPGA 1G PTP testcase 
+    CLOSED: [2018-12-06 Thu 16:05]
+    - State "DONE"       from "TODO"       [2018-12-06 Thu 16:05]
 ** todo
+*** TODO 100G sorfware core verify
 *** WAITING east bulk input error packet (FCS error,  no eop, pcs error)
     - State "STARTED"    from "DONE"       [2018-12-04 Tue 15:54]
     - State "DONE"       from "STARTED"    [2018-12-03 Mon 11:09]
@@ -1410,10 +1433,8 @@ tc_213, pause peer function basic testcase, when receiving pause with quanta 0xf
     - State "DONE"       from "STARTED"    [2018-11-30 Fri 18:18]
 when DUT receive error packet, it will counter to receive error, and do nothing, send out. it's not expected. should set error in gmii_if.
 *** STARTED dbg register all alarm (overflow underflow) indication. need verifiy.
-*** TODO 10g 25G SW switch testcase support
-*** TODO IO FPGA 1G PTP testcase 
 *** TODO PCIE IF, abort, timeout,  error condiction, corner condiction
-*** TODO QSGMII, ge104
+*** TODO QSGMII, ge104, all interface verification
 *** TODO send bip error, (if need Dongping to verify it)
 *** TODO 1X100g_4X10g
 cgmii loop script.
