@@ -1,0 +1,5 @@
+* xg108 verification do [%]
+** TODO tc_001a mac_tx address 0xe0000 DUT didn't respond 
+** TODO tc_400 JDSU/ESA testcase, make it correctly running
+** TODO tc_009 make it correctly running
+** TODO LED SFP SDRM-BIST test, add them to tc_000
